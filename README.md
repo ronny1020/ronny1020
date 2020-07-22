@@ -4,7 +4,7 @@ I'm Ronny Hsieh, a fronted-end developer.
 
 Thanks for visiting my github.
 
-Please feel free to give me some issue of my repositories.
+Please feel free to give me some issues of my repositories.
 
 <!--
 **ronny1020/ronny1020** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
