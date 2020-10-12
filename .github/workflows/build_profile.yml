@@ -1,33 +1,40 @@
-# This is a basic workflow to help you get started with Actions
+name: Build README.md
 
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
+  schedule:
+    - cron: '0 0 * * *'
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+          check-latest: true
+      - run: npm install
+        env:
+          CI: true
+     
+      - name: Update README
+        run: |-
+          node updateREADME.js
+          cat README.md
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Commit and push if changed
+        run: |-
+          git diff
+          git config --global user.email "ronny1020@gmail.com"
+          git config --global user.name "README-bot"
+          git add -A
+          git commit -m "Updated README.md" || exit 0
+          git push
