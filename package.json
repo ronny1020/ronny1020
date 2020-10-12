@@ -1,0 +1,22 @@
+{
+  "name": "ronny1020",
+  "version": "1.0.0",
+  "description": "I'm Ronny Hsieh, a fronted-end developer.",
+  "main": "updateREADME.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronny1020/ronny1020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ronny1020/ronny1020/issues"
+  },
+  "homepage": "https://github.com/ronny1020/ronny1020#readme",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
