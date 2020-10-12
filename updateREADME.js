@@ -1,23 +1,35 @@
 // Include node fs (file stream) and https modules
 const fs = require('fs')
-const https = require('https')
 const axios = require('axios')
 
-const options = {
-  hostname: 'api.github.com',
-  path: '/users/ronny1020/repos',
-  method: 'GET',
-  headers: { 'User-Agent': 'Mozilla/5.0' },
+async function updateProfile() {
+  const res = await axios
+    .get(
+      'https://api.github.com/users/ronny1020/repos?sort=updated&direction=desc'
+    )
+    .catch((e) => {
+      console.error(e)
+    })
+
+  const lastRepos = res.data.slice(0, 5)
+
+  let lastReposString = ''
+
+  lastRepos.forEach((item) => {
+    lastReposString += `[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=${item.name})](${item.html_url})
+`
+  })
+
+  const mainProfile = fs.readFileSync('./mainProfile.md', 'utf8')
+
+  console.log(lastReposString)
+  console.log(mainProfile)
 }
 
+updateProfile()
 
 // new Promise((resolve, reject) => {
-//   fs.readFile('./mainProfile.md', 'utf8', function (error, content) {
-//     if (error) {
-//       return console.error(error)
-//     }
-//     resolve(content)
-//   })
+
 // })
 //   .then((resolve, reject) => {
 //     const url = 'https://api.github.com/users/ronny1020/repos'
