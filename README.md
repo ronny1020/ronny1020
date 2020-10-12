@@ -31,3 +31,15 @@ Please feel free to give me some issues of my repositories.
 ![ESLint](https://img.shields.io/badge/Tool-ESLint-informational?style=flat&logo=ESLint&logoColor=4B32C3&color=0ABAB5)
 ![Prettier](https://img.shields.io/badge/Tool-Prettier-informational?style=flat&logo=prettier&logoColor=F7B93E&color=0ABAB5)
 ![PostCSS](https://img.shields.io/badge/Tool-PostCSS-informational?style=flat&logo=PostCSS&logoColor=DD3A0A&color=0ABAB5)
+
+## Last repositories
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=ronny1020)](https://github.com/ronny1020/ronny1020)
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=Angular-test)](https://github.com/ronny1020/Angular-test)
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-native-test)](https://github.com/ronny1020/react-native-test)
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-test)](https://github.com/ronny1020/react-test)
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=kilimanjaro-web-project)](https://github.com/ronny1020/kilimanjaro-web-project)
