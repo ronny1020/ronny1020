@@ -39,7 +39,3 @@ Please feel free to give me some issues of my repositories.
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=Angular-test)](https://github.com/ronny1020/Angular-test)
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-native-test)](https://github.com/ronny1020/react-native-test)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-test)](https://github.com/ronny1020/react-test)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=kilimanjaro-web-project)](https://github.com/ronny1020/kilimanjaro-web-project)
