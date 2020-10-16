@@ -11,7 +11,7 @@ async function updateProfile() {
       console.error(e)
     })
 
-  const lastRepos = res.data.slice(0, 5)
+  const lastRepos = res.data.slice(0, 3)
 
   let lastReposString = ''
 
