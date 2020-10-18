@@ -1,6 +1,6 @@
 // Include node fs (file stream) and https modules
-const fs = require('fs')
-const axios = require('axios')
+import fs from 'fs'
+import axios from 'axios'
 
 async function updateProfile() {
   const res = await axios

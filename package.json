@@ -1,10 +1,11 @@
 {
   "name": "ronny1020",
   "version": "1.0.0",
+  "type": "module",
   "description": "I'm Ronny Hsieh, a fronted-end developer.",
   "main": "updateREADME.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node updateREADME.js"
   },
   "repository": {
     "type": "git",
