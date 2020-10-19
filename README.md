@@ -34,8 +34,8 @@ Please feel free to give me some issues of my repositories.
 
 ## Last repositories
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=ptt-beauty-image-collect)](https://github.com/ronny1020/ptt-beauty-image-collect)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=node-express-course)](https://github.com/ronny1020/node-express-course)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=Angular-test)](https://github.com/ronny1020/Angular-test)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=starting-with-typescript-exercise)](https://github.com/ronny1020/starting-with-typescript-exercise)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=ronny1020)](https://github.com/ronny1020/ronny1020)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=java-course)](https://github.com/ronny1020/java-course)
