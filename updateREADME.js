@@ -24,7 +24,7 @@ async function updateProfile() {
   const mainProfile = fs.readFileSync('./mainProfile.md', 'utf8')
 
   const readme = `${mainProfile}
-## Last repositories
+## Last repositories (auto updated by github action)
 
 ${lastReposString.trim()}`
 
