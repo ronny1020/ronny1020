@@ -37,8 +37,8 @@ Please feel free to give me some issues of my repositories.
 
 ## Last repositories (auto updated by github action)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=ronny1020)](https://github.com/ronny1020/ronny1020)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=receipt-management-demo)](https://github.com/ronny1020/receipt-management-demo)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-room-booking-demo)](https://github.com/ronny1020/react-room-booking-demo)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=vue-reactive-form)](https://github.com/ronny1020/vue-reactive-form)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=ptt-beauty-image-collect)](https://github.com/ronny1020/ptt-beauty-image-collect)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-json-formatter)](https://github.com/ronny1020/react-json-formatter)
