@@ -11,7 +11,7 @@ async function updateProfile() {
       console.error(e)
     })
 
-  const lastRepos = res.data.slice(0, 3)
+  const lastRepos = res.data.filter(({ name }) => name !== 'ronny1020').slice(0, 3)
 
   let lastReposString = ''
 
