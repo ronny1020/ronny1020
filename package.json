@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/ronny1020/ronny1020#readme",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.2"
   }
 }
