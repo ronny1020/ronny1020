@@ -37,8 +37,8 @@ Please feel free to give me some issues of my repositories.
 
 ## Last repositories (auto updated by github action)
 
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=vue-reactive-form)](https://github.com/ronny1020/vue-reactive-form)
+
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-json-formatter)](https://github.com/ronny1020/react-json-formatter)
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-hook-form)](https://github.com/ronny1020/react-hook-form)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=query)](https://github.com/ronny1020/query)
