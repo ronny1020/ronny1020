@@ -37,8 +37,8 @@ Please feel free to give me some issues of my repositories.
 
 ## Last repositories (auto updated by github action)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=receipt-management-demo)](https://github.com/ronny1020/receipt-management-demo)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=vitepress)](https://github.com/ronny1020/vitepress)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=typescript-library-starter)](https://github.com/ronny1020/typescript-library-starter)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=starting-with-typescript-exercise)](https://github.com/ronny1020/starting-with-typescript-exercise)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=eslint-plugin-tailwindcss)](https://github.com/ronny1020/eslint-plugin-tailwindcss)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=podcast-player-demo)](https://github.com/ronny1020/podcast-player-demo)
