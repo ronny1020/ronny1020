@@ -37,8 +37,8 @@ Please feel free to give me some issues of my repositories.
 
 ## Last repositories (auto updated by github action)
 
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=cypress-documentation)](https://github.com/ronny1020/cypress-documentation)
+
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=react-json-formatter)](https://github.com/ronny1020/react-json-formatter)
 
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=vitepress-plugin-search)](https://github.com/ronny1020/vitepress-plugin-search)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=vitepress)](https://github.com/ronny1020/vitepress)
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=pixijs)](https://github.com/ronny1020/pixijs)
