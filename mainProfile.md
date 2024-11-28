@@ -10,15 +10,15 @@ Please feel free to give me some issues with my repositories.
 
 ## My Open Source Projects
 
-### react-json-formatter
+### react-json-formatter (React Json UI Component)
 - [GitHub](https://github.com/ronny1020/react-json-formatter)
 - [NPM](https://www.npmjs.com/package/react-json-formatter)
 
-### condition-switch
+### condition-switch (JavaScript Utils)
 - [GitHub](https://github.com/ronny1020/condition-switch)
 - [NPM](https://www.npmjs.com/package/condition-switch)
 
-### 開源旅遊共筆 (Chinese vitpress project)
+### 開源旅遊共筆 (Chinese VitePress Project)
 - [Web](https://travel-guide-tw.github.io/)
 - [GitHub](https://github.com/travel-guide-tw/travel-guide-tw.github.io)
 
