@@ -51,8 +51,8 @@ Please feel free to give me some issues with my repositories.
 
 ## Last repositories (auto updated by github action)
 
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=travel-guide-tw.github.io)](https://github.com/ronny1020/travel-guide-tw.github.io)
+
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=clean-code-javascript)](https://github.com/ronny1020/clean-code-javascript)
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=next-chat-room)](https://github.com/ronny1020/next-chat-room)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=travel-guide-tw.github.io)](https://github.com/ronny1020/travel-guide-tw.github.io)
