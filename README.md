@@ -51,8 +51,8 @@ Please feel free to give me some issues with my repositories.
 
 ## Last repositories (auto updated by github action)
 
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=condition-switch)](https://github.com/ronny1020/condition-switch)
+
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=channel-state)](https://github.com/ronny1020/channel-state)
 
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=markdown-it-async)](https://github.com/ronny1020/markdown-it-async)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=vitepress-plugin-mermaid)](https://github.com/ronny1020/vitepress-plugin-mermaid)
