@@ -54,8 +54,8 @@ Please feel free to give me some issues with my repositories.
 
 ## Last repositories (auto updated by github action)
 
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=claw-code)](https://github.com/ronny1020/claw-code)
+
+[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=gemini-mock-cli)](https://github.com/ronny1020/gemini-mock-cli)
+
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=channel-state)](https://github.com/ronny1020/channel-state)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=condition-switch)](https://github.com/ronny1020/condition-switch)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ronny1020&repo=markdown-it-async)](https://github.com/ronny1020/markdown-it-async)
