@@ -1,4 +1,5 @@
 import {
+  EXCLUDED_OWNERS,
   GITHUB_API_URL,
   GITHUB_USERNAME,
   MAX_STARRED_REPOS,
@@ -70,10 +71,15 @@ export async function getAuthoredPullRequests(): Promise<PullRequestSearch> {
   return searchPullRequests(`type:pr is:public author:${GITHUB_USERNAME}`)
 }
 
-/** Merged pull requests sent to repositories outside this account. */
+/**
+ * Merged pull requests sent to repositories nobody I belong to owns — my own
+ * organisations' projects are my work, not an upstream contribution.
+ */
 export async function getUpstreamPullRequests(): Promise<PullRequestSearch> {
+  const excluded = EXCLUDED_OWNERS.map((owner) => `-user:${owner}`).join(' ')
+
   return searchPullRequests(
-    `type:pr is:public is:merged author:${GITHUB_USERNAME} -user:${GITHUB_USERNAME}`,
+    `type:pr is:public is:merged author:${GITHUB_USERNAME} ${excluded}`,
   )
 }
 

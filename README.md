@@ -39,15 +39,15 @@
 
 ## 🤝 Upstream contributions
 
-129 pull requests merged into repositories I do not own — the most recent one per project:
+7 pull requests merged into repositories I do not own — the most recent one per project:
 
-| Project                                                                                                   | Pull request                                                                                                                                            | Merged       |
-| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| [TanStack/query](https://github.com/TanStack/query)                                                       | [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006)                                               | Aug 17, 2026 |
-| [travel-guide-tw/travel-guide-tw.github.io](https://github.com/travel-guide-tw/travel-guide-tw.github.io) | [fix(images): prevent CLS by injecting image dimensions](https://github.com/travel-guide-tw/travel-guide-tw.github.io/pull/420)                         | May 1, 2026  |
-| [logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)                     | [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15)                                         | Apr 6, 2025  |
-| [cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)                   | [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) | Nov 17, 2023 |
-| [pixijs/pixijs](https://github.com/pixijs/pixijs)                                                         | [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514)                        | Jul 6, 2023  |
+| Project                                                                                 | Pull request                                                                                                                                            | Merged                 |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| [TanStack/query](https://github.com/TanStack/query)                                     | [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006)                                               | Aug&nbsp;17,&nbsp;2026 |
+| [logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)   | [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15)                                         | Apr&nbsp;6,&nbsp;2025  |
+| [cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation) | [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) | Nov&nbsp;17,&nbsp;2023 |
+| [pixijs/pixijs](https://github.com/pixijs/pixijs)                                       | [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514)                        | Jul&nbsp;6,&nbsp;2023  |
+| [react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)   | [fix(path): keys of `Date \| FileList \| File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804)        | Aug&nbsp;8,&nbsp;2022  |
 
 ## 🗣️ Languages I ship in
 
@@ -117,12 +117,12 @@
 
 ## 🚀 Recently pushed
 
-| Repository                                                        | Description                                                                                                                                  | Language   | Last push    |
-| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------ |
-| [ai-agent-press](https://github.com/ronny1020/ai-agent-press)     | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and agents into a professional VitePress site.         | TypeScript | Aug 15, 2026 |
-| [twinlink](https://github.com/ronny1020/twinlink)                 | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using WebRTC Data Channels.                                  | TypeScript | Jul 11, 2026 |
-| [condition-switch](https://github.com/ronny1020/condition-switch) | A condition switch library for js/ts                                                                                                         | TypeScript | Jun 30, 2026 |
-| [channel-state](https://github.com/ronny1020/channel-state)       | A state-management provides robust, seamless state synchronization across all browser tabs, windows, and even diverse JavaScript frameworks. | TypeScript | Jun 30, 2026 |
+| Repository                                                        | Description                                                                                                                                  | Language   | Last push              |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------- |
+| [ai-agent-press](https://github.com/ronny1020/ai-agent-press)     | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and agents into a professional VitePress site.         | TypeScript | Aug&nbsp;15,&nbsp;2026 |
+| [twinlink](https://github.com/ronny1020/twinlink)                 | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using WebRTC Data Channels.                                  | TypeScript | Jul&nbsp;11,&nbsp;2026 |
+| [condition-switch](https://github.com/ronny1020/condition-switch) | A condition switch library for js/ts                                                                                                         | TypeScript | Jun&nbsp;30,&nbsp;2026 |
+| [channel-state](https://github.com/ronny1020/channel-state)       | A state-management provides robust, seamless state synchronization across all browser tabs, windows, and even diverse JavaScript frameworks. | TypeScript | Jun&nbsp;30,&nbsp;2026 |
 
 <p align="center">
   <a href="https://github.com/ronny1020/ai-agent-press"><img alt="ai-agent-press" src="https://gh-card.dev/repos/ronny1020/ai-agent-press.svg"></a>
@@ -135,7 +135,7 @@
 
 Latest repositories I starred:
 
-- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,217
+- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,229
 - [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,383
 - [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,636
 - [NVIDIA-Omniverse/web-viewer-sample](https://github.com/NVIDIA-Omniverse/web-viewer-sample) — This sample demonstrates how a front-end client can present a streamed Omniverse Kit application and how to send messages between the two apps. `TypeScript` ⭐ 146
@@ -144,5 +144,5 @@ Latest repositories I starred:
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 20, 2026, 3:37 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 20, 2026 at 3:57 PM GMT+8</sub>
 </p>

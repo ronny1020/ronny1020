@@ -57,11 +57,17 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Types come from `@octokit/types`**, narrowed with `Required<Pick<…>>`. Do not hand-write GitHub response shapes.
 - **Renderers are pure** — they take data and return markdown. All fetching lives in `github.ts`, `npm.ts`, and `siteLinks.ts`.
 - **Tests never hit the network.** Mock `globalThis.fetch` with the `mockFetch` helper and build payloads with `utils/fixtures.ts`.
+- **Own-organisation work is not an upstream contribution.** `EXCLUDED_OWNERS` in `utils/config.ts` drops those accounts from the contributions search; add private organisations through the `EXCLUDED_OWNERS` environment variable (comma separated) so their names stay out of this public repo.
+- **Dates and counts use `&nbsp;`** so a narrow table column cannot wrap `Aug 17, 2026` after the comma.
 - **Hide a repository** by adding its name to `EXCLUDED_REPOS` in `utils/config.ts`; that filter also removes it from star, fork, and language totals.
 - **Never publish private data.** Both PR searches pin `is:public` and `getStarredRepos` filters `private` stars — a local run uses a `repo`-scoped token that can see work repositories.
 - **Card hosts must answer fast.** GitHub proxies every image through camo, which gives up after a few seconds and serves a 504 — a card host that needs 6s renders as broken on the profile even though `curl` says 200. Time a new host before adding it (`streak-stats.demolab.com` was dropped for this).
 - **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
 - Prettier is the formatter, and `bun run format:check` is gated in CI — run `bun run format` before pushing.
+
+## Committing
+
+README-bot pushes a regenerated `README.md` after every run, so `git pull --rebase` before committing; otherwise the push is rejected and the generated file conflicts. Resolve such a conflict by rerunning `bun run update:readme`, never by hand-merging `README.md`.
 
 ## CI
 

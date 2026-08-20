@@ -68,6 +68,14 @@ describe('renderUpstreamPullRequests', () => {
     expect(section).toContain('129 pull requests merged')
   })
 
+  it('keeps the merge date on one line', () => {
+    const section = renderUpstreamPullRequests(
+      upstream([pullRequest('TanStack/query')]),
+    )
+
+    expect(section).toContain('| Aug&nbsp;17,&nbsp;2026 |')
+  })
+
   it('escapes a title that would split a row', () => {
     const section = renderUpstreamPullRequests(
       upstream([

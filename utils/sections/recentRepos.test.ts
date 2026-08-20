@@ -12,7 +12,7 @@ describe('renderRecentRepos', () => {
       ],
     })
 
-    expect(section).toContain('Jul 11, 2026')
+    expect(section).toContain('Jul&nbsp;11,&nbsp;2026')
     expect(section).toContain('gh-card.dev/repos/ronny1020/twinlink.svg')
   })
 

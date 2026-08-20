@@ -117,7 +117,7 @@ describe('pull request searches', () => {
     }
   })
 
-  it('excludes own repositories from the upstream query', async () => {
+  it('excludes every account I belong to from the upstream query', async () => {
     const fetchMock = mockFetch(() =>
       jsonResponse({ items: [], total_count: 0 }),
     )
@@ -127,6 +127,7 @@ describe('pull request searches', () => {
     const query = decodeURIComponent(String(fetchMock.mock.calls[0]?.[0]))
     expect(query).toContain('is:merged')
     expect(query).toContain('-user:ronny1020')
+    expect(query).toContain('-user:travel-guide-tw')
   })
 })
 

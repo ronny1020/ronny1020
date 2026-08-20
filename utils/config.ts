@@ -36,3 +36,17 @@ export const LANGUAGE_COLORS: Record<string, string> = {
 
 /** Repositories kept out of the README, no matter how many stars they have. */
 export const EXCLUDED_REPOS = ['vue-reactive-form']
+
+/**
+ * Accounts whose repositories are mine too, so a pull request to them is not an
+ * upstream contribution. Add private organisations through the
+ * `EXCLUDED_OWNERS` environment variable instead of this list, which is public.
+ */
+export const EXCLUDED_OWNERS = [
+  GITHUB_USERNAME,
+  'travel-guide-tw',
+  ...(process.env.EXCLUDED_OWNERS ?? '')
+    .split(',')
+    .map((owner) => owner.trim())
+    .filter(Boolean),
+]

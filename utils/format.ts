@@ -9,13 +9,16 @@ export function formatNumber(value: number): string {
   return value.toLocaleString('en-US')
 }
 
+/** Non-breaking spaces keep a date on one line inside a narrow table column. */
 export function formatDate(isoDate: string): string {
-  return new Date(isoDate).toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'short',
-    timeZone: PROFILE_TIME_ZONE,
-    year: 'numeric',
-  })
+  return new Date(isoDate)
+    .toLocaleDateString('en-US', {
+      day: 'numeric',
+      month: 'short',
+      timeZone: PROFILE_TIME_ZONE,
+      year: 'numeric',
+    })
+    .replace(/ /g, '&nbsp;')
 }
 
 /** Date, time, and UTC offset of the profile's home time zone. */

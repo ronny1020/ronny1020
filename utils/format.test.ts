@@ -19,11 +19,11 @@ describe('formatNumber', () => {
 
 describe('formatDate', () => {
   it('formats in the profile time zone', () => {
-    expect(formatDate('2026-08-17T07:04:55Z')).toBe('Aug 17, 2026')
+    expect(formatDate('2026-08-17T07:04:55Z')).toBe('Aug&nbsp;17,&nbsp;2026')
   })
 
   it('rolls over to the next day for late UTC timestamps', () => {
-    expect(formatDate('2026-08-17T20:00:00Z')).toBe('Aug 18, 2026')
+    expect(formatDate('2026-08-17T20:00:00Z')).toBe('Aug&nbsp;18,&nbsp;2026')
   })
 })
 
