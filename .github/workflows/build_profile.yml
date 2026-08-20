@@ -24,7 +24,15 @@ jobs:
         env:
           CI: true
 
+      - name: Typecheck, format check, and test
+        run: |
+          bun run typecheck
+          bun run format:check
+          bun test
+
       - name: Update README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           bun run updateREADME.ts
           bunx prettier --write README.md

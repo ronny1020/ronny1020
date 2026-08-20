@@ -1,95 +1,66 @@
 import { readFile, writeFile } from 'node:fs/promises'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 
-type GithubRepo = {
-  name: string
-  html_url: string
+import { MAIN_PROFILE_PATH, README_PATH } from './utils/config.ts'
+import {
+  getAuthoredPullRequests,
+  getRepos,
+  getStarredRepos,
+  getUpstreamPullRequests,
+  getUser,
+} from './utils/github.ts'
+import { fetchNpmPackages } from './utils/npm.ts'
+import { pickFeaturedRepos, pickRecentRepos } from './utils/repos.ts'
+import { renderSections } from './utils/sections/index.ts'
+import { fetchSiteLinks } from './utils/siteLinks.ts'
+import { renderTemplate } from './utils/template.ts'
+import type { GithubRepo, RepoLinks } from './utils/types.ts'
+
+/** Repositories the README links to, each listed once. */
+function dedupe(repos: GithubRepo[]): GithubRepo[] {
+  return [...new Map(repos.map((repo) => [repo.name, repo])).values()]
 }
 
-const GITHUB_USERNAME = 'ronny1020'
-const GITHUB_REPOS_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc`
-const MAX_RECENT_REPOS = 3
-const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
-const MAIN_PROFILE_PATH = resolve(SCRIPT_DIR, 'mainProfile.md')
-const README_PATH = resolve(SCRIPT_DIR, 'README.md')
+async function fetchRepoLinks(repos: GithubRepo[]): Promise<RepoLinks> {
+  const [npmPackages, siteLinks] = await Promise.all([
+    fetchNpmPackages(repos),
+    fetchSiteLinks(repos),
+  ])
 
-function isGithubRepo(value: unknown): value is GithubRepo {
-  if (typeof value !== 'object' || value === null) {
-    return false
-  }
-
-  const repo = value as Record<string, unknown>
-
-  return typeof repo.name === 'string' && typeof repo.html_url === 'string'
-}
-
-async function getRecentRepos(): Promise<GithubRepo[]> {
-  const response = await fetch(GITHUB_REPOS_API_URL, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'User-Agent': 'ronny1020-readme-updater',
-      'X-GitHub-Api-Version': '2022-11-28',
-    },
-  })
-
-  const payload = await response.text()
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch repositories: ${response.status} ${response.statusText}\n${payload}`,
-    )
-  }
-
-  let repos: unknown
-
-  try {
-    repos = JSON.parse(payload) as unknown
-  } catch (error) {
-    throw new Error('GitHub API returned invalid JSON.', { cause: error })
-  }
-
-  if (!Array.isArray(repos)) {
-    throw new Error('GitHub API response was not an array of repositories.')
-  }
-
-  return repos
-    .filter(isGithubRepo)
-    .filter(({ name }) => name !== GITHUB_USERNAME)
-    .slice(0, MAX_RECENT_REPOS)
-}
-
-function formatRepoCards(repos: GithubRepo[]): string {
-  if (repos.length === 0) {
-    return 'No recent repositories available.'
-  }
-
-  return repos
-    .map(
-      (repo) =>
-        `[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=${GITHUB_USERNAME}&repo=${repo.name})](${repo.html_url})`,
-    )
-    .join('\n\n')
+  return { npmPackages, siteLinks }
 }
 
 async function updateProfile(): Promise<void> {
-  const [mainProfile, recentRepos] = await Promise.all([
-    readFile(MAIN_PROFILE_PATH, 'utf8'),
-    getRecentRepos(),
-  ])
+  const [template, user, repos, authored, upstream, starred] =
+    await Promise.all([
+      readFile(MAIN_PROFILE_PATH, 'utf8'),
+      getUser(),
+      getRepos(),
+      getAuthoredPullRequests(),
+      getUpstreamPullRequests(),
+      getStarredRepos(),
+    ])
 
-  const readme = [
-    mainProfile.trimEnd(),
-    '',
-    '## Last repositories (auto updated by github action)',
-    '',
-    formatRepoCards(recentRepos),
-    '',
-  ].join('\n')
+  const featured = pickFeaturedRepos(repos)
+  const recent = pickRecentRepos(repos)
+  const links = await fetchRepoLinks(dedupe([...featured, ...recent]))
 
-  await writeFile(README_PATH, readme, 'utf8')
+  const readme = renderTemplate(
+    template,
+    renderSections({
+      ...links,
+      authoredPullRequestCount: authored.total_count,
+      featured,
+      recent,
+      repos,
+      starred,
+      upstream,
+      user,
+    }),
+  )
+
+  await writeFile(README_PATH, `${readme.trimEnd()}\n`, 'utf8')
   console.log(
-    `README update complete. ${recentRepos.length} repositories written.`,
+    `README updated from ${repos.length} repositories, ${authored.total_count} pull requests and ${links.npmPackages.size} npm packages.`,
   )
 }
 

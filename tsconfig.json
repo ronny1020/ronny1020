@@ -6,7 +6,9 @@
     "lib": ["ES2022", "DOM"],
     "strict": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["bun", "node"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
-  "include": ["updateREADME.ts"]
+  "include": ["updateREADME.ts", "utils/**/*.ts"]
 }

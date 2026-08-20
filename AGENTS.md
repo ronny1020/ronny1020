@@ -1,0 +1,67 @@
+# AGENTS.md
+
+## What this repo is
+
+The source for the GitHub profile shown at <https://github.com/ronny1020>. `README.md` is **generated** — a GitHub Action rebuilds it daily from the GitHub and npm APIs.
+
+## Commands
+
+```bash
+bun install
+bun run update:readme   # regenerate README.md
+bun test                # unit tests (no network)
+bun run typecheck       # tsc --noEmit
+bun run format          # prettier --write .
+bun run format:check    # prettier --check . (gated in CI)
+```
+
+`update:readme` calls the GitHub API. Unauthenticated runs share a 60 requests/hour limit and the search endpoint is stricter, so export a token before rebuilding locally:
+
+```bash
+GITHUB_TOKEN=$(gh auth token) bun run update:readme
+```
+
+## Architecture
+
+```
+mainProfile.md          hand-written template with <!-- generated:<name> --> markers
+updateREADME.ts         entry point: fetch → render → write README.md
+utils/config.ts         username, endpoints, limits, paths, EXCLUDED_REPOS
+utils/types.ts          response types derived from @octokit/types
+utils/github.ts         GitHub REST client and fetchers
+utils/npm.ts            npm registry lookups
+utils/repos.ts          repo filtering, selection, descriptions
+utils/siteLinks.ts      reachable-homepage checks for demo links
+utils/format.ts         numbers, dates, shields URLs, markdown table helpers
+utils/template.ts       marker replacement
+utils/sections/*.ts     one module per generated section
+utils/sections/index.ts renderSections(): marker name → rendered markdown
+utils/fixtures.ts       test payload builders
+README.md               generated output — never edit by hand
+```
+
+Every static heading, badge, and prose line lives in `mainProfile.md`; everything data-driven is a marker filled by a section renderer.
+
+## Adding a generated section
+
+1. Add `<!-- generated:<name> -->` to `mainProfile.md` where it belongs.
+2. Add `utils/sections/<name>.ts` exporting `render<Name>()`, and export it from `utils/sections/index.ts`.
+3. Add the marker name and its renderer to `renderSections` in `utils/sections/index.ts` — `utils/sections/index.test.ts` asserts the marker set and the registry keys match exactly.
+4. Add `utils/sections/<name>.test.ts` covering the empty case and the data it formats.
+
+An unmapped marker is left verbatim in `README.md`, which is the signal that step 3 is missing.
+
+## Conventions
+
+- **Escape API text in tables** with `escapeTableCell`; a `|` or `[` in a description or PR title otherwise breaks the row.
+- **Types come from `@octokit/types`**, narrowed with `Required<Pick<…>>`. Do not hand-write GitHub response shapes.
+- **Renderers are pure** — they take data and return markdown. All fetching lives in `github.ts`, `npm.ts`, and `siteLinks.ts`.
+- **Tests never hit the network.** Mock `globalThis.fetch` with the `mockFetch` helper and build payloads with `utils/fixtures.ts`.
+- **Hide a repository** by adding its name to `EXCLUDED_REPOS` in `utils/config.ts`; that filter also removes it from star, fork, and language totals.
+- **Never publish private data.** Both PR searches pin `is:public` and `getStarredRepos` filters `private` stars — a local run uses a `repo`-scoped token that can see work repositories.
+- **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
+- Prettier is the formatter, and `bun run format:check` is gated in CI — run `bun run format` before pushing.
+
+## CI
+
+`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + format check + test → regenerate → commit as `README-bot` if `README.md` changed. The generator step receives `GITHUB_TOKEN`.
