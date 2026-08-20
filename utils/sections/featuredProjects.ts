@@ -42,7 +42,7 @@ export function renderFeaturedProjects({
       site: siteLinks.get(repo.name),
     })
 
-    return `| ${name} | ${escapeTableCell(repoDescription(repo, npmPackage))} | ${repo.language ?? '—'} | ⭐ ${repo.stargazers_count} | ${links} |`
+    return `| ${name} | ${escapeTableCell(repoDescription(repo, npmPackage))} | ${repo.language ?? '—'} | ⭐&nbsp;${repo.stargazers_count} | ${links} |`
   })
 
   return markdownTable(

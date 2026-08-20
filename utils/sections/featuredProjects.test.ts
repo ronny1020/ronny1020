@@ -47,6 +47,16 @@ describe('renderFeaturedProjects', () => {
     expect(section).toContain('From npm')
   })
 
+  it('keeps the star emoji and count on one line', () => {
+    const section = renderFeaturedProjects({
+      npmPackages: new Map(),
+      repos: [repo],
+      siteLinks: new Map(),
+    })
+
+    expect(section).toContain('⭐&nbsp;14')
+  })
+
   it('escapes a description that would split a row', () => {
     const section = renderFeaturedProjects({
       npmPackages: new Map(),

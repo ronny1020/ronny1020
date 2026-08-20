@@ -30,12 +30,12 @@
 
 ## 📦 Featured projects
 
-| Project                                                                                                                  | What it does                                                                                                                                 | Language   | Stars | Links                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------- |
-| **channel-state** ![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)         | A state-management provides robust, seamless state synchronization across all browser tabs, windows, and even diverse JavaScript frameworks. | TypeScript | ⭐ 14 | [repo](https://github.com/ronny1020/channel-state) · [npm](https://www.npmjs.com/package/@channel-state/core)         |
-| **react-json-formatter** ![npm](https://img.shields.io/npm/v/react-json-formatter?style=flat-square&label=&color=cb3837) | Formatting json data to JSX of React                                                                                                         | TypeScript | ⭐ 9  | [repo](https://github.com/ronny1020/react-json-formatter) · [npm](https://www.npmjs.com/package/react-json-formatter) |
-| **condition-switch** ![npm](https://img.shields.io/npm/v/condition-switch?style=flat-square&label=&color=cb3837)         | A condition switch library for js/ts                                                                                                         | TypeScript | ⭐ 5  | [repo](https://github.com/ronny1020/condition-switch) · [npm](https://www.npmjs.com/package/condition-switch)         |
-| **react-form-maker** ![npm](https://img.shields.io/npm/v/react-form-maker?style=flat-square&label=&color=cb3837)         | NPM React tool to make a React form by object                                                                                                | JavaScript | ⭐ 2  | [repo](https://github.com/ronny1020/react-form-maker) · [npm](https://www.npmjs.com/package/react-form-maker)         |
+| Project                                                                                                                  | What it does                                                                                                                                 | Language   | Stars      | Links                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| **channel-state** ![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)         | A state-management provides robust, seamless state synchronization across all browser tabs, windows, and even diverse JavaScript frameworks. | TypeScript | ⭐&nbsp;14 | [repo](https://github.com/ronny1020/channel-state) · [npm](https://www.npmjs.com/package/@channel-state/core)         |
+| **react-json-formatter** ![npm](https://img.shields.io/npm/v/react-json-formatter?style=flat-square&label=&color=cb3837) | Formatting json data to JSX of React                                                                                                         | TypeScript | ⭐&nbsp;9  | [repo](https://github.com/ronny1020/react-json-formatter) · [npm](https://www.npmjs.com/package/react-json-formatter) |
+| **condition-switch** ![npm](https://img.shields.io/npm/v/condition-switch?style=flat-square&label=&color=cb3837)         | A condition switch library for js/ts                                                                                                         | TypeScript | ⭐&nbsp;5  | [repo](https://github.com/ronny1020/condition-switch) · [npm](https://www.npmjs.com/package/condition-switch)         |
+| **react-form-maker** ![npm](https://img.shields.io/npm/v/react-form-maker?style=flat-square&label=&color=cb3837)         | NPM React tool to make a React form by object                                                                                                | JavaScript | ⭐&nbsp;2  | [repo](https://github.com/ronny1020/react-form-maker) · [npm](https://www.npmjs.com/package/react-form-maker)         |
 
 ## 🤝 Upstream contributions
 
@@ -110,13 +110,6 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=ronny1020&theme=github-dark-blue&hide_border=true">
-    <img alt="Contribution streak" src="https://streak-stats.demolab.com/?user=ronny1020&theme=default&hide_border=true">
-  </picture>
-</p>
-
-<p align="center">
-  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-compact&hide_border=true&area=true">
     <img alt="Contribution activity of the last 31 days" src="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-light&hide_border=true&area=true">
   </picture>
@@ -142,14 +135,14 @@
 
 Latest repositories I starred:
 
-- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,146
-- [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,372
-- [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,635
+- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,185
+- [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,376
+- [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,636
 - [NVIDIA-Omniverse/web-viewer-sample](https://github.com/NVIDIA-Omniverse/web-viewer-sample) — This sample demonstrates how a front-end client can present a streamed Omniverse Kit application and how to send messages between the two apps. `TypeScript` ⭐ 146
 - [a062670/linebot](https://github.com/a062670/linebot) — no description `TypeScript` ⭐ 2
 
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 20, 2026, 1:08 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 20, 2026 at 2:26 PM GMT+8</sub>
 </p>

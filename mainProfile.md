@@ -83,13 +83,6 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=ronny1020&theme=github-dark-blue&hide_border=true">
-    <img alt="Contribution streak" src="https://streak-stats.demolab.com/?user=ronny1020&theme=default&hide_border=true">
-  </picture>
-</p>
-
-<p align="center">
-  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-compact&hide_border=true&area=true">
     <img alt="Contribution activity of the last 31 days" src="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-light&hide_border=true&area=true">
   </picture>
