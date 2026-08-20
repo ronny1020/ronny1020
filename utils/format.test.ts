@@ -74,10 +74,13 @@ describe('escapeTableCell', () => {
 })
 
 describe('formatTimestamp', () => {
+  // The date/time separator is ICU-version dependent, so assert the parts.
   it('states the profile time zone offset instead of hardcoding it', () => {
-    expect(formatTimestamp(new Date('2026-08-20T03:42:00Z'))).toBe(
-      'Aug 20, 2026 at 11:42 AM GMT+8',
-    )
+    const timestamp = formatTimestamp(new Date('2026-08-20T03:42:00Z'))
+
+    expect(timestamp).toContain('Aug 20, 2026')
+    expect(timestamp).toContain('11:42 AM')
+    expect(timestamp).toEndWith('GMT+8')
   })
 })
 
