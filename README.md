@@ -135,14 +135,14 @@
 
 Latest repositories I starred:
 
-- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,278
-- [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,387
-- [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,636
+- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,443
+- [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,396
+- [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,635
 - [NVIDIA-Omniverse/web-viewer-sample](https://github.com/NVIDIA-Omniverse/web-viewer-sample) — This sample demonstrates how a front-end client can present a streamed Omniverse Kit… `TypeScript` ⭐ 146
 - [a062670/linebot](https://github.com/a062670/linebot) — no description `TypeScript` ⭐ 2
 
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 20, 2026, 5:40 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026, 12:33 AM GMT+8</sub>
 </p>
