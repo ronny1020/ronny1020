@@ -1,4 +1,5 @@
-import { escapeTableCell, markdownTable } from '../format.ts'
+import { MAX_DESCRIPTION_LENGTH } from '../config.ts'
+import { escapeTableCell, markdownTable, truncate } from '../format.ts'
 import { repoDescription } from '../repos.ts'
 import type { GithubRepo, NpmPackage, RepoLinks } from '../types.ts'
 
@@ -37,7 +38,9 @@ export function renderFeaturedProjects({
     const cells = [
       projectCell(repo, siteLinks.get(repo.name)),
       versionCell(npmPackage),
-      escapeTableCell(repoDescription(repo, npmPackage)),
+      escapeTableCell(
+        truncate(repoDescription(repo, npmPackage), MAX_DESCRIPTION_LENGTH),
+      ),
       repo.language ?? '—',
       `⭐&nbsp;${repo.stargazers_count}`,
     ]

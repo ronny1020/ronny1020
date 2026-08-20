@@ -64,6 +64,16 @@ describe('renderFeaturedProjects', () => {
     expect(section).toContain('⭐&nbsp;14')
   })
 
+  it('truncates a description that would squeeze the other columns', () => {
+    const section = renderFeaturedProjects({
+      npmPackages: new Map(),
+      repos: [buildRepo({ description: 'word '.repeat(40).trim() })],
+      siteLinks: new Map(),
+    })
+
+    expect(section).toContain('word…')
+  })
+
   it('escapes a description that would split a row', () => {
     const section = renderFeaturedProjects({
       npmPackages: new Map(),

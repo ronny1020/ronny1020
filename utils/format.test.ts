@@ -9,6 +9,7 @@ import {
   markdownTable,
   repoFullName,
   shieldsBadge,
+  truncate,
 } from './format.ts'
 
 describe('formatNumber', () => {
@@ -58,6 +59,16 @@ describe('markdownTable', () => {
     expect(markdownTable(['A', 'B'], ['| 1 | 2 |'])).toBe(
       '| A | B |\n| --- | --- |\n| 1 | 2 |',
     )
+  })
+})
+
+describe('truncate', () => {
+  it('leaves text within the limit alone', () => {
+    expect(truncate('short enough', 20)).toBe('short enough')
+  })
+
+  it('cuts at a word boundary and drops a trailing comma', () => {
+    expect(truncate('one two three four five', 14)).toBe('one two three…')
   })
 })
 

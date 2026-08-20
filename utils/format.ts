@@ -57,6 +57,22 @@ export function centered(lines: string[]): string {
 }
 
 /**
+ * Trims prose to `limit` characters at a word boundary. A 140-character
+ * description otherwise takes so much table width that the neighbouring
+ * columns wrap their own single words.
+ */
+export function truncate(text: string, limit: number): string {
+  if (text.length <= limit) {
+    return text
+  }
+
+  const cut = text.slice(0, limit)
+  const lastSpace = cut.lastIndexOf(' ')
+
+  return `${(lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,.;:]$/, '')}…`
+}
+
+/**
  * Makes API text safe inside a table cell: an unescaped `|` starts a new cell,
  * and `[`/`]` would close a surrounding link label early.
  */

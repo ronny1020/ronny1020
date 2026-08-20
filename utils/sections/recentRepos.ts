@@ -1,9 +1,11 @@
 import { GITHUB_USERNAME } from '../config.ts'
+import { MAX_DESCRIPTION_LENGTH } from '../config.ts'
 import {
   centered,
   escapeTableCell,
   formatDate,
   markdownTable,
+  truncate,
 } from '../format.ts'
 import { repoDescription } from '../repos.ts'
 import type { GithubRepo, NpmPackage } from '../types.ts'
@@ -25,7 +27,7 @@ export function renderRecentRepos({
 
   const rows = repos.map(
     (repo) =>
-      `| [${repo.name}](${repo.html_url}) | ${escapeTableCell(repoDescription(repo, npmPackages.get(repo.name)))} | ${repo.language ?? '—'} | ${repo.pushed_at ? formatDate(repo.pushed_at) : '—'} |`,
+      `| [${repo.name}](${repo.html_url}) | ${escapeTableCell(truncate(repoDescription(repo, npmPackages.get(repo.name)), MAX_DESCRIPTION_LENGTH))} | ${repo.language ?? '—'} | ${repo.pushed_at ? formatDate(repo.pushed_at) : '—'} |`,
   )
 
   return [

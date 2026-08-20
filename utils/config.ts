@@ -8,6 +8,8 @@ export const REPOS_PER_PAGE = 100
 export const MAX_RECENT_REPOS = 4
 export const MAX_FEATURED_REPOS = 4
 export const MAX_LANGUAGES = 6
+/** Table columns wrap their own words when a description runs longer. */
+export const MAX_DESCRIPTION_LENGTH = 90
 export const MAX_UPSTREAM_PULL_REQUESTS = 5
 export const MAX_STARRED_REPOS = 5
 /** Fetched before the private ones are filtered out. */
