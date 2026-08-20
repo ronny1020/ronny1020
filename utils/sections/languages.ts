@@ -1,9 +1,5 @@
-import {
-  LANGUAGE_BAR_WIDTH,
-  LANGUAGE_COLORS,
-  MAX_LANGUAGES,
-} from '../config.ts'
-import { markdownTable } from '../format.ts'
+import { LANGUAGE_COLORS, MAX_LANGUAGES } from '../config.ts'
+import { centered, shieldsBadge } from '../format.ts'
 import { isOwnRepo } from '../repos.ts'
 import type { GithubRepo } from '../types.ts'
 
@@ -21,18 +17,10 @@ function countReposByLanguage(repos: GithubRepo[]): Map<string, number> {
   return counts
 }
 
-function bar(share: number): string {
-  const filled = Math.max(1, Math.round(share * LANGUAGE_BAR_WIDTH))
-
-  return '█'.repeat(filled) + '░'.repeat(LANGUAGE_BAR_WIDTH - filled)
-}
-
-function swatch(language: string): string {
-  const color = LANGUAGE_COLORS[language] ?? FALLBACK_LANGUAGE_COLOR
-
-  return `![](https://img.shields.io/badge/-${color}?style=flat-square&label=%20&labelColor=${color})`
-}
-
+/**
+ * One badge per language in its linguist color. An ASCII bar renders as
+ * monochrome hatching on GitHub, which reads as noise rather than as a chart.
+ */
 export function renderLanguages(repos: GithubRepo[]): string {
   const counts = countReposByLanguage(repos)
   const total = [...counts.values()].reduce((sum, count) => sum + count, 0)
@@ -41,14 +29,19 @@ export function renderLanguages(repos: GithubRepo[]): string {
     return 'No language data available.'
   }
 
-  const rows = [...counts.entries()]
+  const badges = [...counts.entries()]
     .sort(([, a], [, b]) => b - a)
     .slice(0, MAX_LANGUAGES)
     .map(([language, count]) => {
-      const share = count / total
+      const share = `${((count / total) * 100).toFixed(1)}%`
+      const source = shieldsBadge({
+        color: LANGUAGE_COLORS[language] ?? FALLBACK_LANGUAGE_COLOR,
+        label: language,
+        value: share,
+      })
 
-      return `| ${swatch(language)} ${language} | \`${bar(share)}\` | ${(share * 100).toFixed(1)}% |`
+      return `  <img alt="${language}: ${share} of my repositories" src="${source}">`
     })
 
-  return markdownTable(['Language', '', 'Share of repos'], rows)
+  return centered(badges)
 }

@@ -12,7 +12,6 @@ export const MAX_UPSTREAM_PULL_REQUESTS = 5
 export const MAX_STARRED_REPOS = 5
 /** Fetched before the private ones are filtered out. */
 export const STARRED_PAGE_SIZE = 20
-export const LANGUAGE_BAR_WIDTH = 18
 export const PROFILE_TIME_ZONE = 'Asia/Taipei'
 
 const PROJECT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..')

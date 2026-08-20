@@ -5,29 +5,18 @@ import { renderLanguages } from './languages.ts'
 
 describe('renderLanguages', () => {
   it('ranks languages by repository share', () => {
-    const section = renderLanguages([
-      buildRepo({ name: 'a', language: 'TypeScript' }),
-      buildRepo({ name: 'b', language: 'TypeScript' }),
-      buildRepo({ name: 'c', language: 'Vue' }),
-      buildRepo({ name: 'd', language: null }),
-    ])
-    const rows = section.split('\n').slice(2)
+    const badges = renderLanguages([
+      buildRepo({ language: 'TypeScript', name: 'a' }),
+      buildRepo({ language: 'TypeScript', name: 'b' }),
+      buildRepo({ language: 'Vue', name: 'c' }),
+      buildRepo({ language: null, name: 'd' }),
+    ]).split('\n')
 
-    expect(rows[0]).toContain('TypeScript')
-    expect(rows[0]).toContain('66.7%')
-    expect(rows[1]).toContain('Vue')
-    expect(rows[1]).toContain('33.3%')
+    expect(badges[1]).toContain('TypeScript-66.7%25-3178c6')
+    expect(badges[2]).toContain('Vue-33.3%25-41b883')
   })
 
-  it('always draws at least one filled block', () => {
-    const repos = Array.from({ length: 40 }, (_, index) =>
-      buildRepo({ name: `repo-${index}`, language: index ? 'Go' : 'Elixir' }),
-    )
-
-    expect(renderLanguages(repos)).toContain('█░░░░░░░░░░░░░░░░░')
-  })
-
-  it('caps the table at six languages', () => {
+  it('caps the row at six languages', () => {
     const repos = Array.from({ length: 9 }, (_, index) =>
       buildRepo({ language: `Lang-${index}`, name: `repo-${index}` }),
     )
@@ -46,10 +35,10 @@ describe('renderLanguages', () => {
     expect(section).not.toContain('Java')
   })
 
-  it('falls back to a neutral swatch for an unmapped language', () => {
-    const section = renderLanguages([buildRepo({ language: 'Zig' })])
-
-    expect(section).toContain('badge/-8b949e?')
+  it('falls back to a neutral color for an unmapped language', () => {
+    expect(renderLanguages([buildRepo({ language: 'Zig' })])).toContain(
+      'Zig-100.0%25-8b949e',
+    )
   })
 
   it('reports when no repository has a language', () => {

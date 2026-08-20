@@ -2,29 +2,25 @@ import { escapeTableCell, markdownTable } from '../format.ts'
 import { repoDescription } from '../repos.ts'
 import type { GithubRepo, NpmPackage, RepoLinks } from '../types.ts'
 
-/** Its own column: beside a wrapping project name the badge collides with it. */
-function npmVersionBadge(npmPackage: NpmPackage | undefined): string {
-  return npmPackage
-    ? `![npm](https://img.shields.io/npm/v/${npmPackage.name}?style=flat-square&label=&color=cb3837)`
-    : '—'
+/**
+ * The version badge doubles as the npm link, and the project name as the repo
+ * link: a separate Links column is too narrow for `repo · npm` and wraps into
+ * an orphaned separator.
+ */
+function versionCell(npmPackage: NpmPackage | undefined): string {
+  if (!npmPackage) {
+    return '—'
+  }
+
+  const badge = `![npm](https://img.shields.io/npm/v/${npmPackage.name}?style=flat-square&label=&color=cb3837)`
+
+  return `[${badge}](https://www.npmjs.com/package/${npmPackage.name})`
 }
 
-function projectLinks({
-  npmPackage,
-  repo,
-  site,
-}: {
-  npmPackage: NpmPackage | undefined
-  repo: GithubRepo
-  site: string | undefined
-}): string {
-  return [
-    `[repo](${repo.html_url})`,
-    ...(npmPackage
-      ? [`[npm](https://www.npmjs.com/package/${npmPackage.name})`]
-      : []),
-    ...(site ? [`[site](${site})`] : []),
-  ].join(' · ')
+function projectCell(repo: GithubRepo, site: string | undefined): string {
+  const name = `[**${repo.name}**](${repo.html_url})`
+
+  return site ? `${name}<br>[site](${site})` : name
 }
 
 export function renderFeaturedProjects({
@@ -38,17 +34,19 @@ export function renderFeaturedProjects({
 
   const rows = repos.map((repo) => {
     const npmPackage = npmPackages.get(repo.name)
-    const links = projectLinks({
-      npmPackage,
-      repo,
-      site: siteLinks.get(repo.name),
-    })
+    const cells = [
+      projectCell(repo, siteLinks.get(repo.name)),
+      versionCell(npmPackage),
+      escapeTableCell(repoDescription(repo, npmPackage)),
+      repo.language ?? '—',
+      `⭐&nbsp;${repo.stargazers_count}`,
+    ]
 
-    return `| **${repo.name}** | ${npmVersionBadge(npmPackage)} | ${escapeTableCell(repoDescription(repo, npmPackage))} | ${repo.language ?? '—'} | ⭐&nbsp;${repo.stargazers_count} | ${links} |`
+    return `| ${cells.join(' | ')} |`
   })
 
   return markdownTable(
-    ['Project', 'Version', 'What it does', 'Language', 'Stars', 'Links'],
+    ['Project', 'Version', 'What it does', 'Language', 'Stars'],
     rows,
   )
 }

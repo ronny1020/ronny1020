@@ -16,10 +16,7 @@ describe('renderFeaturedProjects', () => {
     })
 
     expect(section).toContain(
-      '| **channel-state** | ![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837) |',
-    )
-    expect(section).toContain(
-      '[npm](https://www.npmjs.com/package/@channel-state/core)',
+      '| [**channel-state**](https://github.com/ronny1020/example) | [![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/@channel-state/core) |',
     )
     expect(section).not.toContain('[site]')
   })
@@ -31,7 +28,7 @@ describe('renderFeaturedProjects', () => {
       siteLinks: new Map(),
     })
 
-    expect(section).toContain('| **channel-state** | — |')
+    expect(section).toContain('| — |')
   })
 
   it('links a reachable demo site', () => {
