@@ -32,6 +32,9 @@ jobs:
 
       - name: Update README
         env:
+          # Optional secret: comma-separated accounts whose repositories are not
+          # upstream contributions, for organisations not named in the repo.
+          EXCLUDED_OWNERS: ${{ secrets.EXCLUDED_OWNERS }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           bun run updateREADME.ts
