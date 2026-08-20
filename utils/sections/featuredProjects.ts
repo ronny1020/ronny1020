@@ -2,8 +2,11 @@ import { escapeTableCell, markdownTable } from '../format.ts'
 import { repoDescription } from '../repos.ts'
 import type { GithubRepo, NpmPackage, RepoLinks } from '../types.ts'
 
-function npmVersionBadge(npmPackage: NpmPackage): string {
-  return ` ![npm](https://img.shields.io/npm/v/${npmPackage.name}?style=flat-square&label=&color=cb3837)`
+/** Its own column: beside a wrapping project name the badge collides with it. */
+function npmVersionBadge(npmPackage: NpmPackage | undefined): string {
+  return npmPackage
+    ? `![npm](https://img.shields.io/npm/v/${npmPackage.name}?style=flat-square&label=&color=cb3837)`
+    : '—'
 }
 
 function projectLinks({
@@ -35,18 +38,17 @@ export function renderFeaturedProjects({
 
   const rows = repos.map((repo) => {
     const npmPackage = npmPackages.get(repo.name)
-    const name = `**${repo.name}**${npmPackage ? npmVersionBadge(npmPackage) : ''}`
     const links = projectLinks({
       npmPackage,
       repo,
       site: siteLinks.get(repo.name),
     })
 
-    return `| ${name} | ${escapeTableCell(repoDescription(repo, npmPackage))} | ${repo.language ?? '—'} | ⭐&nbsp;${repo.stargazers_count} | ${links} |`
+    return `| **${repo.name}** | ${npmVersionBadge(npmPackage)} | ${escapeTableCell(repoDescription(repo, npmPackage))} | ${repo.language ?? '—'} | ⭐&nbsp;${repo.stargazers_count} | ${links} |`
   })
 
   return markdownTable(
-    ['Project', 'What it does', 'Language', 'Stars', 'Links'],
+    ['Project', 'Version', 'What it does', 'Language', 'Stars', 'Links'],
     rows,
   )
 }

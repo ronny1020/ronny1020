@@ -16,12 +16,22 @@ describe('renderFeaturedProjects', () => {
     })
 
     expect(section).toContain(
-      'img.shields.io/npm/v/@channel-state/core?style=flat-square',
+      '| **channel-state** | ![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837) |',
     )
     expect(section).toContain(
       '[npm](https://www.npmjs.com/package/@channel-state/core)',
     )
     expect(section).not.toContain('[site]')
+  })
+
+  it('marks a project that publishes nothing with a dash', () => {
+    const section = renderFeaturedProjects({
+      npmPackages: new Map(),
+      repos: [repo],
+      siteLinks: new Map(),
+    })
+
+    expect(section).toContain('| **channel-state** | — |')
   })
 
   it('links a reachable demo site', () => {
