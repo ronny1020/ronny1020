@@ -29,7 +29,7 @@
 
 ## 🐛 Bugs I reported that got fixed
 
-Issues I opened in other people's projects that their maintainers closed as completed.
+Issues I opened in other people's projects that the maintainers labelled a bug and then fixed.
 
 <!-- generated:fixedIssues -->
 

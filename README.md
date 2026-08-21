@@ -49,22 +49,21 @@
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,178<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,179<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,047<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
 - **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,039<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
 - **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,826<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
-- **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;849<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
+- **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;848<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
 
-Issues I opened in other people's projects that their maintainers closed as completed.
+Issues I opened in other people's projects that the maintainers labelled a bug and then fixed.
 
-- **[TanStack/router](https://github.com/TanStack/router)** — [Inheriting Current Parameters Use params: {} work on run time but get typescript error](https://github.com/TanStack/router/issues/4887)
-- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** — [\[BUG\] The `font-mono` is considered not a tailwind class with the `fontFamily` setting without mono setting in tailwind.config.js.](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/249)
-- **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** — [Can I get custom FIELDS by PCD loader.](https://github.com/visgl/loaders.gl/issues/2225)
-- **[vuejs/vitepress](https://github.com/vuejs/vitepress)** — [`editLink` should be able to use the link of the route `rewrites` keys.](https://github.com/vuejs/vitepress/issues/2088)
-- **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** — [\[Bug\] `vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899)
+- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** — [The `font-mono` is considered not a tailwind class with the `fontFamily` setting without mono setting in tailwind.config.js.](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/249)
+- **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** — [`vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899)
+- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** — [It takes a lot of time to execute, especially `tailwindcss/classnames-order `](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/136)
+- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** — [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643)
 
 ## 🗺️ The project I maintain
 
@@ -155,5 +154,5 @@ pie showData title Repositories by language
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026, 3:36 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026 at 5:18 PM GMT+8</sub>
 </p>

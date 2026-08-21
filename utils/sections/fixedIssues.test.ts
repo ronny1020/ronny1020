@@ -6,6 +6,7 @@ import type { Issue } from '../types.ts'
 function issue(repo: string, title: string): Issue {
   return {
     html_url: `https://github.com/${repo}/issues/1`,
+    labels: [{ name: 'bug' }],
     repository_url: `https://api.github.com/repos/${repo}`,
     state_reason: 'completed',
     title,
@@ -37,13 +38,22 @@ describe('renderFixedIssues', () => {
     ).toHaveLength(5)
   })
 
+  it('drops the [BUG] prefix, which the heading already says', () => {
+    expect(
+      renderFixedIssues({
+        items: [issue('a/b', '[BUG] it crashes')],
+        total_count: 1,
+      }),
+    ).toContain('[it crashes](https://github.com/a/b/issues/1)')
+  })
+
   it('escapes brackets but keeps a code span readable', () => {
     expect(
       renderFixedIssues({
-        items: [issue('a/b', '[BUG] `font-mono | mono` mismatch')],
+        items: [issue('a/b', '`font-mono | mono` mismatch [regression]')],
         total_count: 1,
       }),
-    ).toContain('\\[BUG\\] `font-mono | mono` mismatch')
+    ).toContain('`font-mono | mono` mismatch \\[regression\\]')
   })
 
   it('reports when nothing was fixed', () => {

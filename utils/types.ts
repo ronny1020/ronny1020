@@ -50,7 +50,10 @@ export type PullRequestSearch = Required<
 type IssueResponse = SearchResponse['items'][number]
 
 export type Issue = Required<
-  Pick<IssueResponse, 'html_url' | 'repository_url' | 'state_reason' | 'title'>
+  Pick<
+    IssueResponse,
+    'html_url' | 'labels' | 'repository_url' | 'state_reason' | 'title'
+  >
 >
 
 export type IssueSearch = {

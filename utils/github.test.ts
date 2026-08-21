@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, jest } from 'bun:test'
 import { jsonResponse, mockFetch } from './fixtures.ts'
 import {
   getAuthoredPullRequests,
+  getFixedIssues,
   getRepos,
   getStarredRepos,
   getUpstreamPullRequests,
@@ -149,5 +150,48 @@ describe('getStarredRepos', () => {
     expect(starred.map((repo) => repo.full_name)).not.toContain(
       'linkervision/secret',
     )
+  })
+})
+
+describe('getFixedIssues', () => {
+  function issue(
+    title: string,
+    labels: string[],
+    stateReason: string | null = 'completed',
+  ) {
+    return {
+      html_url: 'https://github.com/owner/repo/issues/1',
+      labels: labels.map((name) => ({ name })),
+      repository_url: 'https://api.github.com/repos/owner/repo',
+      state_reason: stateReason,
+      title,
+    }
+  }
+
+  it('keeps only reports a maintainer labelled as a bug', async () => {
+    mockFetch(() =>
+      jsonResponse({
+        items: [
+          issue('[BUG] `font-mono` is not recognised', ['bug']),
+          issue('imported error during build', ['upstream bug', 'workaround']),
+          issue('Can I get custom FIELDS by PCD loader.', []),
+          issue('`editLink` should use the rewrites keys', ['has-workaround']),
+          issue('Since the render is async, can rules be too?', [
+            'enhancement',
+          ]),
+          issue('a real bug nobody fixed', ['bug'], 'not_planned'),
+          issue('debug output is noisy', ['debug']),
+        ],
+        total_count: 7,
+      }),
+    )
+
+    const fixed = await getFixedIssues()
+
+    expect(fixed.items.map((entry) => entry.title)).toEqual([
+      '[BUG] `font-mono` is not recognised',
+      'imported error during build',
+    ])
+    expect(fixed.total_count).toBe(2)
   })
 })

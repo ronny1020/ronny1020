@@ -17,7 +17,9 @@ export function renderFixedIssues(search: IssueSearch): string {
     .map((issue) => {
       const fullName = repoFullName(issue.repository_url)
 
-      return `- **[${fullName}](https://github.com/${fullName})** — [${escapeLinkText(issue.title)}](${issue.html_url})`
+      const title = issue.title.replace(/^\s*\[bug\]\s*/i, '')
+
+      return `- **[${fullName}](https://github.com/${fullName})** — [${escapeLinkText(title)}](${issue.html_url})`
     })
     .join('\n')
 }

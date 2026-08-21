@@ -9,6 +9,7 @@ import {
 import type {
   GithubRepo,
   GithubUser,
+  Issue,
   IssueSearch,
   MaintainedProject,
   PullRequestSearch,
@@ -111,6 +112,24 @@ const AUTOMATION_LOGINS =
   /\[bot\]$|^(actions-user|github-actions|dependabot|renovate)$/
 
 /**
+ * A maintainer's own label is the only trustworthy signal that a report was a
+ * bug: half of my closed issues are questions or feature requests, and their
+ * titles do not say so. `debug` must not match, hence the boundaries.
+ */
+const BUG_LABEL = /(^|[\s/:_-])bugs?($|[\s/:_-])/i
+const BUG_TITLE = /^\s*\[bug\b/i
+
+function isFixedBug(issue: Issue): boolean {
+  return (
+    issue.state_reason === 'completed' &&
+    (issue.labels.some((label) =>
+      BUG_LABEL.test(typeof label === 'string' ? label : (label.name ?? '')),
+    ) ||
+      BUG_TITLE.test(issue.title))
+  )
+}
+
+/**
  * Issues I opened in other people's projects that the maintainers closed as
  * completed — a fix landed because of the report.
  */
@@ -120,10 +139,9 @@ export async function getFixedIssues(): Promise<IssueSearch> {
     `/search/issues?q=${encodeURIComponent(`type:issue is:public author:${GITHUB_USERNAME} ${excluded}`)}&sort=updated&order=desc&per_page=100&advanced_search=true`,
   )
 
-  return {
-    items: search.items.filter((issue) => issue.state_reason === 'completed'),
-    total_count: search.total_count,
-  }
+  const fixed = search.items.filter(isFixedBug)
+
+  return { items: fixed, total_count: fixed.length }
 }
 
 /** Star counts for the repositories a set of pull requests landed in. */
