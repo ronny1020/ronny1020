@@ -61,6 +61,7 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Dates and counts use `&nbsp;`** so a narrow table column cannot wrap `Aug 17, 2026` after the comma.
 - **Hide a repository** by adding its name to `EXCLUDED_REPOS` in `utils/config.ts`; that filter also removes it from star, fork, and language totals.
 - **Never publish private data.** Both PR searches pin `is:public` and `getStarredRepos` filters `private` stars — a local run uses a `repo`-scoped token that can see work repositories.
+- **Summary cards are self-hosted.** The workflow runs `vn7n24fzkq/github-profile-summary-cards` with `AUTO_PUSH: false` and commits `profile-summary-card-output/{default,github_dark}` alongside the README; the shared card service rate limits and rendered "Cards are temporarily rate limited" in place of four of the five cards. The action writes all 65 themes — only those two folders are added to git.
 - **Card hosts must answer fast.** GitHub proxies every image through camo, which gives up after a few seconds and serves a 504 — a card host that needs 6s renders as broken on the profile even though `curl` says 200. Time a new host before adding it (`streak-stats.demolab.com` was dropped for this).
 - **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
 - Prettier is the formatter, and `bun run format:check` is gated in CI — run `bun run format` before pushing.
@@ -71,4 +72,4 @@ README-bot pushes a regenerated `README.md` after every run, so `git pull --reba
 
 ## CI
 
-`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + format check + test → regenerate → commit as `README-bot` if `README.md` changed. The generator step receives `GITHUB_TOKEN`.
+`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + format check + test → generate summary cards → regenerate → commit as `README-bot` if `README.md` changed. The generator step receives `GITHUB_TOKEN`.

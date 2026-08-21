@@ -54,30 +54,30 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ronny1020&theme=github_dark">
-    <img alt="Profile details" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/0-profile-details.svg">
+    <img alt="Profile details" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/0-profile-details.svg">
   </picture>
 </p>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ronny1020&theme=github_dark">
-    <img alt="Top languages by repository" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/1-repos-per-language.svg">
+    <img alt="Top languages by repository" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/1-repos-per-language.svg">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ronny1020&theme=github_dark">
-    <img alt="Top languages by commit" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/2-most-commit-language.svg">
+    <img alt="Top languages by commit" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/2-most-commit-language.svg">
   </picture>
 </p>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ronny1020&theme=github_dark">
-    <img alt="GitHub stats" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/3-stats.svg">
+    <img alt="GitHub stats" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/3-stats.svg">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ronny1020&theme=github_dark&utcOffset=8">
-    <img alt="Productive time" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ronny1020&theme=default&utcOffset=8">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/4-productive-time.svg">
+    <img alt="Productive time" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/4-productive-time.svg">
   </picture>
 </p>
 

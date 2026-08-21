@@ -81,30 +81,30 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ronny1020&theme=github_dark">
-    <img alt="Profile details" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/0-profile-details.svg">
+    <img alt="Profile details" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/0-profile-details.svg">
   </picture>
 </p>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ronny1020&theme=github_dark">
-    <img alt="Top languages by repository" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/1-repos-per-language.svg">
+    <img alt="Top languages by repository" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/1-repos-per-language.svg">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ronny1020&theme=github_dark">
-    <img alt="Top languages by commit" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/2-most-commit-language.svg">
+    <img alt="Top languages by commit" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/2-most-commit-language.svg">
   </picture>
 </p>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ronny1020&theme=github_dark">
-    <img alt="GitHub stats" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ronny1020&theme=default">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/3-stats.svg">
+    <img alt="GitHub stats" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/3-stats.svg">
   </picture>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ronny1020&theme=github_dark&utcOffset=8">
-    <img alt="Productive time" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ronny1020&theme=default&utcOffset=8">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/4-productive-time.svg">
+    <img alt="Productive time" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/4-productive-time.svg">
   </picture>
 </p>
 
@@ -135,14 +135,14 @@
 
 Latest repositories I starred:
 
-- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,443
-- [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,396
-- [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,635
+- [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) — The agent that grows with you `Python` ⭐ 233,630
+- [warpdotdev/warp](https://github.com/warpdotdev/warp) — Warp is an agentic development environment, born out of the terminal. `Rust` ⭐ 64,412
+- [cloudflare/vinext](https://github.com/cloudflare/vinext) — Vite plugin that reimplements the Next.js API surface — deploy anywhere `TypeScript` ⭐ 8,640
 - [NVIDIA-Omniverse/web-viewer-sample](https://github.com/NVIDIA-Omniverse/web-viewer-sample) — This sample demonstrates how a front-end client can present a streamed Omniverse Kit… `TypeScript` ⭐ 146
 - [a062670/linebot](https://github.com/a062670/linebot) — no description `TypeScript` ⭐ 2
 
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026, 12:33 AM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026 at 1:28 PM GMT+8</sub>
 </p>

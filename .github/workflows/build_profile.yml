@@ -30,6 +30,18 @@ jobs:
           bun run format:check
           bun test
 
+      # Self-hosted cards: the shared card service rate limits, which rendered
+      # "Cards are temporarily rate limited" in place of four of the five cards.
+      - name: Generate summary cards
+        uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: ${{ github.repository_owner }}
+          BRANCH_NAME: master
+          UTC_OFFSET: 8
+          AUTO_PUSH: false
+
       - name: Update README
         env:
           # Optional secret: comma-separated accounts whose repositories are not
@@ -48,6 +60,7 @@ jobs:
           git config --global user.email "ronny1020@gmail.com"
           git config --global user.name "README-bot"
           git add README.md
+          git add profile-summary-card-output/default profile-summary-card-output/github_dark
           git diff --staged --quiet || (
             git commit -m "Update README.md"
             git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:master
