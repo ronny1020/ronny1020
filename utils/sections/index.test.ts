@@ -3,19 +3,39 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'bun:test'
 
 import { MAIN_PROFILE_PATH } from '../config.ts'
-import { buildRepo, buildStarredRepo, buildUser } from '../fixtures.ts'
+import {
+  buildMaintainedProject,
+  buildRepo,
+  buildStarredRepo,
+  buildUser,
+} from '../fixtures.ts'
 import { renderSections } from './index.ts'
 
 const sections = renderSections({
-  authoredPullRequestCount: 172,
+  dependencyCounts: new Map([
+    ['typescript', 9],
+    ['vite', 7],
+    ['eslint', 7],
+    ['prettier', 6],
+    ['vitest', 4],
+    ['react', 3],
+  ]),
   featured: [buildRepo()],
+  fixedIssues: { items: [], total_count: 0 },
+  maintained: buildMaintainedProject(),
+  monthlyDownloads: new Map([['example', 12]]),
   npmPackages: new Map(),
+  packageNames: ['example'],
+  publishedPackages: new Map(),
   recent: [buildRepo()],
   repos: [buildRepo()],
   siteLinks: new Map(),
+  socialAccounts: [{ provider: 'twitter', url: 'https://twitter.com/someone' }],
   starred: [buildStarredRepo()],
   upstream: { items: [], total_count: 0 },
+  upstreamStars: new Map(),
   user: buildUser(),
+  yearlyDownloads: 380538,
 })
 
 describe('renderSections', () => {

@@ -132,7 +132,7 @@ describe('pull request searches', () => {
 })
 
 describe('getStarredRepos', () => {
-  it('drops private stars a broad token can see and caps the rest', async () => {
+  it('drops private stars a broad token can see', async () => {
     mockFetch(() =>
       jsonResponse([
         { full_name: 'linkervision/secret', private: true },
@@ -145,7 +145,7 @@ describe('getStarredRepos', () => {
 
     const starred = await getStarredRepos()
 
-    expect(starred).toHaveLength(5)
+    expect(starred).toHaveLength(9)
     expect(starred.map((repo) => repo.full_name)).not.toContain(
       'linkervision/secret',
     )

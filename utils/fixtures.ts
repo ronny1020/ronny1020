@@ -2,6 +2,7 @@ import { jest } from 'bun:test'
 
 import type {
   GithubRepo,
+  MaintainedProject,
   GithubUser,
   PullRequest,
   StarredRepo,
@@ -71,6 +72,22 @@ export function buildStarredRepo(
     language: 'Rust',
     private: false,
     stargazers_count: 1234,
+    topics: ['rust'],
+    ...overrides,
+  }
+}
+
+export function buildMaintainedProject(
+  overrides: Partial<MaintainedProject> = {},
+): MaintainedProject {
+  return {
+    commits: 479,
+    fullName: 'travel-guide-tw/travel-guide-tw.github.io',
+    lastMergedAt: '2026-05-01T00:00:00Z',
+    mergedPullRequests: 122,
+    stars: 12,
+    teamSize: 4,
+    totalCommits: 680,
     ...overrides,
   }
 }

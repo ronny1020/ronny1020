@@ -47,6 +47,32 @@ export type PullRequestSearch = Required<
   items: PullRequest[]
 }
 
+type IssueResponse = SearchResponse['items'][number]
+
+export type Issue = Required<
+  Pick<IssueResponse, 'html_url' | 'repository_url' | 'state_reason' | 'title'>
+>
+
+export type IssueSearch = {
+  total_count: number
+  items: Issue[]
+}
+
+export type RepoSummary = { stargazers_count: number }
+
+export type SocialAccount = { provider: string; url: string }
+
+/** The community project I maintain, summarised from its own API numbers. */
+export type MaintainedProject = {
+  commits: number
+  fullName: string
+  lastMergedAt: string | null
+  mergedPullRequests: number
+  stars: number
+  teamSize: number
+  totalCommits: number
+}
+
 export type StarredRepo = Required<
   Pick<
     Extract<StarredResponse, { full_name: string }>,
@@ -56,6 +82,7 @@ export type StarredRepo = Required<
     | 'language'
     | 'private'
     | 'stargazers_count'
+    | 'topics'
   >
 >
 

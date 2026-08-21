@@ -3,12 +3,11 @@ import {
   escapeTableCell,
   formatDate,
   formatNumber,
-  markdownTable,
   repoFullName,
 } from '../format.ts'
 import type { PullRequest, PullRequestSearch } from '../types.ts'
 
-/** One row per upstream repository, so a single busy project cannot fill the table. */
+/** One entry per upstream repository, so a single busy project cannot fill it. */
 function pickOnePerRepo(pullRequests: PullRequest[]): PullRequest[] {
   const seenRepos = new Set<string>()
   const picked: PullRequest[] = []
@@ -36,11 +35,17 @@ function byMergeDate(left: PullRequest, right: PullRequest): number {
 }
 
 /**
- * Merged pull requests only — accepted work, not everything I opened. The search
- * orders by last update, so the rows are re-sorted by merge date before one is
- * picked per project.
+ * Merged pull requests only — accepted work, not everything I opened. A list
+ * rather than a table: at 348px a three-column table loses its last column, and
+ * the star count is what tells a reader the scale of the project.
  */
-export function renderUpstreamPullRequests(search: PullRequestSearch): string {
+export function renderUpstreamPullRequests({
+  repoStars,
+  search,
+}: {
+  repoStars: Map<string, number>
+  search: PullRequestSearch
+}): string {
   const merged = pickOnePerRepo(
     search.items
       .filter((pullRequest) => pullRequest.pull_request.merged_at != null)
@@ -51,17 +56,22 @@ export function renderUpstreamPullRequests(search: PullRequestSearch): string {
     return 'No merged upstream pull requests available.'
   }
 
-  const rows = merged.map((pullRequest) => {
+  const entries = merged.map((pullRequest) => {
     const fullName = repoFullName(pullRequest.repository_url)
+    const stars = repoStars.get(fullName)
+    const scale = stars ? ` ⭐&nbsp;${formatNumber(stars)}` : ''
     const mergedAt = pullRequest.pull_request.merged_at
-    const title = escapeTableCell(pullRequest.title)
 
-    return `| [${fullName}](https://github.com/${fullName}) | [${title}](${pullRequest.html_url}) | ${mergedAt ? formatDate(mergedAt) : '—'} |`
+    return [
+      `- **[${fullName}](https://github.com/${fullName})**${scale}<br>`,
+      `  [${escapeTableCell(pullRequest.title)}](${pullRequest.html_url})`,
+      mergedAt ? ` <sub>merged ${formatDate(mergedAt)}</sub>` : '',
+    ].join('')
   })
 
   return [
-    `${formatNumber(search.total_count)} pull requests merged into repositories I do not own — the most recent one per project:`,
+    `${formatNumber(search.total_count)} pull requests merged into repositories I do not own:`,
     '',
-    markdownTable(['Project', 'Pull request', 'Merged'], rows),
+    ...entries,
   ].join('\n')
 }

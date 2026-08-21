@@ -1,54 +1,36 @@
-import { centered, formatNumber, shieldsBadge } from '../format.ts'
+import { centered, formatNumber } from '../format.ts'
 import { isOwnRepo, sumBy } from '../repos.ts'
-import type { GithubRepo, GithubUser } from '../types.ts'
+import type { GithubRepo, GithubUser, MaintainedProject } from '../types.ts'
 
+/**
+ * A sentence rather than badges: six shields pills need 926px in an 846px
+ * column, so the last one is orphaned on its own line and the row breaks into
+ * four on a phone. Text reflows, and installs lead because they are the only
+ * number here that shows somebody else depending on the code.
+ */
 export function renderHighlights({
-  pullRequestCount,
+  maintained,
   repos,
+  upstreamCount,
+  upstreamStars,
   user,
+  yearlyDownloads,
 }: {
-  pullRequestCount: number
+  maintained: MaintainedProject
   repos: GithubRepo[]
+  upstreamCount: number
+  upstreamStars: number
   user: GithubUser
+  yearlyDownloads: number
 }): string {
   const ownRepos = repos.filter(isOwnRepo)
-  const highlights = [
-    {
-      color: '2f81f7',
-      label: 'Public repos',
-      value: formatNumber(user.public_repos),
-    },
-    {
-      color: 'e3b341',
-      label: 'Stars earned',
-      value: formatNumber(sumBy(ownRepos, (repo) => repo.stargazers_count)),
-    },
-    {
-      color: 'a371f7',
-      label: 'Forks',
-      value: formatNumber(sumBy(ownRepos, (repo) => repo.forks_count)),
-    },
-    {
-      color: '3fb950',
-      label: 'Pull requests',
-      value: formatNumber(pullRequestCount),
-    },
-    {
-      color: '58a6ff',
-      label: 'Followers',
-      value: formatNumber(user.followers),
-    },
-    {
-      color: 'f78166',
-      label: 'On GitHub since',
-      value: user.created_at.slice(0, 4),
-    },
+  const facts = [
+    `<b>${formatNumber(yearlyDownloads)}</b> npm installs in the last year`,
+    `<b>${formatNumber(upstreamCount)}</b> pull requests merged into projects with <b>${formatNumber(upstreamStars)}</b> stars between them`,
+    `<b>${formatNumber(maintained.commits)}</b> commits maintaining a community docs site`,
+    `<b>${formatNumber(sumBy(ownRepos, (repo) => repo.stargazers_count))}</b> stars on my own repositories`,
+    `on GitHub since <b>${user.created_at.slice(0, 4)}</b>`,
   ]
 
-  return centered(
-    highlights.map(
-      (badge) =>
-        `  <img alt="${badge.label}: ${badge.value}" src="${shieldsBadge(badge)}">`,
-    ),
-  )
+  return centered([`  <sub>${facts.join(' · ')}</sub>`])
 }

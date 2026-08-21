@@ -70,3 +70,38 @@ export async function fetchNpmPackages(
     entries.filter((entry): entry is [string, NpmPackage] => entry[1] !== null),
   )
 }
+
+/** Registry metadata for published packages, keyed by package name. */
+export async function fetchPackageManifests(
+  packageNames: string[],
+): Promise<Map<string, NpmPackage>> {
+  const entries = await Promise.all(
+    packageNames.map(async (name) => {
+      try {
+        const response = await fetch(
+          `${NPM_REGISTRY_URL}/${name.replace('/', '%2F')}/latest`,
+          { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) },
+        )
+
+        if (!response.ok) {
+          return null
+        }
+
+        const manifest = (await response.json()) as NpmManifest
+
+        return [
+          name,
+          { description: manifest.description ?? null, name },
+        ] as const
+      } catch {
+        return null
+      }
+    }),
+  )
+
+  return new Map(
+    entries.filter(
+      (entry): entry is readonly [string, NpmPackage] => entry !== null,
+    ),
+  )
+}

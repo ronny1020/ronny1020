@@ -1,15 +1,19 @@
 import {
   EXCLUDED_OWNERS,
+  MAINTAINED_REPO,
   GITHUB_API_URL,
   GITHUB_USERNAME,
-  MAX_STARRED_REPOS,
   REPOS_PER_PAGE,
   STARRED_PAGE_SIZE,
 } from './config.ts'
 import type {
   GithubRepo,
   GithubUser,
+  IssueSearch,
+  MaintainedProject,
   PullRequestSearch,
+  RepoSummary,
+  SocialAccount,
   StarredRepo,
 } from './types.ts'
 
@@ -84,19 +88,141 @@ export async function getUpstreamPullRequests(): Promise<PullRequestSearch> {
 }
 
 /**
- * Recent stars, public ones only: this endpoint returns whatever the requesting
- * token can see, and a private star must never reach a public README.
+ * My stars, public ones only: this endpoint returns whatever the requesting
+ * token can see, and a private star must never reach a public README. The whole
+ * page is kept — a theme only means something across many repositories.
  */
 export async function getStarredRepos(): Promise<StarredRepo[]> {
   const starred = await githubJson<StarredRepo[]>(
     `/users/${GITHUB_USERNAME}/starred?per_page=${STARRED_PAGE_SIZE}`,
   )
 
-  return starred.filter((repo) => !repo.private).slice(0, MAX_STARRED_REPOS)
+  return starred.filter((repo) => !repo.private)
 }
 
 async function searchPullRequests(query: string): Promise<PullRequestSearch> {
   return githubJson<PullRequestSearch>(
     `/search/issues?q=${encodeURIComponent(query)}&sort=updated&order=desc&per_page=100&advanced_search=true`,
   )
+}
+
+/** Accounts that commit on a workflow's behalf rather than as a contributor. */
+const AUTOMATION_LOGINS =
+  /\[bot\]$|^(actions-user|github-actions|dependabot|renovate)$/
+
+/**
+ * Issues I opened in other people's projects that the maintainers closed as
+ * completed — a fix landed because of the report.
+ */
+export async function getFixedIssues(): Promise<IssueSearch> {
+  const excluded = EXCLUDED_OWNERS.map((owner) => `-user:${owner}`).join(' ')
+  const search = await githubJson<IssueSearch>(
+    `/search/issues?q=${encodeURIComponent(`type:issue is:public author:${GITHUB_USERNAME} ${excluded}`)}&sort=updated&order=desc&per_page=100&advanced_search=true`,
+  )
+
+  return {
+    items: search.items.filter((issue) => issue.state_reason === 'completed'),
+    total_count: search.total_count,
+  }
+}
+
+/** Star counts for the repositories a set of pull requests landed in. */
+export async function getRepoStars(
+  fullNames: string[],
+): Promise<Map<string, number>> {
+  const entries = await Promise.all(
+    fullNames.map(async (fullName) => {
+      try {
+        const repo = await githubJson<RepoSummary>(`/repos/${fullName}`)
+
+        return [fullName, repo.stargazers_count] as const
+      } catch {
+        return [fullName, 0] as const
+      }
+    }),
+  )
+
+  return new Map(entries)
+}
+
+/** My share of the community project I maintain, from its own numbers. */
+export async function getMaintainedProject(): Promise<MaintainedProject> {
+  const [repo, contributors, pullRequests] = await Promise.all([
+    githubJson<RepoSummary>(`/repos/${MAINTAINED_REPO}`),
+    githubJson<{ login: string; contributions: number }[]>(
+      `/repos/${MAINTAINED_REPO}/contributors?per_page=100`,
+    ),
+    searchPullRequests(
+      `type:pr is:public is:merged author:${GITHUB_USERNAME} repo:${MAINTAINED_REPO}`,
+    ),
+  ])
+
+  const humans = contributors.filter(
+    (contributor) => !AUTOMATION_LOGINS.test(contributor.login),
+  )
+  const mine = humans.find(
+    (contributor) => contributor.login === GITHUB_USERNAME,
+  )
+
+  return {
+    commits: mine?.contributions ?? 0,
+    fullName: MAINTAINED_REPO,
+    lastMergedAt: pullRequests.items[0]?.pull_request.merged_at ?? null,
+    mergedPullRequests: pullRequests.total_count,
+    stars: repo.stargazers_count,
+    teamSize: humans.length,
+    totalCommits: humans.reduce(
+      (total, contributor) => total + contributor.contributions,
+      0,
+    ),
+  }
+}
+
+/** The accounts I list on my GitHub profile, whatever they happen to be. */
+export async function getSocialAccounts(): Promise<SocialAccount[]> {
+  return githubJson<SocialAccount[]>(
+    `/users/${GITHUB_USERNAME}/social_accounts`,
+  )
+}
+
+/**
+ * Dependencies declared across my own repositories — the tools I actually use,
+ * as opposed to the ones I remember using.
+ */
+export async function getDeclaredDependencies(
+  repos: GithubRepo[],
+): Promise<Map<string, number>> {
+  const manifests = await Promise.all(
+    repos.map(async (repo) => {
+      try {
+        const file = await githubJson<{ content?: string }>(
+          `/repos/${GITHUB_USERNAME}/${repo.name}/contents/package.json`,
+        )
+        const manifest = JSON.parse(
+          Buffer.from(file.content ?? '', 'base64').toString('utf8'),
+        ) as Record<string, Record<string, string> | undefined>
+
+        return Object.keys({
+          ...manifest.dependencies,
+          ...manifest.devDependencies,
+          ...manifest.peerDependencies,
+        })
+      } catch {
+        return []
+      }
+    }),
+  )
+
+  const repoCountByDependency = new Map<string, number>()
+
+  for (const dependencies of manifests) {
+    for (const dependency of new Set(dependencies)) {
+      repoCountByDependency.set(
+        dependency,
+        (repoCountByDependency.get(dependency) ?? 0) + 1,
+      )
+    }
+  }
+
+  return repoCountByDependency
 }

@@ -5,92 +5,73 @@ import { renderFeaturedProjects } from './featuredProjects.ts'
 
 const repo = buildRepo({ name: 'channel-state', stargazers_count: 14 })
 
+function render(overrides = {}) {
+  return renderFeaturedProjects({
+    monthlyDownloads: new Map(),
+    npmPackages: new Map(),
+    repos: [repo],
+    siteLinks: new Map(),
+    ...overrides,
+  })
+}
+
 describe('renderFeaturedProjects', () => {
-  it('adds an npm version badge and links for a published package', () => {
-    const section = renderFeaturedProjects({
+  it('fits three columns so a phone cannot clip a cell', () => {
+    expect(render().split('\n')[0]).toBe(
+      '| Project | What it does | Installs |',
+    )
+  })
+
+  it('puts stars, language, and the npm badge under the name', () => {
+    const section = render({
       npmPackages: new Map([
         ['channel-state', { description: null, name: '@channel-state/core' }],
       ]),
-      repos: [repo],
-      siteLinks: new Map(),
     })
 
     expect(section).toContain(
-      '| [**channel-state**](https://github.com/ronny1020/example) | [![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/@channel-state/core) |',
+      '[**channel-state**](https://github.com/ronny1020/example)<br><sub>⭐&nbsp;14 · TypeScript · [![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/@channel-state/core)</sub>',
     )
-    expect(section).not.toContain('[site]')
   })
 
-  it('marks a project that publishes nothing with a dash', () => {
-    const section = renderFeaturedProjects({
-      npmPackages: new Map(),
-      repos: [repo],
-      siteLinks: new Map(),
+  it('reports monthly installs for a published package', () => {
+    const section = render({
+      monthlyDownloads: new Map([['@channel-state/core', 25447]]),
+      npmPackages: new Map([
+        ['channel-state', { description: null, name: '@channel-state/core' }],
+      ]),
     })
 
-    expect(section).toContain('| — |')
+    expect(section).toContain('| 25,447/mo |')
+  })
+
+  it('shows a dash when a project publishes nothing', () => {
+    expect(render()).toContain('| — |')
   })
 
   it('links a reachable demo site', () => {
-    const section = renderFeaturedProjects({
-      npmPackages: new Map(),
-      repos: [repo],
-      siteLinks: new Map([['channel-state', 'https://demo.example']]),
-    })
-
-    expect(section).toContain('[site](https://demo.example)')
-    expect(section).not.toContain('img.shields.io/npm/v/')
-  })
-
-  it('prefers the npm description when the repository has none', () => {
-    const section = renderFeaturedProjects({
-      npmPackages: new Map([
-        ['channel-state', { description: 'From npm', name: 'channel-state' }],
-      ]),
-      repos: [buildRepo({ name: 'channel-state', description: null })],
-      siteLinks: new Map(),
-    })
-
-    expect(section).toContain('From npm')
-  })
-
-  it('keeps the star emoji and count on one line', () => {
-    const section = renderFeaturedProjects({
-      npmPackages: new Map(),
-      repos: [repo],
-      siteLinks: new Map(),
-    })
-
-    expect(section).toContain('⭐&nbsp;14')
+    expect(
+      render({
+        siteLinks: new Map([['channel-state', 'https://demo.example']]),
+      }),
+    ).toContain('[site](https://demo.example)')
   })
 
   it('truncates a description that would squeeze the other columns', () => {
-    const section = renderFeaturedProjects({
-      npmPackages: new Map(),
-      repos: [buildRepo({ description: 'word '.repeat(40).trim() })],
-      siteLinks: new Map(),
-    })
-
-    expect(section).toContain('word…')
+    expect(
+      render({
+        repos: [buildRepo({ description: 'word '.repeat(40).trim() })],
+      }),
+    ).toContain('word…')
   })
 
   it('escapes a description that would split a row', () => {
-    const section = renderFeaturedProjects({
-      npmPackages: new Map(),
-      repos: [buildRepo({ description: 'Parses a|b|c [pipes]' })],
-      siteLinks: new Map(),
-    })
-
-    expect(section).toContain('Parses a\\|b\\|c \\[pipes\\]')
+    expect(
+      render({ repos: [buildRepo({ description: 'Parses a|b|c [pipes]' })] }),
+    ).toContain('Parses a\\|b\\|c \\[pipes\\]')
   })
 
   it('reports an empty project list', () => {
-    expect(
-      renderFeaturedProjects({
-        npmPackages: new Map(),
-        repos: [],
-        siteLinks: new Map(),
-      }),
-    ).toBe('No featured projects available.')
+    expect(render({ repos: [] })).toBe('No featured projects available.')
   })
 })

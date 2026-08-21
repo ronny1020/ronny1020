@@ -1,30 +1,39 @@
 import { describe, expect, it } from 'bun:test'
 
-import { buildRepo, buildUser } from '../fixtures.ts'
+import { buildMaintainedProject, buildRepo, buildUser } from '../fixtures.ts'
 import { renderHighlights } from './highlights.ts'
 
+const section = renderHighlights({
+  maintained: buildMaintainedProject(),
+  repos: [
+    buildRepo({ forks_count: 3, stargazers_count: 14 }),
+    buildRepo({ fork: true, name: 'fork', stargazers_count: 500 }),
+  ],
+  upstreamCount: 7,
+  upstreamStars: 145000,
+  user: buildUser(),
+  yearlyDownloads: 380538,
+})
+
 describe('renderHighlights', () => {
-  const section = renderHighlights({
-    pullRequestCount: 172,
-    repos: [
-      buildRepo({ forks_count: 3, stargazers_count: 14 }),
-      buildRepo({ name: 'fork', fork: true, stargazers_count: 500 }),
-    ],
-    user: buildUser(),
+  it('leads with installs, the only number showing outside use', () => {
+    expect(section).toContain('<b>380,538</b> npm installs in the last year')
+    expect(section.indexOf('installs')).toBeLessThan(section.indexOf('stars'))
   })
 
-  it('counts stars and forks from own repositories only', () => {
-    expect(section).toContain('Stars%20earned-14')
-    expect(section).toContain('Forks-3')
+  it('states upstream reach and maintained commits', () => {
+    expect(section).toContain(
+      '<b>7</b> pull requests merged into projects with <b>145,000</b> stars',
+    )
+    expect(section).toContain('<b>479</b> commits maintaining')
   })
 
-  it('shows the authored pull request count and the join year', () => {
-    expect(section).toContain('Pull%20requests-172')
-    expect(section).toContain('On%20GitHub%20since-2019')
+  it('counts stars from own repositories only', () => {
+    expect(section).toContain('<b>14</b> stars on my own repositories')
   })
 
-  it('centers the badges', () => {
-    expect(section.startsWith('<p align="center">')).toBe(true)
-    expect(section.endsWith('</p>')).toBe(true)
+  it('is text, so it reflows instead of wrapping into an orphan badge', () => {
+    expect(section).not.toContain('img.shields.io')
+    expect(section).toContain('<sub>')
   })
 })

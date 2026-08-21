@@ -12,8 +12,9 @@ describe('renderLanguages', () => {
       buildRepo({ language: null, name: 'd' }),
     ]).split('\n')
 
-    expect(badges[1]).toContain('TypeScript-66.7%25-3178c6')
-    expect(badges[2]).toContain('Vue-33.3%25-41b883')
+    expect(badges[0]).toBe('```mermaid')
+    expect(badges[2]).toBe('  "TypeScript" : 66.7')
+    expect(badges[3]).toBe('  "Vue" : 33.3')
   })
 
   it('caps the row at six languages', () => {
@@ -21,7 +22,7 @@ describe('renderLanguages', () => {
       buildRepo({ language: `Lang-${index}`, name: `repo-${index}` }),
     )
 
-    expect(renderLanguages(repos).split('\n')).toHaveLength(8)
+    expect(renderLanguages(repos).split('\n')).toHaveLength(9)
   })
 
   it('ignores forks and excluded repositories', () => {
@@ -35,10 +36,12 @@ describe('renderLanguages', () => {
     expect(section).not.toContain('Java')
   })
 
-  it('falls back to a neutral color for an unmapped language', () => {
-    expect(renderLanguages([buildRepo({ language: 'Zig' })])).toContain(
-      'Zig-100.0%25-8b949e',
-    )
+  it('renders a mermaid pie, which scales to the column in either theme', () => {
+    const section = renderLanguages([buildRepo({ language: 'Zig' })])
+
+    expect(section).toContain('pie showData title Repositories by language')
+    expect(section).toContain('"Zig" : 100.0')
+    expect(section.endsWith('```')).toBe(true)
   })
 
   it('reports when no repository has a language', () => {

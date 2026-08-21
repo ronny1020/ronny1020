@@ -4,7 +4,7 @@ import { buildRepo } from '../fixtures.ts'
 import { renderRecentRepos } from './recentRepos.ts'
 
 describe('renderRecentRepos', () => {
-  it('lists a repository card per row and formats the push date', () => {
+  it('fits two columns and states language and push date under the name', () => {
     const section = renderRecentRepos({
       npmPackages: new Map(),
       repos: [
@@ -12,28 +12,36 @@ describe('renderRecentRepos', () => {
       ],
     })
 
-    expect(section).toContain('Jul&nbsp;11,&nbsp;2026')
-    expect(section).toContain('gh-card.dev/repos/ronny1020/twinlink.svg')
+    expect(section.split('\n')[0]).toBe('| Repository | What it does |')
+    expect(section).toContain(
+      '<sub>TypeScript · pushed Jul&nbsp;11,&nbsp;2026</sub>',
+    )
+  })
+
+  it('no longer embeds remote repository cards', () => {
+    expect(
+      renderRecentRepos({ npmPackages: new Map(), repos: [buildRepo()] }),
+    ).not.toContain('gh-card.dev')
   })
 
   it('falls back to the npm description', () => {
-    const section = renderRecentRepos({
-      npmPackages: new Map([
-        ['twinlink', { description: 'WebRTC toolkit', name: 'twinlink' }],
-      ]),
-      repos: [buildRepo({ name: 'twinlink', description: null })],
-    })
-
-    expect(section).toContain('WebRTC toolkit')
+    expect(
+      renderRecentRepos({
+        npmPackages: new Map([
+          ['twinlink', { description: 'WebRTC toolkit', name: 'twinlink' }],
+        ]),
+        repos: [buildRepo({ description: null, name: 'twinlink' })],
+      }),
+    ).toContain('WebRTC toolkit')
   })
 
   it('tolerates a repository that was never pushed to', () => {
-    const section = renderRecentRepos({
-      npmPackages: new Map(),
-      repos: [buildRepo({ pushed_at: null })],
-    })
-
-    expect(section).toContain('| — |')
+    expect(
+      renderRecentRepos({
+        npmPackages: new Map(),
+        repos: [buildRepo({ pushed_at: null })],
+      }),
+    ).toContain('<sub>TypeScript</sub>')
   })
 
   it('reports an empty list', () => {

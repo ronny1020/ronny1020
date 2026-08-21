@@ -30,6 +30,7 @@ utils/config.ts         username, endpoints, limits, paths, EXCLUDED_REPOS
 utils/types.ts          response types derived from @octokit/types
 utils/github.ts         GitHub REST client and fetchers
 utils/npm.ts            npm registry lookups
+utils/npmDownloads.ts   install counts (bulk endpoint rejects scoped names)
 utils/repos.ts          repo filtering, selection, descriptions
 utils/siteLinks.ts      reachable-homepage checks for demo links
 utils/format.ts         numbers, dates, shields URLs, markdown table helpers
@@ -53,6 +54,9 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 
 ## Conventions
 
+- **Reach beats vanity.** Lead with what shows outside use — installs, upstream reach, maintained commits — not repository, follower, or profile-view counts.
+- **Tables must fit 348px.** GitHub gives a phone README column 348px and wraps nothing in a scroll container, so anything wider is silently cut off. Keep tables at three columns or fewer and push extra facts into a `<br><sub>` line under the first cell; a list never clips at all.
+- **Evidence floors.** A tool or theme needs `MIN_EVIDENCE_COUNT` repositories behind it, and the generated stack stays silent below `MIN_STACK_TOOLS` rather than publishing an almost-empty row.
 - **Escape API text in tables** with `escapeTableCell`; a `|` or `[` in a description or PR title otherwise breaks the row.
 - **Types come from `@octokit/types`**, narrowed with `Required<Pick<…>>`. Do not hand-write GitHub response shapes.
 - **Renderers are pure** — they take data and return markdown. All fetching lives in `github.ts`, `npm.ts`, and `siteLinks.ts`.
