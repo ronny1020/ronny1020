@@ -144,5 +144,5 @@ Latest repositories I starred:
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026 at 1:28 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026, 1:29 PM GMT+8</sub>
 </p>
