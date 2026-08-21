@@ -37,13 +37,13 @@ describe('renderFixedIssues', () => {
     ).toHaveLength(5)
   })
 
-  it('escapes a title that would break the line', () => {
+  it('escapes brackets but keeps a code span readable', () => {
     expect(
       renderFixedIssues({
-        items: [issue('a/b', 'crash on a|b [regression]')],
+        items: [issue('a/b', '[BUG] `font-mono | mono` mismatch')],
         total_count: 1,
       }),
-    ).toContain('crash on a\\|b \\[regression\\]')
+    ).toContain('\\[BUG\\] `font-mono | mono` mismatch')
   })
 
   it('reports when nothing was fixed', () => {

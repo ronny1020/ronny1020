@@ -1,6 +1,6 @@
 import { MAX_UPSTREAM_PULL_REQUESTS } from '../config.ts'
 import {
-  escapeTableCell,
+  escapeLinkText,
   formatDate,
   formatNumber,
   repoFullName,
@@ -64,7 +64,7 @@ export function renderUpstreamPullRequests({
 
     return [
       `- **[${fullName}](https://github.com/${fullName})**${scale}<br>`,
-      `  [${escapeTableCell(pullRequest.title)}](${pullRequest.html_url})`,
+      `  [${escapeLinkText(pullRequest.title)}](${pullRequest.html_url})`,
       mergedAt ? ` <sub>merged ${formatDate(mergedAt)}</sub>` : '',
     ].join('')
   })

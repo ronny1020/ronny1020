@@ -2,6 +2,7 @@ import { describe, expect, it } from 'bun:test'
 
 import {
   centered,
+  escapeLinkText,
   escapeTableCell,
   formatDate,
   formatNumber,
@@ -69,6 +70,14 @@ describe('truncate', () => {
 
   it('cuts at a word boundary and drops a trailing comma', () => {
     expect(truncate('one two three four five', 14)).toBe('one two three…')
+  })
+})
+
+describe('escapeLinkText', () => {
+  it('escapes brackets but leaves pipes alone', () => {
+    expect(escapeLinkText('[RFC] keys of `a | b`')).toBe(
+      '\\[RFC\\] keys of `a | b`',
+    )
   })
 })
 

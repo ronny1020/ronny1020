@@ -81,14 +81,6 @@ describe('renderUpstreamPullRequests', () => {
     ).toContain('7 pull requests merged')
   })
 
-  it('escapes a title that would break the line', () => {
-    expect(
-      render([
-        pullRequest('TanStack/query', { title: 'fix: allow a|b [RFC]' }),
-      ]),
-    ).toContain('fix: allow a\\|b \\[RFC\\]')
-  })
-
   it('reports when nothing was merged', () => {
     expect(
       render([

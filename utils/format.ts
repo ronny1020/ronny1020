@@ -72,12 +72,18 @@ export function truncate(text: string, limit: number): string {
   return `${(lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,.;:]$/, '')}…`
 }
 
+/** Keeps `[`/`]` from closing a markdown link label early. */
+export function escapeLinkText(text: string): string {
+  return text.replace(/([[\]])/g, '\\$1')
+}
+
 /**
- * Makes API text safe inside a table cell: an unescaped `|` starts a new cell,
- * and `[`/`]` would close a surrounding link label early.
+ * Makes API text safe inside a table cell, where an unescaped `|` starts a new
+ * cell. Only for tables: in a list the escape is unnecessary, and inside a code
+ * span markdown prints the backslash instead of consuming it.
  */
 export function escapeTableCell(text: string): string {
-  return text.replace(/\|/g, '\\|').replace(/([[\]])/g, '\\$1')
+  return escapeLinkText(text).replace(/\|/g, '\\|')
 }
 
 export function markdownTable(headers: string[], rows: string[]): string {

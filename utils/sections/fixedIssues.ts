@@ -1,5 +1,5 @@
 import { MAX_FIXED_ISSUES } from '../config.ts'
-import { escapeTableCell, repoFullName } from '../format.ts'
+import { escapeLinkText, repoFullName } from '../format.ts'
 import type { IssueSearch } from '../types.ts'
 
 /**
@@ -17,7 +17,7 @@ export function renderFixedIssues(search: IssueSearch): string {
     .map((issue) => {
       const fullName = repoFullName(issue.repository_url)
 
-      return `- **[${fullName}](https://github.com/${fullName})** — [${escapeTableCell(issue.title)}](${issue.html_url})`
+      return `- **[${fullName}](https://github.com/${fullName})** — [${escapeLinkText(issue.title)}](${issue.html_url})`
     })
     .join('\n')
 }
