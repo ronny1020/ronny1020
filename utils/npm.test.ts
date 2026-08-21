@@ -11,6 +11,7 @@ type Manifest = {
   name: string
   description?: string
   repository?: string | { url?: string }
+  version?: string
 }
 
 function mockRegistry(packages: Record<string, Manifest>) {
@@ -34,6 +35,7 @@ function ownedManifest(name: string, repo: string, description?: string) {
     description,
     name,
     repository: { url: `git+https://github.com/ronny1020/${repo}.git` },
+    version: '1.0.0',
   }
 }
 
@@ -57,6 +59,7 @@ describe('fetchNpmPackages', () => {
     expect(packages.get('channel-state')).toEqual({
       description: 'Cross-tab state',
       name: '@channel-state/core',
+      version: '1.0.0',
     })
     expect(String(fetchMock.mock.calls[0]?.[0])).toContain('%2Fcore/latest')
   })
@@ -84,6 +87,7 @@ describe('fetchNpmPackages', () => {
     expect(packages.get('twinlink')).toEqual({
       description: null,
       name: 'twinlink',
+      version: '1.0.0',
     })
   })
 

@@ -11,7 +11,8 @@ import type { GithubRepo, NpmPackage, RepoLinks } from '../types.ts'
 /**
  * Three columns, because a five-column table needs 469px and GitHub gives a
  * phone 348px with no scroll container — the surplus is simply cut off. Stars,
- * language, and the version live under the project name instead.
+ * language, and the version go under the project name, as text: a badge image
+ * cannot share a line with text without being pushed onto a row of its own.
  */
 function projectCell({
   npmPackage,
@@ -22,13 +23,12 @@ function projectCell({
   repo: GithubRepo
   site: string | undefined
 }): string {
+  const version = npmPackage?.version
   const facts = [
     `⭐&nbsp;${repo.stargazers_count}`,
     ...(repo.language ? [repo.language] : []),
-    ...(npmPackage
-      ? [
-          `[![npm](https://img.shields.io/npm/v/${npmPackage.name}?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/${npmPackage.name})`,
-        ]
+    ...(version
+      ? [`[v${version}](https://www.npmjs.com/package/${npmPackage.name})`]
       : []),
     ...(site ? [`[site](${site})`] : []),
   ]

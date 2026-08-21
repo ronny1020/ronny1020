@@ -50,6 +50,7 @@ async function fetchNpmPackage(repo: GithubRepo): Promise<NpmPackage | null> {
     return {
       description: manifest.description ?? null,
       name: manifest.name ?? packageName,
+      version: manifest.version ?? null,
     }
   } catch {
     return null
@@ -91,7 +92,11 @@ export async function fetchPackageManifests(
 
         return [
           name,
-          { description: manifest.description ?? null, name },
+          {
+            description: manifest.description ?? null,
+            name,
+            version: manifest.version ?? null,
+          },
         ] as const
       } catch {
         return null

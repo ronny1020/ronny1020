@@ -28,7 +28,14 @@ describe('renderRecentRepos', () => {
     expect(
       renderRecentRepos({
         npmPackages: new Map([
-          ['twinlink', { description: 'WebRTC toolkit', name: 'twinlink' }],
+          [
+            'twinlink',
+            {
+              description: 'WebRTC toolkit',
+              name: 'twinlink',
+              version: '1.0.0',
+            },
+          ],
         ]),
         repos: [buildRepo({ description: null, name: 'twinlink' })],
       }),

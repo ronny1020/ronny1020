@@ -98,7 +98,11 @@ describe('repoDescription', () => {
 
     expect(repoDescription(buildRepo())).toBe('A test repository')
     expect(
-      repoDescription(repo, { description: 'From npm', name: 'example' }),
+      repoDescription(repo, {
+        description: 'From npm',
+        name: 'example',
+        version: '1.0.0',
+      }),
     ).toBe('From npm')
     expect(repoDescription(repo)).toBe('—')
   })

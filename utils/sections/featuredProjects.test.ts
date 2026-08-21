@@ -22,15 +22,18 @@ describe('renderFeaturedProjects', () => {
     )
   })
 
-  it('puts stars, language, and the npm badge under the name', () => {
+  it('puts stars, language, and the version under the name as text', () => {
     const section = render({
       npmPackages: new Map([
-        ['channel-state', { description: null, name: '@channel-state/core' }],
+        [
+          'channel-state',
+          { description: null, name: '@channel-state/core', version: '1.0.0' },
+        ],
       ]),
     })
 
     expect(section).toContain(
-      '[**channel-state**](https://github.com/ronny1020/example)<br><sub>⭐&nbsp;14 · TypeScript · [![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/@channel-state/core)</sub>',
+      '[**channel-state**](https://github.com/ronny1020/example)<br><sub>⭐&nbsp;14 · TypeScript · [v1.0.0](https://www.npmjs.com/package/@channel-state/core)</sub>',
     )
   })
 
@@ -38,7 +41,10 @@ describe('renderFeaturedProjects', () => {
     const section = render({
       monthlyDownloads: new Map([['@channel-state/core', 25447]]),
       npmPackages: new Map([
-        ['channel-state', { description: null, name: '@channel-state/core' }],
+        [
+          'channel-state',
+          { description: null, name: '@channel-state/core', version: '1.0.0' },
+        ],
       ]),
     })
 
@@ -73,5 +79,23 @@ describe('renderFeaturedProjects', () => {
 
   it('reports an empty project list', () => {
     expect(render({ repos: [] })).toBe('No featured projects available.')
+  })
+})
+
+describe('featured project sub-line', () => {
+  it('uses no badge image, which would wrap onto its own row', () => {
+    expect(
+      renderFeaturedProjects({
+        monthlyDownloads: new Map(),
+        npmPackages: new Map([
+          [
+            'channel-state',
+            { description: null, name: 'channel-state', version: '0.1.0' },
+          ],
+        ]),
+        repos: [repo],
+        siteLinks: new Map(),
+      }),
+    ).not.toContain('img.shields.io')
   })
 })

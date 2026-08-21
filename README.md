@@ -38,12 +38,12 @@
 
 ## 📦 Featured projects
 
-| Project                                                                                                                                                                                                                                                                    | What it does                                                                           | Installs  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------- |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [![npm](https://img.shields.io/npm/v/@channel-state/core?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/@channel-state/core)</sub>                | A state-management provides robust, seamless state synchronization across all browser… | 55/mo     |
-| [**react-json-formatter**](https://github.com/ronny1020/react-json-formatter)<br><sub>⭐&nbsp;9 · TypeScript · [![npm](https://img.shields.io/npm/v/react-json-formatter?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/react-json-formatter)</sub> | Formatting json data to JSX of React                                                   | 25,447/mo |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [![npm](https://img.shields.io/npm/v/condition-switch?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/condition-switch)</sub>                 | A condition switch library for js/ts                                                   | 76/mo     |
-| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [![npm](https://img.shields.io/npm/v/react-form-maker?style=flat-square&label=&color=cb3837)](https://www.npmjs.com/package/react-form-maker)</sub>                 | NPM React tool to make a React form by object                                          | 73/mo     |
+| Project                                                                                                                                                                           | What it does                                                                           | Installs  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------- |
+| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>               | A state-management provides robust, seamless state synchronization across all browser… | 55/mo     |
+| [**react-json-formatter**](https://github.com/ronny1020/react-json-formatter)<br><sub>⭐&nbsp;9 · TypeScript · [v0.4.0](https://www.npmjs.com/package/react-json-formatter)</sub> | Formatting json data to JSX of React                                                   | 25,447/mo |
+| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub>             | A condition switch library for js/ts                                                   | 76/mo     |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub>             | NPM React tool to make a React form by object                                          | 73/mo     |
 
 ## 🤝 Upstream contributions
 
@@ -155,5 +155,5 @@ pie showData title Repositories by language
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026, 2:33 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Aug 21, 2026 at 3:18 PM GMT+8</sub>
 </p>

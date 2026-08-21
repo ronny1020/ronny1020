@@ -89,6 +89,7 @@ export type StarredRepo = Required<
 export type NpmPackage = {
   name: string
   description: string | null
+  version: string | null
 }
 
 /** The subset of an npm manifest the README needs. */

@@ -10,7 +10,10 @@ function render(
 ) {
   return renderPackages({
     descriptions: new Map(
-      descriptions.map(([name, description]) => [name, { description, name }]),
+      descriptions.map(([name, description]) => [
+        name,
+        { description, name, version: '1.0.0' },
+      ]),
     ),
     lastMonth: new Map(lastMonth),
     packageNames,
