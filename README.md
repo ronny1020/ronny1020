@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <sub><b>385,279</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>145,371</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>46</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>385,279</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>145,360</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>46</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -49,11 +49,11 @@
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,284<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,270<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;197<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,048<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,138<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,851<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,142<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,850<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;853<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
@@ -73,12 +73,12 @@ I have written 484 of the 535 human commits in it, across 124 merged pull reques
 
 ## 🚀 Recently pushed
 
-| Repository                                                                                                                     | What it does                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| [**ai-agent-press**](https://github.com/ronny1020/ai-agent-press)<br><sub>TypeScript · pushed Sep&nbsp;5,&nbsp;2026</sub>      | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and… |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>TypeScript · pushed Aug&nbsp;26,&nbsp;2026</sub>       | A state-management provides robust, seamless state synchronization across all browser…     |
-| [**twinlink**](https://github.com/ronny1020/twinlink)<br><sub>TypeScript · pushed Jul&nbsp;11,&nbsp;2026</sub>                 | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>TypeScript · pushed Jun&nbsp;30,&nbsp;2026</sub> | A condition switch library for js/ts                                                       |
+| Repository                                                                                                                | What it does                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [**muster**](https://github.com/ronny1020/muster)<br><sub>TypeScript · pushed Sep&nbsp;9,&nbsp;2026</sub>                 | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state       |
+| [**ai-agent-press**](https://github.com/ronny1020/ai-agent-press)<br><sub>TypeScript · pushed Sep&nbsp;5,&nbsp;2026</sub> | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and… |
+| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>TypeScript · pushed Aug&nbsp;26,&nbsp;2026</sub>  | A state-management provides robust, seamless state synchronization across all browser…     |
+| [**twinlink**](https://github.com/ronny1020/twinlink)<br><sub>TypeScript · pushed Jul&nbsp;11,&nbsp;2026</sub>            | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     |
 
 ## 🔭 Themes I keep starring
 
@@ -99,24 +99,25 @@ I have written 484 of the 535 human commits in it, across 124 merged pull reques
 <summary><b>🛠️ Tech stack</b> — the tools my own repositories actually depend on</summary>
 
 <p align="center">
-  <img alt="Prettier: used in 18 of my repositories" src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black">
+  <img alt="Prettier: used in 19 of my repositories" src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black">
   <img alt="ESLint: used in 17 of my repositories" src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white">
-  <img alt="TypeScript: used in 16 of my repositories" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
-  <img alt="React: used in 6 of my repositories" src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+  <img alt="TypeScript: used in 17 of my repositories" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+  <img alt="React: used in 7 of my repositories" src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
   <img alt="Vite: used in 5 of my repositories" src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
   <img alt="Sass: used in 4 of my repositories" src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white">
   <img alt="Vue: used in 4 of my repositories" src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white">
   <img alt="Vitest: used in 3 of my repositories" src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white">
+  <img alt="Tailwind CSS: used in 2 of my repositories" src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 </p>
 
 ```mermaid
 pie showData title Repositories by language
-  "TypeScript" : 32.4
-  "JavaScript" : 24.3
-  "HTML" : 16.2
-  "Vue" : 10.8
-  "Python" : 5.4
-  "PHP" : 5.4
+  "TypeScript" : 34.2
+  "JavaScript" : 23.7
+  "HTML" : 15.8
+  "Vue" : 10.5
+  "Python" : 5.3
+  "PHP" : 5.3
 ```
 
 </details>
@@ -154,5 +155,5 @@ pie showData title Repositories by language
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Sep 9, 2026, 3:16 AM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Sep 10, 2026, 3:06 AM GMT+8</sub>
 </p>
