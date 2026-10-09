@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <sub><b>394,794</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>145,688</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>46</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>389,104</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>145,687</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>46</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -23,37 +23,31 @@
 
 ## 📥 Packages people install
 
-| Package                                                                        | What it is                                                                                 | Installs / month |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ---------------- |
-| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter)   | Formatting json data to JSX of React                                                       | 32,429           |
-| [`condition-switch`](https://www.npmjs.com/package/condition-switch)           | A powerful and flexible TypeScript utility for writing clean, declarative, and expressive… | 624              |
-| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)               | Tool for creating Traditional Chinese lorem ipsum                                          | 192              |
-| [`@channel-state/core`](https://www.npmjs.com/package/@channel-state/core)     | Core-library for channel-state, providing framework-agnostic, zero-dependency state…       | 136              |
-| [`@channel-state/react`](https://www.npmjs.com/package/@channel-state/react)   | React hooks for channel-state, providing seamless integration with React applications for… | 87               |
-| [`@channel-state/svelte`](https://www.npmjs.com/package/@channel-state/svelte) | Svelte stores for channel-state, providing seamless integration with Svelte applications…  | 83               |
-| [`react-form-maker`](https://www.npmjs.com/package/react-form-maker)           | make a react form faster by object                                                         | 66               |
-| [`@channel-state/vue`](https://www.npmjs.com/package/@channel-state/vue)       | Vue composables for channel-state, providing seamless integration with Vue applications…   | 63               |
-| [`ai-agent-press`](https://www.npmjs.com/package/ai-agent-press)               | Transform AI agent instruction and skill files into searchable documentation portals       | 44               |
-| [`twinlink`](https://www.npmjs.com/package/twinlink)                           | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     | 16               |
+| Package                                                                      | What it is                                                                                 | Installs / month |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------- |
+| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React                                                       | 34,882           |
+| [`condition-switch`](https://www.npmjs.com/package/condition-switch)         | A powerful and flexible TypeScript utility for writing clean, declarative, and expressive… | 575              |
+| [`@channel-state/core`](https://www.npmjs.com/package/@channel-state/core)   | Core-library for channel-state, providing framework-agnostic, zero-dependency state…       | 135              |
+| [`react-form-maker`](https://www.npmjs.com/package/react-form-maker)         | make a react form faster by object                                                         | 62               |
 
 ## 📦 Featured projects
 
 | Project                                                                                                                                                                           | What it does                                                                           | Installs  |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------- |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>               | A state-management provides robust, seamless state synchronization across all browser… | 136/mo    |
-| [**react-json-formatter**](https://github.com/ronny1020/react-json-formatter)<br><sub>⭐&nbsp;9 · TypeScript · [v0.4.0](https://www.npmjs.com/package/react-json-formatter)</sub> | Formatting json data to JSX of React                                                   | 32,429/mo |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub>             | A condition switch library for js/ts                                                   | 624/mo    |
-| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub>             | NPM React tool to make a React form by object                                          | 66/mo     |
+| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>               | A state-management provides robust, seamless state synchronization across all browser… | 135/mo    |
+| [**react-json-formatter**](https://github.com/ronny1020/react-json-formatter)<br><sub>⭐&nbsp;9 · TypeScript · [v0.4.0](https://www.npmjs.com/package/react-json-formatter)</sub> | Formatting json data to JSX of React                                                   | 34,882/mo |
+| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub>             | A condition switch library for js/ts                                                   | 575/mo    |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub>             | NPM React tool to make a React form by object                                          | 62/mo     |
 
 ## 🤝 Upstream contributions
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,405<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,406<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;197<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,048<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,313<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,871<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,317<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,865<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;854<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
@@ -156,5 +150,5 @@ pie showData title Repositories by language
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Oct 9, 2026, 5:03 AM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Oct 10, 2026, 4:34 AM GMT+8</sub>
 </p>
