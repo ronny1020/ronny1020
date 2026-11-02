@@ -6,7 +6,7 @@
     "lib": ["ES2022", "DOM"],
     "strict": true,
     "skipLibCheck": true,
-    "types": ["bun", "node"],
+    "types": ["bun"],
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
