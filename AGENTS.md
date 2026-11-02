@@ -11,7 +11,7 @@ bun install
 bun run update:readme   # regenerate README.md
 bun test                # unit tests (no network)
 bun run typecheck       # bun --check (TypeScript built into Bun)
-bun run lint            # bun lint --max-warnings 0 (type-aware, gated in CI)
+bun lint                # type-aware, fails on any warning (gated in CI)
 bun run format          # bun fmt
 bun run format:check    # bun fmt --check (gated in CI)
 ```
@@ -71,7 +71,7 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
 - **Bun is the whole toolchain** — no Prettier, ESLint, or `typescript` package:
   - `bun fmt` formats with `.prettierrc.json` and skips `.prettierignore`.
-  - `bun lint` runs type-aware rules (`bunfig.toml`); fix a finding rather than suppressing it.
+  - `bun lint` runs type-aware rules and fails on any warning (`bunfig.toml`); fix a finding rather than suppressing it. It ships only in canary builds so far, so CI installs `canary` — run `bun upgrade --canary` locally.
   - `bun --check` type-checks with the TypeScript built into Bun; `utils/toolchain.test.ts` pins its version so a Bun upgrade that moves it fails loudly.
   - `.githooks/pre-commit` formats and lint-fixes staged files, then runs the format, lint, and type checks on an export of the index, so unstaged edits and untracked files neither hide nor cause a failure. A file with both staged and unstaged edits that still needs fixing blocks the commit — Bun won't rewrite it; stage it whole or fix it first. `bun install` enables it through the `prepare` script. CI runs format and lint across every file, plus the type-check and tests.
 

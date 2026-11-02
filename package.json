@@ -8,7 +8,6 @@
     "update:readme": "bun run updateREADME.ts",
     "test": "bun test",
     "typecheck": "bun --check",
-    "lint": "bun lint --max-warnings 0",
     "format": "bun fmt",
     "format:check": "bun fmt --check",
     "prepare": "git config core.hooksPath .githooks"

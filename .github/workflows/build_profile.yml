@@ -18,7 +18,8 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version-file: package.json
+          # `bun lint` ships only in canary builds so far.
+          bun-version: canary
 
       - run: bun install --frozen-lockfile
         env:
@@ -27,7 +28,7 @@ jobs:
       - name: Typecheck, lint, format check, and test
         run: |
           bun run typecheck
-          bun run lint
+          bun lint
           bun run format:check
           bun test
 
