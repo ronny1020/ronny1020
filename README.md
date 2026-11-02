@@ -155,5 +155,5 @@ pie showData title Repositories by language
 ---
 
 <p align="center">
-  <sub>Taipei · README rebuilt from the GitHub API — last run Nov 2, 2026, 5:37 PM GMT+8</sub>
+  <sub>Taipei · README rebuilt from the GitHub API — last run Nov 2, 2026, 5:42 PM GMT+8</sub>
 </p>
