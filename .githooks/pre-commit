@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+bun fmt --staged
+bun run lint --staged --fix
+
+# Bun's --staged and --check read the working tree, which differs from the
+# commit when a file has unstaged edits or an untracked file is lying around.
+# Check an export of the index instead, so exactly the commit is checked.
+snapshot=$(mktemp -d)
+trap 'rm -rf "$snapshot"' EXIT
+git checkout-index --all --prefix="$snapshot/"
+ln -s "$PWD/node_modules" "$snapshot/node_modules"
+cd "$snapshot"
+bun fmt --check
+bun run lint
+bun --check

@@ -76,7 +76,12 @@ describe('getUser', () => {
         }) as Response,
     )
 
-    await expect(getUser()).rejects.toThrow('rate limit exceeded')
+    const error: unknown = await getUser().catch((error: unknown) => error)
+
+    expect(error).toBeInstanceOf(Error)
+    expect(error instanceof Error && error.message).toContain(
+      'rate limit exceeded',
+    )
   })
 
   it('throws when the payload is not JSON', async () => {
@@ -84,7 +89,10 @@ describe('getUser', () => {
       () => ({ ok: true, text: () => Promise.resolve('<html>') }) as Response,
     )
 
-    await expect(getUser()).rejects.toThrow('invalid JSON')
+    const error: unknown = await getUser().catch((error: unknown) => error)
+
+    expect(error).toBeInstanceOf(Error)
+    expect(error instanceof Error && error.message).toContain('invalid JSON')
   })
 })
 
@@ -114,7 +122,7 @@ describe('pull request searches', () => {
     await getUpstreamPullRequests()
 
     for (const [url] of fetchMock.mock.calls) {
-      expect(decodeURIComponent(String(url))).toContain('is:public')
+      expect(decodeURIComponent(url as string)).toContain('is:public')
     }
   })
 
@@ -125,7 +133,7 @@ describe('pull request searches', () => {
 
     await getUpstreamPullRequests()
 
-    const query = decodeURIComponent(String(fetchMock.mock.calls[0]?.[0]))
+    const query = decodeURIComponent(fetchMock.mock.calls[0]?.[0] as string)
     expect(query).toContain('is:merged')
     expect(query).toContain('-user:ronny1020')
     expect(query).toContain('-user:travel-guide-tw')

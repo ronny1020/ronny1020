@@ -61,7 +61,7 @@ describe('fetchNpmPackages', () => {
       name: '@channel-state/core',
       version: '1.0.0',
     })
-    expect(String(fetchMock.mock.calls[0]?.[0])).toContain('%2Fcore/latest')
+    expect(fetchMock.mock.calls[0]?.[0] as string).toContain('%2Fcore/latest')
   })
 
   it('ignores the version path of an npm homepage', async () => {

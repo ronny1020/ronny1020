@@ -7,9 +7,11 @@
   "scripts": {
     "update:readme": "bun run updateREADME.ts",
     "test": "bun test",
-    "typecheck": "tsc --noEmit",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "typecheck": "bun --check",
+    "lint": "bun lint --max-warnings 0",
+    "format": "bun fmt",
+    "format:check": "bun fmt --check",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "repository": {
     "type": "git",
@@ -21,12 +23,10 @@
     "url": "https://github.com/ronny1020/ronny1020/issues"
   },
   "homepage": "https://github.com/ronny1020/ronny1020#readme",
-  "packageManager": "bun@1.3.7",
+  "packageManager": "bun@1.4.4",
   "devDependencies": {
     "@octokit/types": "^17.0.0",
-    "@types/bun": "^1.3.14",
-    "@types/node": "^24.0.15",
-    "prettier": "^3.8.3",
-    "typescript": "^5.9.3"
+    "@types/bun": "^1.4.4",
+    "@types/node": "^24.0.15"
   }
 }

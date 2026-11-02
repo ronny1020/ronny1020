@@ -65,11 +65,8 @@ async function fetchDownloads(
   )
 
   // A single name makes the bulk endpoint answer with a bare point, not a map.
-  if (plain.length === 1 && !counts.has(plain[0] as string)) {
-    counts.set(
-      plain[0] as string,
-      await fetchDownloadPoint(period, plain[0] as string),
-    )
+  if (plain.length === 1 && !counts.has(plain[0])) {
+    counts.set(plain[0], await fetchDownloadPoint(period, plain[0]))
   }
 
   for (const name of scoped) {

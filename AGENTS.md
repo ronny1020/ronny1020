@@ -10,9 +10,10 @@ The source for the GitHub profile shown at <https://github.com/ronny1020>. `READ
 bun install
 bun run update:readme   # regenerate README.md
 bun test                # unit tests (no network)
-bun run typecheck       # tsc --noEmit
-bun run format          # prettier --write .
-bun run format:check    # prettier --check . (gated in CI)
+bun run typecheck       # bun --check (TypeScript built into Bun)
+bun run lint            # bun lint --max-warnings 0 (type-aware, gated in CI)
+bun run format          # bun fmt
+bun run format:check    # bun fmt --check (gated in CI)
 ```
 
 `update:readme` calls the GitHub API. Unauthenticated runs share a 60 requests/hour limit and the search endpoint is stricter, so export a token before rebuilding locally:
@@ -68,7 +69,11 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Summary cards are self-hosted.** The workflow runs `vn7n24fzkq/github-profile-summary-cards` with `AUTO_PUSH: false` and commits `profile-summary-card-output/{default,github_dark}` alongside the README; the shared card service rate limits and rendered "Cards are temporarily rate limited" in place of four of the five cards. The action writes all 65 themes — only those two folders are added to git.
 - **Card hosts must answer fast.** GitHub proxies every image through camo, which gives up after a few seconds and serves a 504 — a card host that needs 6s renders as broken on the profile even though `curl` says 200. Time a new host before adding it (`streak-stats.demolab.com` was dropped for this).
 - **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
-- Prettier is the formatter, and `bun run format:check` is gated in CI — run `bun run format` before pushing.
+- **Bun is the whole toolchain** — no Prettier, ESLint, or `typescript` package:
+  - `bun fmt` formats with `.prettierrc.json` and skips `.prettierignore`.
+  - `bun lint` runs type-aware rules (`bunfig.toml`); fix a finding rather than suppressing it.
+  - `bun --check` type-checks with the TypeScript built into Bun; `utils/toolchain.test.ts` pins its version so a Bun upgrade that moves it fails loudly.
+  - `.githooks/pre-commit` formats and lint-fixes staged files, then runs the format, lint, and type checks on an export of the index, so unstaged edits and untracked files neither hide nor cause a failure. A file with both staged and unstaged edits that still needs fixing blocks the commit — Bun won't rewrite it; stage it whole or fix it first. `bun install` enables it through the `prepare` script. CI runs format and lint across every file, plus the type-check and tests.
 
 ## Committing
 
@@ -76,4 +81,4 @@ README-bot pushes a regenerated `README.md` after every run, so `git pull --reba
 
 ## CI
 
-`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + format check + test → generate summary cards → regenerate → commit as `README-bot` if `README.md` changed. The generator step receives `GITHUB_TOKEN`.
+`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + lint + format check + test → generate summary cards → regenerate → commit as `README-bot` if `README.md` changed. The generator step receives `GITHUB_TOKEN`.
