@@ -6,9 +6,7 @@
 
 <h3 align="center"><!-- generated:weather --></h3>
 
-<p align="center">
-  <!-- generated:weatherFacts --><sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
-</p>
+<p align="center"><!-- generated:weatherFacts --></p>
 
 <p align="center">
   <picture>
@@ -89,3 +87,9 @@ Issues I opened in other people's projects that the maintainers labelled a bug a
 </p>
 
 </details>
+
+---
+
+<p align="center">
+  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
+</p>

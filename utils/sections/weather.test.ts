@@ -54,9 +54,7 @@ describe('renderWeatherFacts', () => {
           sunset: new Date('2026-11-04T09:15:00Z'),
         }),
       ),
-    ).toMatch(
-      /^<sub>🌅 6:01\sAM · 🌇 5:15\sPM · 🟢 peak US AQI 42, good<\/sub><br>$/,
-    )
+    ).toMatch(/^🌅 6:01\sAM · 🌇 5:15\sPM · 🟢 peak US AQI 42, good$/)
   })
 
   it('names the band an AQI falls in', () => {

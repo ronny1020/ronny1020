@@ -6,14 +6,12 @@
 
 <h3 align="center">☁️ Hello from Taipei — grey and overcast today, 21–30&nbsp;°C.</h3>
 
-<p align="center">
-  <sub>🌅 6:03 AM · 🌇 5:11 PM · 🟡 peak US AQI 82, moderate</sub><br><sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
-</p>
+<p align="center">🌅 6:03 AM · 🌇 5:11 PM · 🟡 peak US AQI 82, moderate</p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026, 6:31 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026 at 6:39 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -24,7 +22,7 @@
 </p>
 
 <p align="center">
-  <sub><b>400,756</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,145</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>399,221</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,145</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -38,8 +36,8 @@
 
 | Package                                                                      | What it is                                        | Installs / month |
 | ---------------------------------------------------------------------------- | ------------------------------------------------- | ---------------- |
-| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React              | 33,093           |
-| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum | 150              |
+| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React              | 30,542           |
+| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum | 129              |
 
 <sub>…and 8 smaller packages</sub>
 
@@ -47,10 +45,10 @@
 
 | Project                                                                                                                                                               | What it does                                                                           | Installs |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------- |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>   | A state-management provides robust, seamless state synchronization across all browser… | 38/mo    |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts                                                   | 62/mo    |
+| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>   | A state-management provides robust, seamless state synchronization across all browser… | 39/mo    |
+| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts                                                   | 63/mo    |
 | [**muster**](https://github.com/ronny1020/muster)<br><sub>⭐&nbsp;2 · TypeScript</sub>                                                                                | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state   | —        |
-| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object                                          | 56/mo    |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object                                          | 43/mo    |
 
 ## 🤝 Upstream contributions
 
@@ -152,3 +150,9 @@ pie showData title Repositories by language
 </p>
 
 </details>
+
+---
+
+<p align="center">
+  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
+</p>

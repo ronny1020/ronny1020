@@ -65,7 +65,7 @@ describe('renderSections', () => {
     }
   })
 
-  it('keeps the weather credit centred when the forecast has no facts', () => {
+  it('keeps the page centred when the forecast has no facts', () => {
     const template = readFileSync(MAIN_PROFILE_PATH, 'utf8')
     const html = Bun.markdown.html(
       renderTemplate(template, { ...sections, weatherFacts: '' }),

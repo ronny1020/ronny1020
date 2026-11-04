@@ -44,7 +44,7 @@ const AQI_BANDS: { icon: string; label: string; upTo: number }[] = [
   { icon: '🟤', label: 'hazardous', upTo: Infinity },
 ]
 
-/** Sunrise, sunset and the day's worst air, on the small line under the greeting. */
+/** Sunrise, sunset and the day's worst air, on the line under the greeting. */
 export function renderWeatherFacts(forecast: Forecast | null): string {
   const peakAqi = forecast?.peakAqi
   const band =
@@ -55,5 +55,5 @@ export function renderWeatherFacts(forecast: Forecast | null): string {
     ...(band ? [`${band.icon} peak US AQI ${peakAqi}, ${band.label}`] : []),
   ]
 
-  return facts.length > 0 ? `<sub>${facts.join(' · ')}</sub><br>` : ''
+  return facts.join(' · ')
 }
