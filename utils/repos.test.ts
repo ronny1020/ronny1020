@@ -4,6 +4,7 @@ import { buildRepo } from './fixtures.ts'
 import {
   byStars,
   isOwnRepo,
+  pickFeaturedCandidates,
   pickFeaturedRepos,
   pickRecentRepos,
   repoDescription,
@@ -51,9 +52,9 @@ describe('sumBy', () => {
   })
 })
 
-describe('pickFeaturedRepos', () => {
+describe('pickFeaturedCandidates', () => {
   it('takes the most starred non-archived repositories', () => {
-    const featured = pickFeaturedRepos([
+    const featured = pickFeaturedCandidates([
       buildRepo({ name: 'archived', archived: true, stargazers_count: 99 }),
       buildRepo({ name: 'fork', fork: true, stargazers_count: 50 }),
       buildRepo({ name: 'a', stargazers_count: 5 }),
@@ -63,12 +64,65 @@ describe('pickFeaturedRepos', () => {
     expect(featured.map((repo) => repo.name)).toEqual(['b', 'a'])
   })
 
-  it('caps the list at four projects', () => {
-    const repos = Array.from({ length: 9 }, (_, index) =>
+  it('keeps every eligible project, so exclusions cannot leave a slot empty', () => {
+    const repos = Array.from({ length: 12 }, (_, index) =>
       buildRepo({ name: `repo-${index}`, stargazers_count: index }),
     )
 
-    expect(pickFeaturedRepos(repos)).toHaveLength(4)
+    expect(pickFeaturedCandidates(repos)).toHaveLength(12)
+  })
+})
+
+describe('pickFeaturedRepos', () => {
+  const npmPackage = { description: '', name: 'listed-pkg', version: '1.0.0' }
+
+  it('skips a project whose package already has a packages-table row', () => {
+    const featured = pickFeaturedRepos({
+      candidates: [buildRepo({ name: 'listed' }), buildRepo({ name: 'other' })],
+      listedPackages: new Set(['listed-pkg']),
+      npmPackages: new Map([['listed', npmPackage]]),
+    })
+
+    expect(featured.map((repo) => repo.name)).toEqual(['other'])
+  })
+
+  it('skips every repository of a scoped family with a row', () => {
+    const featured = pickFeaturedRepos({
+      candidates: [
+        buildRepo({ name: 'channel-state' }),
+        buildRepo({ name: 'b' }),
+      ],
+      listedPackages: new Set(['@channel-state/react']),
+      npmPackages: new Map([
+        ['channel-state', { ...npmPackage, name: '@channel-state/core' }],
+      ]),
+    })
+
+    expect(featured.map((repo) => repo.name)).toEqual(['b'])
+  })
+
+  it('still skips a listed project when its package lookup failed', () => {
+    const featured = pickFeaturedRepos({
+      candidates: [buildRepo({ name: 'listed-pkg' }), buildRepo({ name: 'b' })],
+      listedPackages: new Set(['listed-pkg']),
+      npmPackages: new Map(),
+    })
+
+    expect(featured.map((repo) => repo.name)).toEqual(['b'])
+  })
+
+  it('caps the list at four projects', () => {
+    const candidates = Array.from({ length: 8 }, (_, index) =>
+      buildRepo({ name: `repo-${index}` }),
+    )
+
+    expect(
+      pickFeaturedRepos({
+        candidates,
+        listedPackages: new Set(),
+        npmPackages: new Map(),
+      }),
+    ).toHaveLength(4)
   })
 })
 
@@ -89,6 +143,22 @@ describe('pickRecentRepos', () => {
     ])
 
     expect(repos.map((repo) => repo.name)).toEqual(['newest', 'older'])
+  })
+
+  it('skips Homebrew taps and Scoop buckets, which only hold manifests', () => {
+    const repos = pickRecentRepos([
+      buildRepo({ name: 'homebrew-tap' }),
+      buildRepo({ name: 'Scoop-Bucket' }),
+      buildRepo({ name: 'scoop-ui' }),
+      buildRepo({ name: 'react-tap' }),
+      buildRepo({ name: 'token-bucket' }),
+    ])
+
+    expect(repos.map((repo) => repo.name)).toEqual([
+      'scoop-ui',
+      'react-tap',
+      'token-bucket',
+    ])
   })
 })
 

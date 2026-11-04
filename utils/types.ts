@@ -52,7 +52,12 @@ type IssueResponse = SearchResponse['items'][number]
 export type Issue = Required<
   Pick<
     IssueResponse,
-    'html_url' | 'labels' | 'repository_url' | 'state_reason' | 'title'
+    | 'closed_at'
+    | 'html_url'
+    | 'labels'
+    | 'repository_url'
+    | 'state_reason'
+    | 'title'
   >
 >
 
@@ -112,4 +117,8 @@ export type Forecast = {
   high: number
   low: number
   rainChance: number
+  sunrise: Date | null
+  sunset: Date | null
+  /** Highest hourly US AQI of the day. */
+  peakAqi: number | null
 }

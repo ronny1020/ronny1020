@@ -59,7 +59,7 @@ async function fetchNpmPackage(repo: GithubRepo): Promise<NpmPackage | null> {
   }
 }
 
-/** npm metadata for the repositories the README links to, keyed by repo name. */
+/** npm metadata for the given repositories, keyed by repo name. */
 export async function fetchNpmPackages(
   repos: GithubRepo[],
 ): Promise<Map<string, NpmPackage>> {

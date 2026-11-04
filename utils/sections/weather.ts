@@ -1,3 +1,4 @@
+import { formatClock } from '../format.ts'
 import type { Forecast } from '../types.ts'
 
 /** WMO weather codes, grouped into what a visitor would say about the sky. */
@@ -31,4 +32,28 @@ export function renderWeather(forecast: Forecast | null): string {
       : ''
 
   return `${sky.icon} Hello from Taipei — ${sky.phrase} today, ${temperatures}${rain}.`
+}
+
+/** US AQI bands, upper bounds inclusive, as Open-Meteo documents them. */
+const AQI_BANDS: { icon: string; label: string; upTo: number }[] = [
+  { icon: '🟢', label: 'good', upTo: 50 },
+  { icon: '🟡', label: 'moderate', upTo: 100 },
+  { icon: '🟠', label: 'unhealthy for sensitive groups', upTo: 150 },
+  { icon: '🔴', label: 'unhealthy', upTo: 200 },
+  { icon: '🟣', label: 'very unhealthy', upTo: 300 },
+  { icon: '🟤', label: 'hazardous', upTo: Infinity },
+]
+
+/** Sunrise, sunset and the day's worst air, on the small line under the greeting. */
+export function renderWeatherFacts(forecast: Forecast | null): string {
+  const peakAqi = forecast?.peakAqi
+  const band =
+    peakAqi == null ? undefined : AQI_BANDS.find(({ upTo }) => peakAqi <= upTo)
+  const facts = [
+    ...(forecast?.sunrise ? [`🌅 ${formatClock(forecast.sunrise)}`] : []),
+    ...(forecast?.sunset ? [`🌇 ${formatClock(forecast.sunset)}`] : []),
+    ...(band ? [`${band.icon} peak US AQI ${peakAqi}, ${band.label}`] : []),
+  ]
+
+  return facts.length > 0 ? `<sub>${facts.join(' · ')}</sub><br>` : ''
 }

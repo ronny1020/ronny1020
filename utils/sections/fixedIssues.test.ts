@@ -5,6 +5,7 @@ import type { Issue } from '../types.ts'
 
 function issue(repo: string, title: string): Issue {
   return {
+    closed_at: '2026-08-17T00:00:00Z',
     html_url: `https://github.com/${repo}/issues/1`,
     labels: [{ name: 'bug' }],
     repository_url: `https://api.github.com/repos/${repo}`,
@@ -16,8 +17,11 @@ function issue(repo: string, title: string): Issue {
 describe('renderFixedIssues', () => {
   it('names the project and links the report', () => {
     const section = renderFixedIssues({
-      items: [issue('vuejs/vitepress', 'Broken anchor on reload')],
-      total_count: 1,
+      repoStars: new Map(),
+      search: {
+        items: [issue('vuejs/vitepress', 'Broken anchor on reload')],
+        total_count: 1,
+      },
     })
 
     expect(section).toContain(
@@ -34,15 +38,21 @@ describe('renderFixedIssues', () => {
     )
 
     expect(
-      renderFixedIssues({ items, total_count: items.length }).split('\n'),
+      renderFixedIssues({
+        repoStars: new Map(),
+        search: { items, total_count: items.length },
+      }).split('\n'),
     ).toHaveLength(5)
   })
 
   it('drops the [BUG] prefix, which the heading already says', () => {
     expect(
       renderFixedIssues({
-        items: [issue('a/b', '[BUG] it crashes')],
-        total_count: 1,
+        repoStars: new Map(),
+        search: {
+          items: [issue('a/b', '[BUG] it crashes')],
+          total_count: 1,
+        },
       }),
     ).toContain('[it crashes](https://github.com/a/b/issues/1)')
   })
@@ -50,15 +60,34 @@ describe('renderFixedIssues', () => {
   it('escapes brackets but keeps a code span readable', () => {
     expect(
       renderFixedIssues({
-        items: [issue('a/b', '`font-mono | mono` mismatch [regression]')],
-        total_count: 1,
+        repoStars: new Map(),
+        search: {
+          items: [issue('a/b', '`font-mono | mono` mismatch [regression]')],
+          total_count: 1,
+        },
       }),
     ).toContain('`font-mono | mono` mismatch \\[regression\\]')
   })
 
   it('reports when nothing was fixed', () => {
-    expect(renderFixedIssues({ items: [], total_count: 0 })).toBe(
-      'No fixed upstream issues available.',
-    )
+    expect(
+      renderFixedIssues({
+        repoStars: new Map(),
+        search: { items: [], total_count: 0 },
+      }),
+    ).toBe('No fixed upstream issues available.')
+  })
+
+  it('gives the project scale and the fix date', () => {
+    const section = renderFixedIssues({
+      repoStars: new Map([['vuejs/vitepress', 15234]]),
+      search: {
+        items: [issue('vuejs/vitepress', 'Broken anchor')],
+        total_count: 1,
+      },
+    })
+
+    expect(section).toContain('⭐&nbsp;15,234<br>')
+    expect(section).toContain('<sub>fixed Aug&nbsp;17,&nbsp;2026</sub>')
   })
 })

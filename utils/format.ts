@@ -21,6 +21,15 @@ export function formatDate(isoDate: string): string {
     .replace(/ /g, '&nbsp;')
 }
 
+/** Clock time in the profile's home time zone, e.g. `5:58 AM`. */
+export function formatClock(date: Date): string {
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZone: PROFILE_TIME_ZONE,
+  })
+}
+
 /** Date, time, and UTC offset of the profile's home time zone. */
 export function formatTimestamp(date: Date): string {
   return date.toLocaleString('en-US', {

@@ -6,11 +6,15 @@ export const GITHUB_API_URL = 'https://api.github.com'
 export const NPM_REGISTRY_URL = 'https://registry.npmjs.org'
 export const NPM_DOWNLOADS_API_URL = 'https://api.npmjs.org/downloads/point'
 export const OPEN_METEO_URL = 'https://api.open-meteo.com/v1/forecast'
+export const OPEN_METEO_AIR_QUALITY_URL =
+  'https://air-quality-api.open-meteo.com/v1/air-quality'
 export const TAIPEI = { latitude: 25.0478, longitude: 121.5319 }
 export const REQUEST_TIMEOUT_MS = 10_000
 export const REPOS_PER_PAGE = 100
 export const MAX_RECENT_REPOS = 4
 export const MAX_FEATURED_REPOS = 4
+/** Below this, a package is only counted, under the packages table. */
+export const MIN_MONTHLY_INSTALLS = 100
 export const MAX_LANGUAGES = 6
 /** Table columns wrap their own words when a description runs longer. */
 export const MAX_DESCRIPTION_LENGTH = 90

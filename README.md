@@ -7,13 +7,13 @@
 <h3 align="center">☁️ Hello from Taipei — grey and overcast today, 21–30&nbsp;°C.</h3>
 
 <p align="center">
-  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></sub>
+  <sub>🌅 6:03 AM · 🌇 5:11 PM · 🟡 peak US AQI 82, moderate</sub><br><sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
 </p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026, 5:39 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026 at 6:27 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <sub><b>398,628</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,146</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>399,221</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,145</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -36,26 +36,21 @@
 
 ## 📥 Packages people install
 
-| Package                                                                        | What it is                                                                                 | Installs / month |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ---------------- |
-| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter)   | Formatting json data to JSX of React                                                       | 30,542           |
-| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)               | Tool for creating Traditional Chinese lorem ipsum                                          | 129              |
-| [`condition-switch`](https://www.npmjs.com/package/condition-switch)           | A powerful and flexible TypeScript utility for writing clean, declarative, and expressive… | 63               |
-| [`@channel-state/react`](https://www.npmjs.com/package/@channel-state/react)   | React hooks for channel-state, providing seamless integration with React applications for… | 41               |
-| [`ai-agent-press`](https://www.npmjs.com/package/ai-agent-press)               | Transform AI agent instruction and skill files into searchable documentation portals       | 41               |
-| [`@channel-state/vue`](https://www.npmjs.com/package/@channel-state/vue)       | Vue composables for channel-state, providing seamless integration with Vue applications…   | 40               |
-| [`@channel-state/core`](https://www.npmjs.com/package/@channel-state/core)     | Core-library for channel-state, providing framework-agnostic, zero-dependency state…       | 39               |
-| [`@channel-state/svelte`](https://www.npmjs.com/package/@channel-state/svelte) | Svelte stores for channel-state, providing seamless integration with Svelte applications…  | 36               |
-| [`twinlink`](https://www.npmjs.com/package/twinlink)                           | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     | 15               |
+| Package                                                                      | What it is                                        | Installs / month |
+| ---------------------------------------------------------------------------- | ------------------------------------------------- | ---------------- |
+| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React              | 30,542           |
+| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum | 129              |
+
+<sub>…and 8 smaller packages</sub>
 
 ## 📦 Featured projects
 
-| Project                                                                                                                                                                           | What it does                                                                           | Installs  |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------- |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>               | A state-management provides robust, seamless state synchronization across all browser… | 39/mo     |
-| [**react-json-formatter**](https://github.com/ronny1020/react-json-formatter)<br><sub>⭐&nbsp;9 · TypeScript · [v0.4.0](https://www.npmjs.com/package/react-json-formatter)</sub> | Formatting json data to JSX of React                                                   | 30,542/mo |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub>             | A condition switch library for js/ts                                                   | 63/mo     |
-| [**muster**](https://github.com/ronny1020/muster)<br><sub>⭐&nbsp;2 · TypeScript</sub>                                                                                            | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state   | —         |
+| Project                                                                                                                                                               | What it does                                                                           | Installs |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------- |
+| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>   | A state-management provides robust, seamless state synchronization across all browser… | 39/mo    |
+| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts                                                   | 63/mo    |
+| [**muster**](https://github.com/ronny1020/muster)<br><sub>⭐&nbsp;2 · TypeScript</sub>                                                                                | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state   | —        |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object                                          | 43/mo    |
 
 ## 🤝 Upstream contributions
 
@@ -64,7 +59,7 @@
 - **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,523<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,624<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,623<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
 - **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,899<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;855<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
@@ -72,10 +67,10 @@
 
 Issues I opened in other people's projects that the maintainers labelled a bug and then fixed.
 
-- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** — [The `font-mono` is considered not a tailwind class with the `fontFamily` setting without mono setting in tailwind.config.js.](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/249)
-- **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** — [`vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899)
-- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** — [It takes a lot of time to execute, especially `tailwindcss/classnames-order `](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/136)
-- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** — [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643)
+- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** ⭐&nbsp;2,072<br> [The `font-mono` is considered not a tailwind class with the `fontFamily` setting without mono setting in tailwind.config.js.](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/249) <sub>fixed Jun&nbsp;19,&nbsp;2023</sub>
+- **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** ⭐&nbsp;2,538<br> [`vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899) <sub>fixed Mar&nbsp;15,&nbsp;2023</sub>
+- **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** ⭐&nbsp;2,072<br> [It takes a lot of time to execute, especially `tailwindcss/classnames-order `](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/136) <sub>fixed Jun&nbsp;9,&nbsp;2022</sub>
+- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** ⭐&nbsp;4,588<br> [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643) <sub>fixed Oct&nbsp;5,&nbsp;2021</sub>
 
 ## 🗺️ The project I maintain
 
@@ -85,26 +80,26 @@ I have written 484 of the 535 human commits in it, across 124 merged pull reques
 
 ## 🚀 Recently pushed
 
-| Repository                                                                                                               | What it does                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| [**scoop-bucket**](https://github.com/ronny1020/scoop-bucket)<br><sub>pushed Nov&nbsp;4,&nbsp;2026</sub>                 | Scoop manifests for ronny1020's projects                                               |
-| [**homebrew-tap**](https://github.com/ronny1020/homebrew-tap)<br><sub>Ruby · pushed Nov&nbsp;4,&nbsp;2026</sub>          | Homebrew casks for ronny1020's projects                                                |
-| [**muster**](https://github.com/ronny1020/muster)<br><sub>TypeScript · pushed Nov&nbsp;4,&nbsp;2026</sub>                | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state   |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>TypeScript · pushed Sep&nbsp;10,&nbsp;2026</sub> | A state-management provides robust, seamless state synchronization across all browser… |
+| Repository                                                                                                                | What it does                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [**muster**](https://github.com/ronny1020/muster)<br><sub>TypeScript · pushed Nov&nbsp;4,&nbsp;2026</sub>                 | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state       |
+| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>TypeScript · pushed Sep&nbsp;10,&nbsp;2026</sub>  | A state-management provides robust, seamless state synchronization across all browser…     |
+| [**ai-agent-press**](https://github.com/ronny1020/ai-agent-press)<br><sub>TypeScript · pushed Sep&nbsp;5,&nbsp;2026</sub> | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and… |
+| [**twinlink**](https://github.com/ronny1020/twinlink)<br><sub>TypeScript · pushed Jul&nbsp;11,&nbsp;2026</sub>            | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     |
 
 ## 🔭 Themes I keep starring
 
 <p align="center">
-  <img alt="javascript: 14 starred repositories" src="https://img.shields.io/badge/javascript-14-30363d?style=for-the-badge&labelColor=1f2328">
-  <img alt="typescript: 10 starred repositories" src="https://img.shields.io/badge/typescript-10-30363d?style=for-the-badge&labelColor=1f2328">
-  <img alt="react: 5 starred repositories" src="https://img.shields.io/badge/react-5-30363d?style=for-the-badge&labelColor=1f2328">
+  <img alt="react: 6 starred repositories" src="https://img.shields.io/badge/react-6-30363d?style=for-the-badge&labelColor=1f2328">
+  <img alt="agents: 5 starred repositories" src="https://img.shields.io/badge/agents-5-30363d?style=for-the-badge&labelColor=1f2328">
   <img alt="computer-science: 4 starred repositories" src="https://img.shields.io/badge/computer--science-4-30363d?style=for-the-badge&labelColor=1f2328">
+  <img alt="llms: 4 starred repositories" src="https://img.shields.io/badge/llms-4-30363d?style=for-the-badge&labelColor=1f2328">
   <img alt="openai: 4 starred repositories" src="https://img.shields.io/badge/openai-4-30363d?style=for-the-badge&labelColor=1f2328">
   <img alt="rust: 4 starred repositories" src="https://img.shields.io/badge/rust-4-30363d?style=for-the-badge&labelColor=1f2328">
-  <img alt="agents: 3 starred repositories" src="https://img.shields.io/badge/agents-3-30363d?style=for-the-badge&labelColor=1f2328">
   <img alt="ai: 3 starred repositories" src="https://img.shields.io/badge/ai-3-30363d?style=for-the-badge&labelColor=1f2328">
-  <img alt="ai-agents: 3 starred repositories" src="https://img.shields.io/badge/ai--agents-3-30363d?style=for-the-badge&labelColor=1f2328">
   <img alt="algorithms: 3 starred repositories" src="https://img.shields.io/badge/algorithms-3-30363d?style=for-the-badge&labelColor=1f2328">
+  <img alt="clean-architecture: 3 starred repositories" src="https://img.shields.io/badge/clean--architecture-3-30363d?style=for-the-badge&labelColor=1f2328">
+  <img alt="data-structures: 3 starred repositories" src="https://img.shields.io/badge/data--structures-3-30363d?style=for-the-badge&labelColor=1f2328">
 </p>
 
 <details>
@@ -136,7 +131,7 @@ pie showData title Repositories by language
 </details>
 
 <details>
-<summary><b>📊 GitHub in numbers</b> — profile cards and contribution activity</summary>
+<summary><b>📊 GitHub in numbers</b> — profile cards</summary>
 
 <p align="center">
   <picture>
@@ -153,13 +148,6 @@ pie showData title Repositories by language
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/4-productive-time.svg">
     <img alt="Productive time" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/4-productive-time.svg" width="340">
-  </picture>
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-compact&hide_border=true&area=true">
-    <img alt="Contribution activity of the last 31 days" src="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-light&hide_border=true&area=true" width="680">
   </picture>
 </p>
 

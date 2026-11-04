@@ -5,6 +5,7 @@ import {
   markdownTable,
   truncate,
 } from '../format.ts'
+import { type PackageInstalls, splitPackagesByReach } from '../npmDownloads.ts'
 import type { NpmPackage } from '../types.ts'
 
 /**
@@ -13,22 +14,15 @@ import type { NpmPackage } from '../types.ts'
  */
 export function renderPackages({
   descriptions,
-  lastMonth,
-  packageNames,
-}: {
-  descriptions: Map<string, NpmPackage>
-  lastMonth: Map<string, number>
-  packageNames: string[]
-}): string {
-  const ranked = packageNames
-    .map((name) => ({ downloads: lastMonth.get(name) ?? 0, name }))
-    .sort((a, b) => b.downloads - a.downloads)
+  ...installs
+}: PackageInstalls & { descriptions: Map<string, NpmPackage> }): string {
+  const { listed, smaller } = splitPackagesByReach(installs)
 
-  if (ranked.length === 0) {
+  if (listed.length === 0 && smaller.length === 0) {
     return 'No published packages available.'
   }
 
-  const rows = ranked.map(({ downloads, name }) => {
+  const rows = listed.map(({ downloads, name }) => {
     const description = escapeTableCell(
       truncate(
         descriptions.get(name)?.description ?? '—',
@@ -38,6 +32,15 @@ export function renderPackages({
 
     return `| [\`${name}\`](https://www.npmjs.com/package/${name}) | ${description} | ${formatNumber(downloads)} |`
   })
+  const table =
+    rows.length > 0
+      ? markdownTable(['Package', 'What it is', 'Installs / month'], rows)
+      : ''
+  const count = `${smaller.length} ${rows.length > 0 ? 'smaller' : 'published'} package${smaller.length === 1 ? '' : 's'}`
+  const smallerLine =
+    smaller.length > 0
+      ? `<sub>${rows.length > 0 ? `…and ${count}` : count}</sub>`
+      : ''
 
-  return markdownTable(['Package', 'What it is', 'Installs / month'], rows)
+  return [table, smallerLine].filter(Boolean).join('\n\n')
 }

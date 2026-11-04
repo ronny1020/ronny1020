@@ -23,9 +23,9 @@ function render(
 describe('renderPackages', () => {
   it('ranks by installs rather than by stars', () => {
     const rows = render([
-      ['condition-switch', 76],
+      ['condition-switch', 176],
       ['react-json-formatter', 25447],
-      ['twinlink', 21],
+      ['twinlink', 121],
     ]).split('\n')
 
     expect(rows[2]).toContain('react-json-formatter')
@@ -37,7 +37,10 @@ describe('renderPackages', () => {
   it('includes scoped packages that share a repository with others', () => {
     const section = renderPackages({
       descriptions: new Map(),
-      lastMonth: new Map([['@channel-state/core', 55]]),
+      lastMonth: new Map([
+        ['@channel-state/core', 155],
+        ['@channel-state/react', 120],
+      ]),
       packageNames: ['@channel-state/core', '@channel-state/react'],
     })
 
@@ -47,12 +50,22 @@ describe('renderPackages', () => {
 
   it('shows the registry description when there is one', () => {
     expect(
-      render([['twinlink', 21]], [['twinlink', 'WebRTC data channels']]),
+      render([['twinlink', 210]], [['twinlink', 'WebRTC data channels']]),
     ).toContain('WebRTC data channels')
   })
 
-  it('counts a package with no download data as zero', () => {
-    expect(render([])).toContain('| 0 |')
+  it('counts packages under the install floor below the table', () => {
+    const section = render([
+      ['react-json-formatter', 25447],
+      ['condition-switch', 63],
+    ])
+
+    expect(section).not.toContain('condition-switch')
+    expect(section).toEndWith('<sub>…and 2 smaller packages</sub>')
+  })
+
+  it('says so when no package reaches the floor', () => {
+    expect(render([])).toBe('<sub>3 published packages</sub>')
   })
 
   it('reports an empty package list', () => {

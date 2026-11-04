@@ -1,4 +1,4 @@
-import { formatTimestamp } from '../format.ts'
+import { formatTimestamp, repoFullName } from '../format.ts'
 import type {
   Forecast,
   GithubRepo,
@@ -22,7 +22,7 @@ import { renderSocialLinks } from './socialLinks.ts'
 import { renderStarTopics } from './starTopics.ts'
 import { renderTechStack } from './techStack.ts'
 import { renderUpstreamPullRequests } from './upstreamPullRequests.ts'
-import { renderWeather } from './weather.ts'
+import { renderWeather, renderWeatherFacts } from './weather.ts'
 
 export type ProfileData = RepoLinks & {
   dependencyCounts: Map<string, number>
@@ -38,7 +38,7 @@ export type ProfileData = RepoLinks & {
   socialAccounts: SocialAccount[]
   starred: StarredRepo[]
   upstream: PullRequestSearch
-  upstreamStars: Map<string, number>
+  repoStars: Map<string, number>
   user: GithubUser
   weather: Forecast | null
   yearlyDownloads: number
@@ -50,8 +50,13 @@ export type ProfileData = RepoLinks & {
  * which is what the marker test asserts against.
  */
 export function renderSections(data: ProfileData): Record<string, string> {
-  const upstreamStarTotal = [...data.upstreamStars.values()].reduce(
-    (sum, stars) => sum + stars,
+  const upstreamRepos = new Set(
+    data.upstream.items.map((pullRequest) =>
+      repoFullName(pullRequest.repository_url),
+    ),
+  )
+  const upstreamStarTotal = [...upstreamRepos].reduce(
+    (sum, fullName) => sum + (data.repoStars.get(fullName) ?? 0),
     0,
   )
 
@@ -62,7 +67,10 @@ export function renderSections(data: ProfileData): Record<string, string> {
       repos: data.featured,
       siteLinks: data.siteLinks,
     }),
-    fixedIssues: renderFixedIssues(data.fixedIssues),
+    fixedIssues: renderFixedIssues({
+      repoStars: data.repoStars,
+      search: data.fixedIssues,
+    }),
     highlights: renderHighlights({
       maintained: data.maintained,
       repos: data.repos,
@@ -87,9 +95,10 @@ export function renderSections(data: ProfileData): Record<string, string> {
     starTopics: renderStarTopics(data.starred),
     techStack: renderTechStack(data.dependencyCounts),
     upstream: renderUpstreamPullRequests({
-      repoStars: data.upstreamStars,
+      repoStars: data.repoStars,
       search: data.upstream,
     }),
     weather: renderWeather(data.weather),
+    weatherFacts: renderWeatherFacts(data.weather),
   }
 }

@@ -31,10 +31,10 @@ utils/config.ts         username, endpoints, limits, paths, EXCLUDED_REPOS
 utils/types.ts          response types derived from @octokit/types
 utils/github.ts         GitHub REST client and fetchers
 utils/npm.ts            npm registry lookups
-utils/npmDownloads.ts   install counts (bulk endpoint rejects scoped names)
+utils/npmDownloads.ts   install counts (bulk endpoint rejects scoped names) and the packages-table floor
 utils/repos.ts          repo filtering, selection, descriptions
 utils/siteLinks.ts      reachable-homepage checks for demo links
-utils/weather.ts        today's Taipei forecast via the `openmeteo` client (no key)
+utils/weather.ts        today's Taipei forecast, sun times and peak US AQI via the `openmeteo` client (no key)
 utils/liveBadge.ts      animated "live" status pill (SVG)
 utils/format.ts         numbers, dates, shields URLs, markdown table helpers
 utils/template.ts       marker replacement
@@ -65,17 +65,19 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Evidence floors.** A tool or theme needs `MIN_EVIDENCE_COUNT` repositories behind it, and the generated stack stays silent below `MIN_STACK_TOOLS` rather than publishing an almost-empty row.
 - **Escape API text in tables** with `escapeTableCell`; a `|` or `[` in a description or PR title otherwise breaks the row.
 - **Types come from `@octokit/types`**, narrowed with `Required<Pick<…>>`. Do not hand-write GitHub response shapes.
-- **Credit Open-Meteo.** Its terms require a visible reference wherever its data appears; the link sits under the weather line in `mainProfile.md`.
+- **Packages and Featured don't overlap.** A package needs `MIN_MONTHLY_INSTALLS` for a packages-table row; the rest are counted on one line under the table. A project whose package family has a row is left out of Featured projects, which then takes the next most starred project. That check looks up npm metadata for every candidate repository, one registry request each.
+- **Credit Open-Meteo and CAMS.** Their terms require a visible reference wherever their data appears — Open-Meteo for the forecast, CAMS for air quality; both links sit under the weather line in `mainProfile.md`.
 - **Renderers are pure** — they take data and return markdown or SVG. All fetching lives in `github.ts`, `npm.ts`, `npmDownloads.ts`, `siteLinks.ts`, and `weather.ts`; all file writes in `updateREADME.ts`.
 - **Tests never hit the network.** Mock `globalThis.fetch` with the `mockFetch` helper (the `openmeteo` client, which parses FlatBuffers, is mocked whole with `mock.module`) and build payloads with `utils/fixtures.ts`.
 - **Own-organisation work is not an upstream contribution.** `EXCLUDED_OWNERS` in `utils/config.ts` drops those accounts from the contributions search; add private organisations through the `EXCLUDED_OWNERS` environment variable (comma separated) so their names stay out of this public repo.
 - **Dates and counts use `&nbsp;`** so a narrow table column cannot wrap `Aug 17, 2026` after the comma.
+- **Release manifests stay out of the showcase.** Homebrew taps (`homebrew-*`) and Scoop buckets (`*scoop-bucket`) are skipped from Featured and Recently pushed, but still count in totals.
 - **Hide a repository** by adding its name to `EXCLUDED_REPOS` in `utils/config.ts`; that filter also removes it from star, fork, and language totals.
 - **Never publish private data.** Both PR searches pin `is:public` and `getStarredRepos` filters `private` stars — a local run uses a `repo`-scoped token that can see work repositories.
 - **Motion lives in SVG.** GitHub strips CSS and scripts from a README, so the live badge animates inside its own SVG, which the workflow commits with the README. It honours `prefers-reduced-motion`.
 - **Summary cards are self-hosted.** The workflow runs `vn7n24fzkq/github-profile-summary-cards` with `AUTO_PUSH: false` and commits `profile-summary-card-output/{default,github_dark}` alongside the README; the shared card service rate limits and rendered "Cards are temporarily rate limited" in place of four of the five cards. The action writes all 65 themes — only those two folders are added to git.
 - **Card hosts must answer fast.** GitHub proxies every image through camo, which gives up after a few seconds and serves a 504 — a card host that needs 6s renders as broken on the profile even though `curl` says 200. Time a new host before adding it (`streak-stats.demolab.com` was dropped for this).
-- **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
+- **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused, and when `github-readme-activity-graph.vercel.app` began returning 402.
 - **Bun is the whole toolchain** — no Prettier, ESLint, or `typescript` package:
   - `bun fmt` formats with `.prettierrc.json` and skips `.prettierignore`.
   - `bun lint` runs type-aware rules and fails on any warning (`bunfig.toml`); fix a finding rather than suppressing it. It ships only in canary builds so far, so CI installs `canary` — run `bun upgrade --canary` locally.

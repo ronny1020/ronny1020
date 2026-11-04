@@ -22,15 +22,23 @@ import {
 } from './utils/github.ts'
 import { renderLiveBadges } from './utils/liveBadge.ts'
 import { fetchNpmPackages, fetchPackageManifests } from './utils/npm.ts'
-import { fetchPackageDownloads } from './utils/npmDownloads.ts'
-import { isOwnRepo, pickFeaturedRepos, pickRecentRepos } from './utils/repos.ts'
+import {
+  fetchPackageDownloads,
+  splitPackagesByReach,
+} from './utils/npmDownloads.ts'
+import {
+  isOwnRepo,
+  pickFeaturedCandidates,
+  pickFeaturedRepos,
+  pickRecentRepos,
+} from './utils/repos.ts'
 import { renderSections } from './utils/sections/index.ts'
 import { fetchSiteLinks } from './utils/siteLinks.ts'
 import { renderTemplate } from './utils/template.ts'
 import type { GithubRepo } from './utils/types.ts'
 import { fetchForecast } from './utils/weather.ts'
 
-/** Repositories the README links to, each listed once. */
+/** Repositories from several lists, each listed once. */
 function dedupe(repos: GithubRepo[]): GithubRepo[] {
   return [...new Map(repos.map((repo) => [repo.name, repo])).values()]
 }
@@ -71,29 +79,34 @@ async function updateProfile(): Promise<void> {
   ])
 
   const ownRepos = repos.filter(isOwnRepo)
-  const featured = pickFeaturedRepos(repos)
+  const candidates = pickFeaturedCandidates(repos)
   const recent = pickRecentRepos(repos)
-  const linked = dedupe([...featured, ...recent])
 
-  const [npmPackages, siteLinks, upstreamStars, dependencyCounts] =
-    await Promise.all([
-      fetchNpmPackages(linked),
-      fetchSiteLinks(linked),
-      getRepoStars([
-        ...new Set(
-          upstream.items.map((pullRequest) =>
-            repoFullName(pullRequest.repository_url),
-          ),
+  const [npmPackages, repoStars, dependencyCounts] = await Promise.all([
+    fetchNpmPackages(dedupe([...candidates, ...recent])),
+    getRepoStars([
+      ...new Set(
+        [...upstream.items, ...fixedIssues.items].map((item) =>
+          repoFullName(item.repository_url),
         ),
-      ]),
-      getDeclaredDependencies(ownRepos),
-    ])
+      ),
+    ]),
+    getDeclaredDependencies(ownRepos),
+  ])
 
   const downloads = await fetchPackageDownloads({
     maintainer: GITHUB_USERNAME,
     repoPackages: [...npmPackages.values()],
   })
   const publishedPackages = await fetchPackageManifests(downloads.packageNames)
+  const featured = pickFeaturedRepos({
+    candidates,
+    listedPackages: new Set(
+      splitPackagesByReach(downloads).listed.map(({ name }) => name),
+    ),
+    npmPackages,
+  })
+  const siteLinks = await fetchSiteLinks(dedupe([...featured, ...recent]))
 
   const readme = renderTemplate(
     template,
@@ -113,7 +126,7 @@ async function updateProfile(): Promise<void> {
       socialAccounts,
       starred,
       upstream,
-      upstreamStars,
+      repoStars,
       user,
       weather,
       yearlyDownloads: downloads.lastYearTotal,

@@ -7,7 +7,7 @@
 <h3 align="center"><!-- generated:weather --></h3>
 
 <p align="center">
-  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></sub>
+  <!-- generated:weatherFacts --><sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
 </p>
 
 <p align="center">
@@ -68,7 +68,7 @@ Issues I opened in other people's projects that the maintainers labelled a bug a
 </details>
 
 <details>
-<summary><b>📊 GitHub in numbers</b> — profile cards and contribution activity</summary>
+<summary><b>📊 GitHub in numbers</b> — profile cards</summary>
 
 <p align="center">
   <picture>
@@ -85,13 +85,6 @@ Issues I opened in other people's projects that the maintainers labelled a bug a
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/github_dark/4-productive-time.svg">
     <img alt="Productive time" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/profile-summary-card-output/default/4-productive-time.svg" width="340">
-  </picture>
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-compact&hide_border=true&area=true">
-    <img alt="Contribution activity of the last 31 days" src="https://github-readme-activity-graph.vercel.app/graph?username=ronny1020&theme=github-light&hide_border=true&area=true" width="680">
   </picture>
 </p>
 

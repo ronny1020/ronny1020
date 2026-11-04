@@ -1,4 +1,8 @@
-import { NPM_DOWNLOADS_API_URL, NPM_REGISTRY_URL } from './config.ts'
+import {
+  MIN_MONTHLY_INSTALLS,
+  NPM_DOWNLOADS_API_URL,
+  NPM_REGISTRY_URL,
+} from './config.ts'
 import type { NpmPackage } from './types.ts'
 
 type DownloadPoint = { downloads: number } | null
@@ -102,5 +106,29 @@ export async function fetchPackageDownloads({
     lastMonth,
     lastYearTotal: [...lastYear.values()].reduce((sum, n) => sum + n, 0),
     packageNames,
+  }
+}
+
+export type PackageInstalls = {
+  lastMonth: Map<string, number>
+  packageNames: string[]
+}
+
+/**
+ * Packages ranked by last month's installs and split at `MIN_MONTHLY_INSTALLS`:
+ * a row of 30,000 next to rows of 40 reads as filler, so the small ones are
+ * counted under the table instead.
+ */
+export function splitPackagesByReach({
+  lastMonth,
+  packageNames,
+}: PackageInstalls) {
+  const ranked = packageNames
+    .map((name) => ({ downloads: lastMonth.get(name) ?? 0, name }))
+    .sort((a, b) => b.downloads - a.downloads)
+
+  return {
+    listed: ranked.filter(({ downloads }) => downloads >= MIN_MONTHLY_INSTALLS),
+    smaller: ranked.filter(({ downloads }) => downloads < MIN_MONTHLY_INSTALLS),
   }
 }

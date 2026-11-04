@@ -9,6 +9,7 @@ import {
   buildStarredRepo,
   buildUser,
 } from '../fixtures.ts'
+import { renderTemplate } from '../template.ts'
 import { renderSections } from './index.ts'
 
 const sections = renderSections({
@@ -34,9 +35,17 @@ const sections = renderSections({
   socialAccounts: [{ provider: 'twitter', url: 'https://twitter.com/someone' }],
   starred: [buildStarredRepo()],
   upstream: { items: [], total_count: 0 },
-  upstreamStars: new Map(),
+  repoStars: new Map(),
   user: buildUser(),
-  weather: null,
+  weather: {
+    code: 0,
+    high: 30,
+    low: 21,
+    peakAqi: 42,
+    rainChance: 0,
+    sunrise: new Date('2026-11-03T22:00:00Z'),
+    sunset: new Date('2026-11-04T09:15:00Z'),
+  },
   yearlyDownloads: 380538,
 })
 
@@ -54,5 +63,14 @@ describe('renderSections', () => {
     for (const [name, markdown] of Object.entries(sections)) {
       expect(markdown.trim(), `section ${name}`).not.toBe('')
     }
+  })
+
+  it('keeps the weather credit centred when the forecast has no facts', () => {
+    const template = readFileSync(MAIN_PROFILE_PATH, 'utf8')
+    const html = Bun.markdown.html(
+      renderTemplate(template, { ...sections, weatherFacts: '' }),
+    )
+
+    expect(html).toMatch(/<p align="center">\s*<sub>Weather data by/)
   })
 })
