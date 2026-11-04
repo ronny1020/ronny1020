@@ -1,3 +1,4 @@
+import { formatTimestamp } from '../format.ts'
 import type {
   GithubRepo,
   GithubUser,
@@ -11,7 +12,6 @@ import type {
 } from '../types.ts'
 import { renderFeaturedProjects } from './featuredProjects.ts'
 import { renderFixedIssues } from './fixedIssues.ts'
-import { renderFooter } from './footer.ts'
 import { renderHighlights } from './highlights.ts'
 import { renderLanguages } from './languages.ts'
 import { renderMaintained } from './maintained.ts'
@@ -59,7 +59,6 @@ export function renderSections(data: ProfileData): Record<string, string> {
       siteLinks: data.siteLinks,
     }),
     fixedIssues: renderFixedIssues(data.fixedIssues),
-    footer: renderFooter(data.user),
     highlights: renderHighlights({
       maintained: data.maintained,
       repos: data.repos,
@@ -69,6 +68,7 @@ export function renderSections(data: ProfileData): Record<string, string> {
       yearlyDownloads: data.yearlyDownloads,
     }),
     languages: renderLanguages(data.repos),
+    lastUpdated: formatTimestamp(new Date()),
     maintained: renderMaintained(data.maintained),
     packages: renderPackages({
       descriptions: data.publishedPackages,

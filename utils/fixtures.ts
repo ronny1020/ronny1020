@@ -30,7 +30,6 @@ export function buildUser(overrides: Partial<GithubUser> = {}): GithubUser {
   return {
     created_at: '2019-01-18T07:49:24Z',
     followers: 18,
-    location: 'Taipei',
     public_repos: 67,
     ...overrides,
   }

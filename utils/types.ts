@@ -14,7 +14,7 @@ type StarredResponse =
   Endpoints['GET /users/{username}/starred']['response']['data'][number]
 
 export type GithubUser = Required<
-  Pick<UserResponse, 'created_at' | 'followers' | 'location' | 'public_repos'>
+  Pick<UserResponse, 'created_at' | 'followers' | 'public_repos'>
 >
 
 export type GithubRepo = Required<

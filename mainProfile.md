@@ -4,6 +4,10 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
+<p align="center">
+  <sub>🔄 This profile rebuilds itself every day from the GitHub and npm APIs — last updated <!-- generated:lastUpdated --></sub>
+</p>
+
 <!-- generated:social -->
 
 <!-- generated:highlights -->
@@ -83,9 +87,3 @@ Issues I opened in other people's projects that the maintainers labelled a bug a
 </p>
 
 </details>
-
----
-
-<p align="center">
-  <!-- generated:footer -->
-</p>

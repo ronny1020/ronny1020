@@ -36,7 +36,7 @@ utils/repos.ts          repo filtering, selection, descriptions
 utils/siteLinks.ts      reachable-homepage checks for demo links
 utils/format.ts         numbers, dates, shields URLs, markdown table helpers
 utils/template.ts       marker replacement
-utils/sections/*.ts     one module per generated section
+utils/sections/*.ts     one module per generated section (except plain formatter calls)
 utils/sections/index.ts renderSections(): marker name → rendered markdown
 utils/fixtures.ts       test payload builders
 README.md               generated output — never edit by hand
@@ -50,6 +50,8 @@ Every static heading, badge, and prose line lives in `mainProfile.md`; everythin
 2. Add `utils/sections/<name>.ts` exporting `render<Name>()`, and export it from `utils/sections/index.ts`.
 3. Add the marker name and its renderer to `renderSections` in `utils/sections/index.ts` — `utils/sections/index.test.ts` asserts the marker set and the registry keys match exactly.
 4. Add `utils/sections/<name>.test.ts` covering the empty case and the data it formats.
+
+A marker whose value is a single `utils/format.ts` call (`lastUpdated` is `formatTimestamp`) skips steps 2 and 4 and maps straight to that call in `renderSections`; its test lives with the formatter.
 
 An unmapped marker is left verbatim in `README.md`, which is the signal that step 3 is missing.
 
