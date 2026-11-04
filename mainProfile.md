@@ -4,8 +4,9 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
+<h3 align="center"><!-- generated:weather --></h3>
+
 <p align="center">
-  <!-- generated:weather --><br>
   <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></sub>
 </p>
 

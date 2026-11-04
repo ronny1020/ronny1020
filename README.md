@@ -4,15 +4,16 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
+<h3 align="center">☁️ Hello from Taipei — grey and overcast today, 21–30&nbsp;°C.</h3>
+
 <p align="center">
-  ☁️ Hello from Taipei — grey and overcast today, 21–30&nbsp;°C.<br>
   <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></sub>
 </p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026, 4:38 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026 at 4:59 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
