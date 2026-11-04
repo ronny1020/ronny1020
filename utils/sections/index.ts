@@ -1,5 +1,6 @@
 import { formatTimestamp } from '../format.ts'
 import type {
+  Forecast,
   GithubRepo,
   GithubUser,
   IssueSearch,
@@ -21,11 +22,13 @@ import { renderSocialLinks } from './socialLinks.ts'
 import { renderStarTopics } from './starTopics.ts'
 import { renderTechStack } from './techStack.ts'
 import { renderUpstreamPullRequests } from './upstreamPullRequests.ts'
+import { renderWeather } from './weather.ts'
 
 export type ProfileData = RepoLinks & {
   dependencyCounts: Map<string, number>
   featured: GithubRepo[]
   fixedIssues: IssueSearch
+  generatedAt: Date
   maintained: MaintainedProject
   monthlyDownloads: Map<string, number>
   packageNames: string[]
@@ -37,6 +40,7 @@ export type ProfileData = RepoLinks & {
   upstream: PullRequestSearch
   upstreamStars: Map<string, number>
   user: GithubUser
+  weather: Forecast | null
   yearlyDownloads: number
 }
 
@@ -68,7 +72,7 @@ export function renderSections(data: ProfileData): Record<string, string> {
       yearlyDownloads: data.yearlyDownloads,
     }),
     languages: renderLanguages(data.repos),
-    lastUpdated: formatTimestamp(new Date()),
+    lastUpdated: formatTimestamp(data.generatedAt),
     maintained: renderMaintained(data.maintained),
     packages: renderPackages({
       descriptions: data.publishedPackages,
@@ -86,5 +90,6 @@ export function renderSections(data: ProfileData): Record<string, string> {
       repoStars: data.upstreamStars,
       search: data.upstream,
     }),
+    weather: renderWeather(data.weather),
   }
 }

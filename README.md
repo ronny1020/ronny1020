@@ -5,7 +5,15 @@
 </p>
 
 <p align="center">
-  <sub>🔄 This profile rebuilds itself every day from the GitHub and npm APIs — last updated Nov 4, 2026, 2:52 PM GMT+8</sub>
+  ☁️ Hello from Taipei — grey and overcast today, 21–30&nbsp;°C.<br>
+  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></sub>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 4, 2026 at 4:10 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+  </picture>
 </p>
 
 <p align="center">
@@ -15,7 +23,7 @@
 </p>
 
 <p align="center">
-  <sub><b>398,628</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,143</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>398,628</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,145</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -52,11 +60,11 @@
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,522<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,523<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
 - **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,623<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,898<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,899<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;855<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed

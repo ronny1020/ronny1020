@@ -1,7 +1,9 @@
-import { GITHUB_USERNAME, NPM_REGISTRY_URL } from './config.ts'
+import {
+  GITHUB_USERNAME,
+  NPM_REGISTRY_URL,
+  REQUEST_TIMEOUT_MS,
+} from './config.ts'
 import type { GithubRepo, NpmManifest, NpmPackage } from './types.ts'
-
-const REQUEST_TIMEOUT_MS = 10_000
 
 /** An npm homepage names the package; only a scoped name spans two segments. */
 function packageNameFromHomepage(homepage: string | null): string | undefined {

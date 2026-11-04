@@ -5,6 +5,9 @@ export const GITHUB_USERNAME = 'ronny1020'
 export const GITHUB_API_URL = 'https://api.github.com'
 export const NPM_REGISTRY_URL = 'https://registry.npmjs.org'
 export const NPM_DOWNLOADS_API_URL = 'https://api.npmjs.org/downloads/point'
+export const OPEN_METEO_URL = 'https://api.open-meteo.com/v1/forecast'
+export const TAIPEI = { latitude: 25.0478, longitude: 121.5319 }
+export const REQUEST_TIMEOUT_MS = 10_000
 export const REPOS_PER_PAGE = 100
 export const MAX_RECENT_REPOS = 4
 export const MAX_FEATURED_REPOS = 4
@@ -25,6 +28,8 @@ const PROJECT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 export const MAIN_PROFILE_PATH = resolve(PROJECT_DIR, 'mainProfile.md')
 export const README_PATH = resolve(PROJECT_DIR, 'README.md')
+/** Output directory of the generated badge SVGs. */
+export const LIVE_BADGE_DIR = resolve(PROJECT_DIR, 'live-badge')
 
 /** Repositories kept out of the README, no matter how many stars they have. */
 export const EXCLUDED_REPOS = ['vue-reactive-form']

@@ -105,3 +105,11 @@ export type RepoLinks = {
   npmPackages: Map<string, NpmPackage>
   siteLinks: Map<string, string>
 }
+
+/** Today's forecast for one place; temperatures in °C. */
+export type Forecast = {
+  code: number
+  high: number
+  low: number
+  rainChance: number
+}

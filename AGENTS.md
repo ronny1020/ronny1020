@@ -2,13 +2,13 @@
 
 ## What this repo is
 
-The source for the GitHub profile shown at <https://github.com/ronny1020>. `README.md` is **generated** — a GitHub Action rebuilds it daily from the GitHub and npm APIs.
+The source for the GitHub profile shown at <https://github.com/ronny1020>. `README.md` is **generated** — a GitHub Action rebuilds it daily from the GitHub, npm, and Open-Meteo APIs.
 
 ## Commands
 
 ```bash
 bun install
-bun run update:readme   # regenerate README.md
+bun run update:readme   # regenerate README.md and live-badge/
 bun test                # unit tests (no network)
 bun run typecheck       # bun --check (TypeScript built into Bun)
 bun lint                # type-aware, fails on any warning (gated in CI)
@@ -26,7 +26,7 @@ GITHUB_TOKEN=$(gh auth token) bun run update:readme
 
 ```
 mainProfile.md          hand-written template with <!-- generated:<name> --> markers
-updateREADME.ts         entry point: fetch → render → write README.md
+updateREADME.ts         entry point: fetch → render → write README.md and live-badge/
 utils/config.ts         username, endpoints, limits, paths, EXCLUDED_REPOS
 utils/types.ts          response types derived from @octokit/types
 utils/github.ts         GitHub REST client and fetchers
@@ -34,15 +34,18 @@ utils/npm.ts            npm registry lookups
 utils/npmDownloads.ts   install counts (bulk endpoint rejects scoped names)
 utils/repos.ts          repo filtering, selection, descriptions
 utils/siteLinks.ts      reachable-homepage checks for demo links
+utils/weather.ts        today's Taipei forecast via the `openmeteo` client (no key)
+utils/liveBadge.ts      animated "live" status pill (SVG)
 utils/format.ts         numbers, dates, shields URLs, markdown table helpers
 utils/template.ts       marker replacement
 utils/sections/*.ts     one module per generated section (except plain formatter calls)
 utils/sections/index.ts renderSections(): marker name → rendered markdown
 utils/fixtures.ts       test payload builders
 README.md               generated output — never edit by hand
+live-badge/             generated {light,dark}.svg — never edit by hand
 ```
 
-Every static heading, badge, and prose line lives in `mainProfile.md`; everything data-driven is a marker filled by a section renderer.
+Every static heading, badge, and prose line lives in `mainProfile.md`; everything data-driven is a marker filled by a section renderer, including a sentence whose wording changes with the data (the weather greeting). The live badge's label is the exception: it is drawn inside the SVG, so its wording lives in `utils/liveBadge.ts`.
 
 ## Adding a generated section
 
@@ -62,12 +65,14 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Evidence floors.** A tool or theme needs `MIN_EVIDENCE_COUNT` repositories behind it, and the generated stack stays silent below `MIN_STACK_TOOLS` rather than publishing an almost-empty row.
 - **Escape API text in tables** with `escapeTableCell`; a `|` or `[` in a description or PR title otherwise breaks the row.
 - **Types come from `@octokit/types`**, narrowed with `Required<Pick<…>>`. Do not hand-write GitHub response shapes.
-- **Renderers are pure** — they take data and return markdown. All fetching lives in `github.ts`, `npm.ts`, and `siteLinks.ts`.
-- **Tests never hit the network.** Mock `globalThis.fetch` with the `mockFetch` helper and build payloads with `utils/fixtures.ts`.
+- **Credit Open-Meteo.** Its terms require a visible reference wherever its data appears; the link sits under the weather line in `mainProfile.md`.
+- **Renderers are pure** — they take data and return markdown or SVG. All fetching lives in `github.ts`, `npm.ts`, `npmDownloads.ts`, `siteLinks.ts`, and `weather.ts`; all file writes in `updateREADME.ts`.
+- **Tests never hit the network.** Mock `globalThis.fetch` with the `mockFetch` helper (the `openmeteo` client, which parses FlatBuffers, is mocked whole with `mock.module`) and build payloads with `utils/fixtures.ts`.
 - **Own-organisation work is not an upstream contribution.** `EXCLUDED_OWNERS` in `utils/config.ts` drops those accounts from the contributions search; add private organisations through the `EXCLUDED_OWNERS` environment variable (comma separated) so their names stay out of this public repo.
 - **Dates and counts use `&nbsp;`** so a narrow table column cannot wrap `Aug 17, 2026` after the comma.
 - **Hide a repository** by adding its name to `EXCLUDED_REPOS` in `utils/config.ts`; that filter also removes it from star, fork, and language totals.
 - **Never publish private data.** Both PR searches pin `is:public` and `getStarredRepos` filters `private` stars — a local run uses a `repo`-scoped token that can see work repositories.
+- **Motion lives in SVG.** GitHub strips CSS and scripts from a README, so the live badge animates inside its own SVG, which the workflow commits with the README. It honours `prefers-reduced-motion`.
 - **Summary cards are self-hosted.** The workflow runs `vn7n24fzkq/github-profile-summary-cards` with `AUTO_PUSH: false` and commits `profile-summary-card-output/{default,github_dark}` alongside the README; the shared card service rate limits and rendered "Cards are temporarily rate limited" in place of four of the five cards. The action writes all 65 themes — only those two folders are added to git.
 - **Card hosts must answer fast.** GitHub proxies every image through camo, which gives up after a few seconds and serves a 504 — a card host that needs 6s renders as broken on the profile even though `curl` says 200. Time a new host before adding it (`streak-stats.demolab.com` was dropped for this).
 - **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused.
@@ -79,8 +84,8 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 
 ## Committing
 
-README-bot pushes a regenerated `README.md` after every run, so `git pull --rebase` before committing; otherwise the push is rejected and the generated file conflicts. Resolve such a conflict by rerunning `bun run update:readme`, never by hand-merging `README.md`.
+README-bot pushes a regenerated `README.md` and `live-badge/` after every run, so `git pull --rebase` before committing; otherwise the push is rejected and the generated file conflicts. Resolve such a conflict by rerunning `bun run update:readme`, never by hand-merging `README.md` or the badges.
 
 ## CI
 
-`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + lint + format check + test → generate summary cards → regenerate → commit as `README-bot` if `README.md` changed. The generator step receives `GITHUB_TOKEN`.
+`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + lint + format check + test → generate summary cards → regenerate → commit `README.md` and `live-badge/` as `README-bot` if they changed. The generator step receives `GITHUB_TOKEN`; Open-Meteo needs no key.

@@ -26,5 +26,8 @@
   "devDependencies": {
     "@octokit/types": "^17.0.0",
     "@types/bun": "^1.4.4"
+  },
+  "dependencies": {
+    "openmeteo": "^1.2.3"
   }
 }

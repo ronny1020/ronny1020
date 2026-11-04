@@ -22,6 +22,7 @@ const sections = renderSections({
   ]),
   featured: [buildRepo()],
   fixedIssues: { items: [], total_count: 0 },
+  generatedAt: new Date('2026-11-04T06:52:00Z'),
   maintained: buildMaintainedProject(),
   monthlyDownloads: new Map([['example', 12]]),
   npmPackages: new Map(),
@@ -35,6 +36,7 @@ const sections = renderSections({
   upstream: { items: [], total_count: 0 },
   upstreamStars: new Map(),
   user: buildUser(),
+  weather: null,
   yearlyDownloads: 380538,
 })
 
