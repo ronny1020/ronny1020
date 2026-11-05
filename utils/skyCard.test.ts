@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test'
 
-import { renderSkyCards, sunArc } from './skyCard.ts'
+import { dayArc, renderSkyCards } from './skyCard.ts'
 import type { Forecast } from './types.ts'
 
 function forecast(code: number): Forecast {
@@ -26,10 +26,10 @@ describe('renderSkyCards', () => {
     ])
   })
 
-  it('draws a clear sky with a sun and no weather', () => {
+  it('draws a clear sky with no weather and no sun', () => {
     const svg = lightCard(forecast(0))
 
-    expect(svg).toContain('class="sun"')
+    expect(svg).not.toContain('class="sun"')
     expect(svg).not.toContain('class="cloud"')
     expect(svg).toContain('a lovely clear day')
   })
@@ -40,11 +40,8 @@ describe('renderSkyCards', () => {
     expect(lightCard(forecast(73))).toContain('class="fall snow"')
   })
 
-  it('leaves the sun out when there is no forecast', () => {
-    const svg = lightCard(null)
-
-    expect(svg).not.toContain('class="sun"')
-    expect(svg).toContain('The sky over Taipei')
+  it('falls back to a plain label without a forecast', () => {
+    expect(lightCard(null)).toContain('The sky over Taipei')
   })
 
   it('stops animating for viewers who prefer reduced motion', () => {
@@ -54,7 +51,7 @@ describe('renderSkyCards', () => {
   })
 })
 
-describe('sunArc', () => {
+describe('dayArc', () => {
   const day = (sunrise: string, sunset: string): Forecast => ({
     ...forecast(0),
     sunrise: new Date(sunrise),
@@ -63,35 +60,40 @@ describe('sunArc', () => {
 
   it('places sunrise and sunset on a 24-hour axis across the card', () => {
     // Taipei is UTC+8: 22:00 UTC is 6:00 there.
-    const arc = sunArc(day('2026-11-04T22:00:00Z', '2026-11-05T10:00:00Z'))
+    const arc = dayArc(day('2026-11-04T22:00:00Z', '2026-11-05T10:00:00Z'))
 
     expect([arc.startX, arc.endX]).toEqual([85, 255])
-    expect(arc.centerX).toBe(170)
   })
 
   it('draws a wider arc for a longer day', () => {
-    const winter = sunArc(day('2026-12-21T22:40:00Z', '2026-12-22T09:10:00Z'))
-    const summer = sunArc(day('2026-06-20T21:05:00Z', '2026-06-21T10:50:00Z'))
+    const winter = dayArc(day('2026-12-21T22:40:00Z', '2026-12-22T09:10:00Z'))
+    const summer = dayArc(day('2026-06-20T21:05:00Z', '2026-06-21T10:50:00Z'))
 
     expect(summer.endX - summer.startX).toBeGreaterThan(
       winter.endX - winter.startX,
     )
   })
 
-  it('rotates the sun from sunrise on the horizon to the peak', () => {
-    const arc = sunArc(day('2026-11-04T22:03:00Z', '2026-11-05T09:11:00Z'))
-    const angle = (arc.halfAngle * Math.PI) / 180
+  it('peaks at the top of the card whatever the day length', () => {
+    for (const arc of [
+      dayArc(day('2026-11-04T22:03:00Z', '2026-11-05T09:11:00Z')),
+      dayArc(day('2026-11-05T02:00:00Z', '2026-11-05T05:00:00Z')),
+    ]) {
+      const halfChord = (arc.endX - arc.startX) / 2
+      const centerY = 30 + arc.radius
 
-    expect(arc.centerX - arc.radius * Math.sin(angle)).toBeCloseTo(
-      arc.startX,
-      1,
-    )
-    expect(arc.centerY - arc.radius * Math.cos(angle)).toBeCloseTo(92, 1)
+      expect(Math.hypot(halfChord, centerY - 92)).toBeCloseTo(arc.radius, 1)
+    }
+  })
+
+  it('uses the large-arc flag only for a day shorter than its height', () => {
+    expect(dayArc(null).largeArc).toBe(false)
+    expect(
+      dayArc(day('2026-11-05T02:00:00Z', '2026-11-05T05:00:00Z')).largeArc,
+    ).toBe(true)
   })
 
   it('falls back to a 6:00 to 18:00 day without sun times', () => {
-    const arc = sunArc(null)
-
-    expect([arc.startX, arc.endX]).toEqual([85, 255])
+    expect([dayArc(null).startX, dayArc(null).endX]).toEqual([85, 255])
   })
 })

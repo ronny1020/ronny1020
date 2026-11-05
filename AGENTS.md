@@ -38,7 +38,7 @@ utils/stackOverflow.ts  answer and accepted counts from the keyless Stack Exchan
 utils/sky.ts            WMO weather codes grouped into sky kinds, shared by the greeting and the sky card
 utils/weather.ts        today's Taipei forecast, sun times and peak US AQI via the `openmeteo` client (no key)
 utils/liveBadge.ts      animated "live" status pill (SVG)
-utils/skyCard.ts        today's Taipei sky drawn as an animated card (SVG)
+utils/skyCard.ts        today's Taipei weather and sunrise-to-sunset arc as an animated card (SVG)
 utils/format.ts         numbers, dates, shields URLs, markdown table helpers
 utils/template.ts       marker replacement
 utils/sections/*.ts     one module per generated section (except plain formatter calls)

@@ -1,16 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="340" height="110" viewBox="0 0 340 110" role="img" aria-label="Today's sky over Taipei: foggy">
   <title>Today's sky over Taipei: foggy</title>
   <style>
-    .sun { transform-box: view-box; transform-origin: 164.57px 111.15px; animation: rise 2.4s ease-out both; }
     .cloud { animation: drift 9s ease-in-out infinite alternate; }
     .fall { animation: fall 0.9s linear infinite; }
     .snow { animation-duration: 2.6s; }
     .flash { animation: flash 5s steps(1) infinite; }
-    @keyframes rise { from { transform: rotate(-76.35deg); } }
     @keyframes drift { to { transform: translateX(10px); } }
     @keyframes fall { from { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(12px); opacity: 0; } }
     @keyframes flash { 0%, 100% { opacity: 0; } 90% { opacity: 1; } 93% { opacity: 0; } 95% { opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .sun, .cloud, .fall, .flash { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .cloud, .fall, .flash { animation: none; } }
   </style>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -22,10 +20,6 @@
   <g clip-path="url(#frame)">
     <rect width="340" height="110" fill="url(#sky)"/>
     <path d="M85.71 92 A81.15 81.15 0 0 1 243.43 92" fill="none" stroke="rgba(31,35,40,0.25)" stroke-dasharray="3 4"/>
-    <g class="sun" opacity="0.45">
-      <circle cx="164.57" cy="30" r="16" fill="#f5b301" opacity="0.25"/>
-      <circle cx="164.57" cy="30" r="10" fill="#f5b301"/>
-    </g>
     <rect class="cloud" x="20" y="30" width="250" height="7" rx="3.5" fill="#ffffff" opacity="0.55"/>
     <rect class="cloud" x="44" y="48" width="250" height="7" rx="3.5" fill="#ffffff" opacity="0.55"/>
     <rect class="cloud" x="68" y="66" width="250" height="7" rx="3.5" fill="#ffffff" opacity="0.55"/>

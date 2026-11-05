@@ -9,7 +9,8 @@ type Theme = {
   drop: string
   skies: Record<SkyKind, [top: string, bottom: string]>
   skyline: string
-  sun: string
+  /** Lightning in a storm. */
+  bolt: string
 }
 
 /** Sky gradients per weather, framed in GitHub Primer border colours. */
@@ -29,7 +30,7 @@ const THEMES: Record<'dark' | 'light', Theme> = {
       storm: ['#10151c', '#0d1117'],
     },
     skyline: '#010409',
-    sun: '#e3b341',
+    bolt: '#e3b341',
   },
   light: {
     arc: 'rgba(31,35,40,0.25)',
@@ -46,14 +47,14 @@ const THEMES: Record<'dark' | 'light', Theme> = {
       storm: ['#6e7b8a', '#b9c2cc'],
     },
     skyline: '#8c959f',
-    sun: '#f5b301',
+    bolt: '#f5b301',
   },
 }
 
 const WIDTH = 340
 const HEIGHT = 110
 const HORIZON = 92
-/** Height of the sun at the top of its arc. */
+/** Top of the day's arc. */
 const PEAK_Y = 30
 const MINUTES_PER_DAY = 24 * 60
 /** Used when the forecast has no sun times. */
@@ -62,22 +63,18 @@ const DEFAULT_SUNSET_MINUTES = 18 * 60
 const PRECIPITATION_X = [128, 142, 156, 170, 184, 198, 212, 226]
 
 type Arc = {
-  centerX: number
-  centerY: number
   endX: number
+  /** More than a semicircle: the SVG arc's large-arc flag. */
+  largeArc: boolean
   radius: number
   startX: number
-  /** Degrees from sunrise to the peak. */
-  halfAngle: number
 }
 
-/** Kinds whose clouds hide most of the sun. */
-const OVERCAST: SkyKind[] = ['fog', 'overcast', 'rain', 'snow', 'storm']
-
 /**
- * Today's Taipei sky as an animated card: the sun climbs from sunrise to the
- * top of its arc over the skyline, under whatever the forecast brings. Reduced-motion
- * viewers get the finished frame.
+ * Today's Taipei sky as an animated card: the forecast's weather over the
+ * skyline, under a dashed arc from today's sunrise to sunset. It draws no sun,
+ * because an image cannot know the viewer's time. Reduced-motion viewers get a
+ * still frame.
  */
 function renderSkyCard({
   forecast,
@@ -92,21 +89,19 @@ function renderSkyCard({
   const label = sky
     ? `Today's sky over Taipei: ${sky.phrase}`
     : 'The sky over Taipei'
-  const arc = sunArc(forecast)
+  const arc = dayArc(forecast)
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-label="${label}">
   <title>${label}</title>
   <style>
-    .sun { transform-box: view-box; transform-origin: ${arc.centerX}px ${arc.centerY}px; animation: rise 2.4s ease-out both; }
     .cloud { animation: drift 9s ease-in-out infinite alternate; }
     .fall { animation: fall 0.9s linear infinite; }
     .snow { animation-duration: 2.6s; }
     .flash { animation: flash 5s steps(1) infinite; }
-    @keyframes rise { from { transform: rotate(-${arc.halfAngle}deg); } }
     @keyframes drift { to { transform: translateX(10px); } }
     @keyframes fall { from { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(12px); opacity: 0; } }
     @keyframes flash { 0%, 100% { opacity: 0; } 90% { opacity: 1; } 93% { opacity: 0; } 95% { opacity: 1; } }
-    @media (prefers-reduced-motion: reduce) { .sun, .cloud, .fall, .flash { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .cloud, .fall, .flash { animation: none; } }
   </style>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -117,8 +112,7 @@ function renderSkyCard({
   </defs>
   <g clip-path="url(#frame)">
     <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#sky)"/>
-    <path d="M${arc.startX} ${HORIZON} A${arc.radius} ${arc.radius} 0 ${arc.halfAngle > 90 ? 1 : 0} 1 ${arc.endX} ${HORIZON}" fill="none" stroke="${theme.arc}" stroke-dasharray="3 4"/>
-${sky ? renderSun({ centerX: arc.centerX, dimmed: OVERCAST.includes(kind), theme }) : ''}
+    <path d="M${arc.startX} ${HORIZON} A${arc.radius} ${arc.radius} 0 ${arc.largeArc ? 1 : 0} 1 ${arc.endX} ${HORIZON}" fill="none" stroke="${theme.arc}" stroke-dasharray="3 4"/>
 ${renderSkyWeather({ kind: sky?.kind, theme })}
 ${renderSkyline(theme.skyline)}
   </g>
@@ -144,23 +138,18 @@ export function renderSkyCards(
  * their midpoint. Both times sit on a 24-hour axis across the card, so a long
  * summer day draws a wider arc than a winter one.
  */
-export function sunArc(forecast: Forecast | null): Arc {
+export function dayArc(forecast: Forecast | null): Arc {
   const startX = dayPosition(forecast?.sunrise, DEFAULT_SUNRISE_MINUTES)
   const endX = dayPosition(forecast?.sunset, DEFAULT_SUNSET_MINUTES)
   const halfChord = (endX - startX) / 2
   const rise = HORIZON - PEAK_Y
   const radius = (halfChord ** 2 + rise ** 2) / (2 * rise)
-  const centerY = PEAK_Y + radius
 
   return {
-    centerX: round(startX + halfChord),
-    centerY: round(centerY),
     endX,
+    largeArc: radius < rise,
     radius: round(radius),
     startX,
-    halfAngle: round(
-      (Math.atan2(halfChord, centerY - HORIZON) * 180) / Math.PI,
-    ),
   }
 }
 
@@ -187,21 +176,6 @@ function minutesIntoDay(date: Date): number {
 
 function round(value: number): number {
   return Math.round(value * 100) / 100
-}
-
-function renderSun({
-  centerX,
-  dimmed,
-  theme,
-}: {
-  centerX: number
-  dimmed: boolean
-  theme: Theme
-}): string {
-  return `    <g class="sun" opacity="${dimmed ? 0.45 : 1}">
-      <circle cx="${centerX}" cy="${PEAK_Y}" r="16" fill="${theme.sun}" opacity="0.25"/>
-      <circle cx="${centerX}" cy="${PEAK_Y}" r="10" fill="${theme.sun}"/>
-    </g>`
 }
 
 function renderSkyWeather({
@@ -234,7 +208,7 @@ function renderSkyWeather({
         cloud({ color: theme.cloud, scale: 0.85, x: 200, y: 32 }),
         renderPrecipitation({ kind, theme }),
         kind === 'storm'
-          ? `    <path class="flash" d="M196 46 l-9 16 h7 l-5 14 l14 -19 h-7 l6 -11 z" fill="${theme.sun}"/>`
+          ? `    <path class="flash" d="M196 46 l-9 16 h7 l-5 14 l14 -19 h-7 l6 -11 z" fill="${theme.bolt}"/>`
           : '',
       ].join('\n')
     default:
