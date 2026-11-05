@@ -43,10 +43,13 @@ const sections = renderSections({
   user: buildUser(),
   weather: {
     code: 0,
+    daylight: 40_048,
+    daylightChange: -74,
     high: 30,
     low: 21,
     peakAqi: 42,
     rainChance: 0,
+    sea: { temperature: 25.9, waveHeight: 1.6 },
     sunrise: new Date('2026-11-03T22:00:00Z'),
     sunset: new Date('2026-11-04T09:15:00Z'),
   },

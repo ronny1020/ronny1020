@@ -6,13 +6,6 @@
 
 <h3 align="center"><!-- generated:weather --></h3>
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-dark.svg">
-    <img alt="Today's sky over Taipei, drawn from the forecast" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-light.svg" width="340">
-  </picture>
-</p>
-
 <p align="center"><!-- generated:weatherFacts --></p>
 
 <p align="center">
@@ -104,5 +97,5 @@ Issues I opened in other people's projects that the maintainers labelled a bug a
 ---
 
 <p align="center">
-  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
+  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a> · sea data generated using E.U. <a href="https://marine.copernicus.eu/">Copernicus Marine Service</a> information</sub>
 </p>

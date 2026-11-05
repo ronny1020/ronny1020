@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, jest, mock } from 'bun:test'
 
-import { OPEN_METEO_AIR_QUALITY_URL } from './config.ts'
+import { OPEN_METEO_AIR_QUALITY_URL, OPEN_METEO_MARINE_URL } from './config.ts'
 
 const fetchWeatherApi = jest.fn()
 
@@ -11,44 +11,60 @@ const { fetchForecast } = await import('./weather.ts')
 const SUNRISE = 1_793_829_660
 const SUNSET = 1_793_870_100
 
-/** A client response: daily values in request order, then the hourly AQI. */
+/** A client response: each daily variable's values by day, in request order. */
 function clientResponse({
   daily = [],
-  hourlyAqi = [],
+  hourly = [],
 }: {
-  daily?: number[]
-  hourlyAqi?: number[]
+  daily?: number[][]
+  hourly?: number[]
 }) {
-  const variables = (values: number[]) => (index: number) => ({
-    valuesArray: () => new Float32Array([values[index] ?? Number.NaN]),
-    valuesInt64: () => BigInt(values[index] ?? 0),
+  const variables = (index: number) => ({
+    valuesArray: () => new Float32Array(daily[index] ?? []),
+    valuesInt64: (day: number) => BigInt(daily[index]?.[day] ?? 0),
   })
 
   return [
     {
-      daily: () => ({ variables: variables(daily) }),
+      daily: () => ({ variables }),
       hourly: () => ({
-        variables: () => ({ valuesArray: () => new Float32Array(hourlyAqi) }),
+        variables: () => ({ valuesArray: () => new Float32Array(hourly) }),
       }),
     },
   ]
 }
 
+/** The forecast asks for yesterday too, so each variable is [yesterday, today]. */
+function forecastDays(today: number[], yesterday: number[] = []): number[][] {
+  return today.map((value, index) => [yesterday[index] ?? Number.NaN, value])
+}
+
+/** Today's values for every daily variable the forecast asks for. */
+const TODAY = [61, 30.5, 20.25, 40, SUNRISE, SUNSET, 40_048]
+
 function respond({
-  aqi = clientResponse({ hourlyAqi: [12, 48.6, 30] }),
+  aqi = clientResponse({ hourly: [12, 48.6, 30] }),
   daily,
+  sea = [
+    ...clientResponse({}),
+    ...clientResponse({ hourly: [25, 27, Number.NaN] }),
+  ],
 }: {
   aqi?: unknown
   daily: unknown
+  sea?: unknown
 }) {
+  const settle = (value: unknown) =>
+    value instanceof Error ? Promise.reject(value) : Promise.resolve(value)
+
   fetchWeatherApi.mockImplementation((url: string) =>
-    url === OPEN_METEO_AIR_QUALITY_URL
-      ? aqi instanceof Error
-        ? Promise.reject(aqi)
-        : Promise.resolve(aqi)
-      : daily instanceof Error
-        ? Promise.reject(daily)
-        : Promise.resolve(daily),
+    settle(
+      url === OPEN_METEO_AIR_QUALITY_URL
+        ? aqi
+        : url === OPEN_METEO_MARINE_URL
+          ? sea
+          : daily,
+    ),
   )
 }
 
@@ -57,39 +73,87 @@ afterEach(() => {
 })
 
 describe('fetchForecast', () => {
-  it("reads today's sky, temperatures, sun times and worst air", async () => {
+  it("reads today's sky, sun, daylight, worst air and the sea", async () => {
     respond({
-      daily: clientResponse({ daily: [61, 30.5, 20.25, 40, SUNRISE, SUNSET] }),
+      daily: clientResponse({
+        daily: forecastDays(TODAY, [0, 0, 0, 0, 0, 0, 40_122]),
+      }),
     })
 
     expect(await fetchForecast()).toEqual({
       code: 61,
+      daylight: 40_048,
+      daylightChange: -74,
       high: 30.5,
       low: 20.25,
       peakAqi: 49,
       rainChance: 40,
+      sea: { temperature: 26, waveHeight: null },
       sunrise: new Date(SUNRISE * 1000),
       sunset: new Date(SUNSET * 1000),
     })
   })
 
-  it('keeps the forecast when the air-quality call fails', async () => {
+  it('reads the highest waves when the sea reports them', async () => {
     respond({
-      aqi: new Error('Bad Gateway'),
-      daily: clientResponse({ daily: [0, 30, 20, 0, SUNRISE, SUNSET] }),
+      daily: clientResponse({ daily: forecastDays(TODAY) }),
+      sea: [
+        ...clientResponse({ daily: [[1.5]] }),
+        ...clientResponse({ hourly: [26] }),
+      ],
     })
 
-    expect((await fetchForecast())?.peakAqi).toBeNull()
+    expect((await fetchForecast())?.sea?.waveHeight).toBe(1.5)
+  })
+
+  it("asks for MeteoFrance's wave and currents models, in that order", async () => {
+    respond({ daily: clientResponse({ daily: forecastDays(TODAY) }) })
+
+    await fetchForecast()
+
+    expect(fetchWeatherApi).toHaveBeenCalledWith(
+      OPEN_METEO_MARINE_URL,
+      expect.objectContaining({
+        models: 'meteofrance_wave,meteofrance_currents',
+      }),
+      undefined,
+      undefined,
+      undefined,
+      expect.anything(),
+    )
+  })
+
+  it('keeps the forecast when air quality and the sea fail', async () => {
+    respond({
+      aqi: new Error('Bad Gateway'),
+      daily: clientResponse({ daily: forecastDays(TODAY) }),
+      sea: new Error('Bad Gateway'),
+    })
+
+    const forecast = await fetchForecast()
+
+    expect(forecast?.peakAqi).toBeNull()
+    expect(forecast?.sea).toBeNull()
+  })
+
+  it("leaves the daylight change out without yesterday's length", async () => {
+    respond({ daily: clientResponse({ daily: forecastDays(TODAY) }) })
+
+    expect((await fetchForecast())?.daylightChange).toBeNull()
   })
 
   it('treats a missing rain chance as none', async () => {
-    respond({ daily: clientResponse({ daily: [0, 30, 20, Number.NaN] }) })
+    respond({
+      daily: clientResponse({ daily: forecastDays([0, 30, 20, Number.NaN]) }),
+    })
 
     expect((await fetchForecast())?.rainChance).toBe(0)
   })
 
   it('returns null when a temperature is missing', async () => {
-    respond({ daily: clientResponse({ daily: [0, Number.NaN, 20, 0] }) })
+    respond({
+      daily: clientResponse({ daily: forecastDays([0, Number.NaN, 20, 0]) }),
+    })
 
     expect(await fetchForecast()).toBeNull()
   })

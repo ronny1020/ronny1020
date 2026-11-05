@@ -6,19 +6,14 @@
 
 <h3 align="center">🌫️ Hello from Taipei — foggy today, 20–30&nbsp;°C.</h3>
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-dark.svg">
-    <img alt="Today's sky over Taipei, drawn from the forecast" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-light.svg" width="340">
-  </picture>
-</p>
-
-<p align="center">🌅 6:03 AM · 🌇 5:11 PM · 🟠 peak US AQI 121, unhealthy for sensitive groups</p>
+<p align="center">🌅 6:03 AM · 🌇 5:11 PM · ☀️ 11&nbsp;h 7&nbsp;m of daylight, 1 minute shorter than yesterday<br>
+🌘 waning crescent tonight · 🌊 the sea off Keelung is 26&nbsp;°C, waves up to 1.6&nbsp;m<br>
+🟠 peak US AQI 116, unhealthy for sensitive groups</p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 5, 2026, 5:30 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 5, 2026 at 5:59 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -168,5 +163,5 @@ pie showData title Repositories by language
 ---
 
 <p align="center">
-  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a></sub>
+  <sub>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> · air quality from <a href="https://atmosphere.copernicus.eu/">CAMS</a> · sea data generated using E.U. <a href="https://marine.copernicus.eu/">Copernicus Marine Service</a> information</sub>
 </p>

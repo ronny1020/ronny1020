@@ -110,6 +110,9 @@ export function renderSections(data: ProfileData): Record<string, string> {
       search: data.upstream,
     }),
     weather: renderWeather(data.weather),
-    weatherFacts: renderWeatherFacts(data.weather),
+    weatherFacts: renderWeatherFacts({
+      forecast: data.weather,
+      now: data.generatedAt,
+    }),
   }
 }

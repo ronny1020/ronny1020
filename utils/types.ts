@@ -137,6 +137,10 @@ export type StackOverflowStats = {
 /** Today's forecast for one place; temperatures in °C. */
 export type Forecast = {
   code: number
+  /** Seconds of daylight today. */
+  daylight: number | null
+  /** Seconds gained (positive) or lost since yesterday. */
+  daylightChange: number | null
   high: number
   low: number
   rainChance: number
@@ -144,4 +148,8 @@ export type Forecast = {
   sunset: Date | null
   /** Highest hourly US AQI of the day. */
   peakAqi: number | null
+  sea: SeaState | null
 }
+
+/** The sea off Keelung today: average water temperature (°C), highest waves (m). */
+export type SeaState = { temperature: number; waveHeight: number | null }

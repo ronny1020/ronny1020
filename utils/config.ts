@@ -10,7 +10,11 @@ export const STACK_OVERFLOW_USER_ID = 12598451
 export const OPEN_METEO_URL = 'https://api.open-meteo.com/v1/forecast'
 export const OPEN_METEO_AIR_QUALITY_URL =
   'https://air-quality-api.open-meteo.com/v1/air-quality'
+export const OPEN_METEO_MARINE_URL =
+  'https://marine-api.open-meteo.com/v1/marine'
 export const TAIPEI = { latitude: 25.0478, longitude: 121.5319 }
+/** Off Keelung, Taipei's nearest sea. */
+export const KEELUNG_COAST = { latitude: 25.15, longitude: 121.75 }
 export const DAY_MS = 24 * 60 * 60 * 1000
 export const REQUEST_TIMEOUT_MS = 10_000
 export const REPOS_PER_PAGE = 100

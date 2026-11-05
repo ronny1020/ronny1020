@@ -42,28 +42,14 @@ import {
 } from './utils/repos.ts'
 import { renderSections } from './utils/sections/index.ts'
 import { fetchSiteLinks } from './utils/siteLinks.ts'
-import { renderSkyCards } from './utils/skyCard.ts'
 import { fetchStackOverflowStats } from './utils/stackOverflow.ts'
 import { renderTemplate } from './utils/template.ts'
-import type { Forecast } from './utils/types.ts'
 import { fetchForecast } from './utils/weather.ts'
 
-/** The live badge and today's sky card, one SVG per colour scheme each. */
-async function writeImages({
-  generatedAt,
-  weather,
-}: {
-  generatedAt: Date
-  weather: Forecast | null
-}): Promise<void> {
-  const images = {
-    ...renderLiveBadges(generatedAt),
-    ...renderSkyCards(weather),
-  }
-
+async function writeLiveBadges(generatedAt: Date): Promise<void> {
   await mkdir(LIVE_BADGE_DIR, { recursive: true })
   await Promise.all(
-    Object.entries(images).map(([file, svg]) =>
+    Object.entries(renderLiveBadges(generatedAt)).map(([file, svg]) =>
       writeFile(join(LIVE_BADGE_DIR, file), svg, 'utf8'),
     ),
   )
@@ -176,7 +162,7 @@ async function updateProfile(): Promise<void> {
 
   await Promise.all([
     writeFile(README_PATH, `${readme.trimEnd()}\n`, 'utf8'),
-    writeImages({ generatedAt, weather }),
+    writeLiveBadges(generatedAt),
   ])
   console.log(
     [
