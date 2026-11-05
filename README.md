@@ -4,16 +4,16 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
-<h3 align="center">🌫️ Hello from Taipei — foggy today, 20–30&nbsp;°C.</h3>
+<h3 align="center">☁️ Hello from Taipei — grey and overcast today, 22–26&nbsp;°C.</h3>
 
-<p align="center">🌅 6:03 AM · 🌇 5:11 PM · ☀️ 11&nbsp;h 7&nbsp;m of daylight, 1 minute shorter than yesterday<br>
-🌘 waning crescent tonight · 🌊 the sea off Keelung is 26&nbsp;°C, waves up to 1.6&nbsp;m<br>
-🟠 peak US AQI 116, unhealthy for sensitive groups</p>
+<p align="center">🌅 6:04 AM · 🌇 5:10 PM · ☀️ 11&nbsp;h 6&nbsp;m of daylight, 1 minute shorter than yesterday<br>
+🌘 waning crescent tonight · 🌊 the sea off Keelung is 25&nbsp;°C, waves up to 1.8&nbsp;m<br>
+🟡 peak US AQI 95, moderate</p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 5, 2026, 5:59 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 6, 2026, 5:46 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <sub><b>400,756</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,156</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>402,701</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,162</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -34,14 +34,14 @@
 - 📦 I publish small, focused npm packages and use them in my own work.
 - 💬 Issues and pull requests on any of my repositories are always welcome.
 
-🔨 Lately I'm mostly pushing to [**muster**](https://github.com/ronny1020/muster) — Run AI agent CLIs in tabs, each a real terminal with its own directory and git… <sub>6&nbsp;pushes in 14&nbsp;days</sub>
+🔨 Lately I'm mostly pushing to [**muster**](https://github.com/ronny1020/muster) — Run AI agent CLIs in tabs, each a real terminal with its own directory and git… <sub>7&nbsp;pushes in 14&nbsp;days</sub>
 
 ## 📥 Packages people install
 
 | Package                                                                      | What it is                                        | Installs / month |
 | ---------------------------------------------------------------------------- | ------------------------------------------------- | ---------------- |
-| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React              | 33,093           |
-| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum | 150              |
+| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React              | 33,231           |
+| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum | 149              |
 
 <sub>…and 8 smaller packages</sub>
 
@@ -49,8 +49,8 @@
 
 | Project                                                                                                                                                               | What it does                                  | Installs |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------- |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts          | 62/mo    |
-| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object | 56/mo    |
+| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts          | 60/mo    |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object | 58/mo    |
 | [**nekoChannelLineBot**](https://github.com/ronny1020/nekoChannelLineBot)<br><sub>⭐&nbsp;1 · TypeScript</sub>                                                        | —                                             | —        |
 | [**podcast-player-demo**](https://github.com/ronny1020/podcast-player-demo)<br><sub>⭐&nbsp;1 · Vue</sub>                                                             | —                                             | —        |
 
@@ -63,11 +63,11 @@
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,528<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,526<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,626<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,902<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,631<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,905<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;855<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
@@ -77,7 +77,7 @@ Issues I opened in other people's projects that the maintainers labelled a bug a
 - **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** ⭐&nbsp;2,072<br> [The `font-mono` is considered not a tailwind class with the `fontFamily` setting without mono setting in tailwind.config.js.](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/249) <sub>fixed Jun&nbsp;19,&nbsp;2023</sub>
 - **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** ⭐&nbsp;2,538<br> [`vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899) <sub>fixed Mar&nbsp;15,&nbsp;2023</sub>
 - **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** ⭐&nbsp;2,072<br> [It takes a lot of time to execute, especially `tailwindcss/classnames-order `](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/136) <sub>fixed Jun&nbsp;9,&nbsp;2022</sub>
-- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** ⭐&nbsp;4,588<br> [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643) <sub>fixed Oct&nbsp;5,&nbsp;2021</sub>
+- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** ⭐&nbsp;4,587<br> [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643) <sub>fixed Oct&nbsp;5,&nbsp;2021</sub>
 
 ## 🗺️ The project I maintain
 
