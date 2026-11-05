@@ -1,6 +1,8 @@
 import { formatTimestamp, repoFullName } from '../format.ts'
 import type {
+  CurrentWork,
   Forecast,
+  GithubRelease,
   GithubRepo,
   GithubUser,
   IssueSearch,
@@ -9,8 +11,10 @@ import type {
   PullRequestSearch,
   RepoLinks,
   SocialAccount,
+  StackOverflowStats,
   StarredRepo,
 } from '../types.ts'
+import { renderCurrentWork } from './currentWork.ts'
 import { renderFeaturedProjects } from './featuredProjects.ts'
 import { renderFixedIssues } from './fixedIssues.ts'
 import { renderHighlights } from './highlights.ts'
@@ -18,6 +22,7 @@ import { renderLanguages } from './languages.ts'
 import { renderMaintained } from './maintained.ts'
 import { renderPackages } from './packages.ts'
 import { renderRecentRepos } from './recentRepos.ts'
+import { renderReleases } from './releases.ts'
 import { renderSocialLinks } from './socialLinks.ts'
 import { renderStarTopics } from './starTopics.ts'
 import { renderTechStack } from './techStack.ts'
@@ -25,6 +30,7 @@ import { renderUpstreamPullRequests } from './upstreamPullRequests.ts'
 import { renderWeather, renderWeatherFacts } from './weather.ts'
 
 export type ProfileData = RepoLinks & {
+  currentWork: CurrentWork | null
   dependencyCounts: Map<string, number>
   featured: GithubRepo[]
   fixedIssues: IssueSearch
@@ -34,8 +40,10 @@ export type ProfileData = RepoLinks & {
   packageNames: string[]
   publishedPackages: Map<string, NpmPackage>
   recent: GithubRepo[]
+  releases: GithubRelease[]
   repos: GithubRepo[]
   socialAccounts: SocialAccount[]
+  stackOverflow: StackOverflowStats | null
   starred: StarredRepo[]
   upstream: PullRequestSearch
   repoStars: Map<string, number>
@@ -61,6 +69,7 @@ export function renderSections(data: ProfileData): Record<string, string> {
   )
 
   return {
+    currentWork: renderCurrentWork(data.currentWork),
     featured: renderFeaturedProjects({
       monthlyDownloads: data.monthlyDownloads,
       npmPackages: data.npmPackages,
@@ -74,6 +83,7 @@ export function renderSections(data: ProfileData): Record<string, string> {
     highlights: renderHighlights({
       maintained: data.maintained,
       repos: data.repos,
+      stackOverflow: data.stackOverflow,
       upstreamCount: data.upstream.total_count,
       upstreamStars: upstreamStarTotal,
       user: data.user,
@@ -91,6 +101,7 @@ export function renderSections(data: ProfileData): Record<string, string> {
       npmPackages: data.npmPackages,
       repos: data.recent,
     }),
+    releases: renderReleases(data.releases),
     social: renderSocialLinks(data.socialAccounts),
     starTopics: renderStarTopics(data.starred),
     techStack: renderTechStack(data.dependencyCounts),

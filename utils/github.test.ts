@@ -1,9 +1,16 @@
 import { afterEach, describe, expect, it, jest } from 'bun:test'
 
-import { jsonResponse, mockFetch } from './fixtures.ts'
+import {
+  buildPushEvent,
+  buildRepo,
+  jsonResponse,
+  mockFetch,
+} from './fixtures.ts'
 import {
   getAuthoredPullRequests,
   getFixedIssues,
+  getLatestReleases,
+  getPublicEvents,
   getRepos,
   getStarredRepos,
   getUpstreamPullRequests,
@@ -201,5 +208,83 @@ describe('getFixedIssues', () => {
       'imported error during build',
     ])
     expect(fixed.total_count).toBe(2)
+  })
+})
+
+describe('getLatestReleases', () => {
+  it('keeps repositories that have a release and tags each with its name', async () => {
+    mockFetch((url) =>
+      url.includes('/muster/')
+        ? jsonResponse({ html_url: 'h', published_at: 'p', tag_name: 'v1' })
+        : ({
+            ok: false,
+            status: 404,
+            text: () => Promise.resolve(''),
+          } as Response),
+    )
+
+    const releases = await getLatestReleases([
+      buildRepo({ name: 'muster' }),
+      buildRepo({ name: 'unreleased' }),
+    ])
+
+    expect(releases).toEqual([
+      { html_url: 'h', published_at: 'p', repo: 'muster', tag_name: 'v1' },
+    ])
+  })
+})
+
+describe('getLatestReleases failures', () => {
+  it('throws on anything but a 404, so a rate limit cannot empty the section', async () => {
+    mockFetch(
+      () =>
+        ({
+          ok: false,
+          status: 403,
+          statusText: 'Forbidden',
+          text: () => Promise.resolve('rate limited'),
+        }) as Response,
+    )
+
+    let failure = ''
+
+    try {
+      await getLatestReleases([buildRepo()])
+    } catch (error) {
+      failure = String(error)
+    }
+
+    expect(failure).toContain('403')
+  })
+})
+
+describe('getPublicEvents', () => {
+  it('stops paging once a page reaches past the cutoff', async () => {
+    const fetchMock = mockFetch(() =>
+      jsonResponse(
+        Array.from({ length: 100 }, () =>
+          buildPushEvent({ created_at: '2026-10-01T00:00:00Z' }),
+        ),
+      ),
+    )
+
+    await getPublicEvents(new Date('2026-10-20T00:00:00Z'))
+
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('pages on while every event is inside the window, up to three pages', async () => {
+    const fetchMock = mockFetch(() =>
+      jsonResponse(
+        Array.from({ length: 100 }, () =>
+          buildPushEvent({ created_at: '2026-11-03T00:00:00Z' }),
+        ),
+      ),
+    )
+
+    const events = await getPublicEvents(new Date('2026-10-20T00:00:00Z'))
+
+    expect(fetchMock).toHaveBeenCalledTimes(3)
+    expect(events).toHaveLength(300)
   })
 })

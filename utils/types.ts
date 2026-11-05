@@ -12,6 +12,20 @@ type RepoResponse =
 type SearchResponse = Endpoints['GET /search/issues']['response']['data']
 type StarredResponse =
   Endpoints['GET /users/{username}/starred']['response']['data'][number]
+type ReleaseResponse =
+  Endpoints['GET /repos/{owner}/{repo}/releases/latest']['response']['data']
+type EventResponse =
+  Endpoints['GET /users/{username}/events/public']['response']['data'][number]
+
+/** A repository's latest published release, tagged with the repository name. */
+export type GithubRelease = Required<
+  Pick<ReleaseResponse, 'html_url' | 'published_at' | 'tag_name'>
+> & { repo: string }
+
+/** A public event; `repo.name` is `owner/name`. */
+export type GithubEvent = Required<
+  Pick<EventResponse, 'created_at' | 'repo' | 'type'>
+>
 
 export type GithubUser = Required<
   Pick<UserResponse, 'created_at' | 'followers' | 'public_repos'>
@@ -109,6 +123,15 @@ export type NpmManifest = Partial<NpmPackage> & {
 export type RepoLinks = {
   npmPackages: Map<string, NpmPackage>
   siteLinks: Map<string, string>
+}
+
+/** The project I pushed to most lately, and how often. */
+export type CurrentWork = { pushes: number; repo: GithubRepo }
+
+export type StackOverflowStats = {
+  accepted: number
+  answers: number
+  reputation: number
 }
 
 /** Today's forecast for one place; temperatures in °C. */

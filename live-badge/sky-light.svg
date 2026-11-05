@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="110" viewBox="0 0 340 110" role="img" aria-label="Today's sky over Taipei: foggy">
+  <title>Today's sky over Taipei: foggy</title>
+  <style>
+    .sun { transform-box: view-box; transform-origin: 164.57px 111.15px; animation: rise 2.4s ease-out both; }
+    .cloud { animation: drift 9s ease-in-out infinite alternate; }
+    .fall { animation: fall 0.9s linear infinite; }
+    .snow { animation-duration: 2.6s; }
+    .flash { animation: flash 5s steps(1) infinite; }
+    @keyframes rise { from { transform: rotate(-76.35deg); } }
+    @keyframes drift { to { transform: translateX(10px); } }
+    @keyframes fall { from { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(12px); opacity: 0; } }
+    @keyframes flash { 0%, 100% { opacity: 0; } 90% { opacity: 1; } 93% { opacity: 0; } 95% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .sun, .cloud, .fall, .flash { animation: none; } }
+  </style>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d6dbe0"/>
+      <stop offset="1" stop-color="#f3f5f7"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="340" height="110" rx="12"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="340" height="110" fill="url(#sky)"/>
+    <path d="M85.71 92 A81.15 81.15 0 0 1 243.43 92" fill="none" stroke="rgba(31,35,40,0.25)" stroke-dasharray="3 4"/>
+    <g class="sun" opacity="0.45">
+      <circle cx="164.57" cy="30" r="16" fill="#f5b301" opacity="0.25"/>
+      <circle cx="164.57" cy="30" r="10" fill="#f5b301"/>
+    </g>
+    <rect class="cloud" x="20" y="30" width="250" height="7" rx="3.5" fill="#ffffff" opacity="0.55"/>
+    <rect class="cloud" x="44" y="48" width="250" height="7" rx="3.5" fill="#ffffff" opacity="0.55"/>
+    <rect class="cloud" x="68" y="66" width="250" height="7" rx="3.5" fill="#ffffff" opacity="0.55"/>
+    <g fill="#8c959f"><rect x="0" y="84" width="26" height="26"/><rect x="26" y="78" width="20" height="32"/><rect x="46" y="86" width="32" height="24"/><rect x="78" y="81" width="18" height="29"/><rect x="96" y="87" width="28" height="23"/><rect x="124" y="80" width="22" height="30"/><rect x="146" y="85" width="36" height="25"/><rect x="182" y="77" width="16" height="33"/><rect x="198" y="83" width="24" height="27"/><rect x="222" y="86" width="30" height="24"/><rect x="252" y="79" width="20" height="31"/><rect x="272" y="84" width="26" height="26"/><rect x="298" y="76" width="22" height="34"/><rect x="320" y="82" width="20" height="28"/><rect x="237" y="80" width="16" height="30"/><path d="M239 80 h10 l1 8 h-12 z"/><path d="M239 72 h10 l1 8 h-12 z"/><path d="M239 64 h10 l1 8 h-12 z"/><path d="M239 56 h10 l1 8 h-12 z"/><path d="M239 48 h10 l1 8 h-12 z"/><path d="M239 40 h10 l1 8 h-12 z"/><rect x="243.5" y="30" width="3" height="10"/><rect x="244.5" y="22" width="1" height="8"/></g>
+  </g>
+  <rect x="0.5" y="0.5" width="339" height="109" rx="11.5" fill="none" stroke="#d0d7de"/>
+</svg>

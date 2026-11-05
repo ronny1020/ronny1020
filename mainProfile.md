@@ -6,12 +6,19 @@
 
 <h3 align="center"><!-- generated:weather --></h3>
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-dark.svg">
+    <img alt="Today's sky over Taipei, drawn from the forecast" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-light.svg" width="340">
+  </picture>
+</p>
+
 <p align="center"><!-- generated:weatherFacts --></p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated <!-- generated:lastUpdated -->" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated <!-- generated:lastUpdated -->" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -26,6 +33,8 @@
 - 📦 I publish small, focused npm packages and use them in my own work.
 - 💬 Issues and pull requests on any of my repositories are always welcome.
 
+<!-- generated:currentWork -->
+
 ## 📥 Packages people install
 
 <!-- generated:packages -->
@@ -33,6 +42,10 @@
 ## 📦 Featured projects
 
 <!-- generated:featured -->
+
+## 🏷️ Latest releases
+
+<!-- generated:releases -->
 
 ## 🤝 Upstream contributions
 

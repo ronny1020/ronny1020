@@ -1,6 +1,8 @@
 import { jest } from 'bun:test'
 
 import type {
+  GithubEvent,
+  GithubRelease,
   GithubRepo,
   MaintainedProject,
   GithubUser,
@@ -87,6 +89,34 @@ export function buildMaintainedProject(
     stars: 12,
     teamSize: 4,
     totalCommits: 680,
+    ...overrides,
+  }
+}
+
+export function buildRelease(
+  overrides: Partial<GithubRelease> = {},
+): GithubRelease {
+  return {
+    html_url: 'https://github.com/ronny1020/example/releases/tag/v1.0.0',
+    published_at: '2026-10-30T00:00:00Z',
+    repo: 'example',
+    tag_name: 'v1.0.0',
+    ...overrides,
+  }
+}
+
+/** A push to one of my repositories, `example` unless overridden. */
+export function buildPushEvent(
+  overrides: Partial<GithubEvent> = {},
+): GithubEvent {
+  return {
+    created_at: '2026-11-03T00:00:00Z',
+    repo: {
+      id: 1,
+      name: 'ronny1020/example',
+      url: 'https://api.github.com/repos/ronny1020/example',
+    },
+    type: 'PushEvent',
     ...overrides,
   }
 }

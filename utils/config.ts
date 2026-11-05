@@ -5,12 +5,17 @@ export const GITHUB_USERNAME = 'ronny1020'
 export const GITHUB_API_URL = 'https://api.github.com'
 export const NPM_REGISTRY_URL = 'https://registry.npmjs.org'
 export const NPM_DOWNLOADS_API_URL = 'https://api.npmjs.org/downloads/point'
+export const STACK_EXCHANGE_API_URL = 'https://api.stackexchange.com/2.3'
+export const STACK_OVERFLOW_USER_ID = 12598451
 export const OPEN_METEO_URL = 'https://api.open-meteo.com/v1/forecast'
 export const OPEN_METEO_AIR_QUALITY_URL =
   'https://air-quality-api.open-meteo.com/v1/air-quality'
 export const TAIPEI = { latitude: 25.0478, longitude: 121.5319 }
+export const DAY_MS = 24 * 60 * 60 * 1000
 export const REQUEST_TIMEOUT_MS = 10_000
 export const REPOS_PER_PAGE = 100
+/** GitHub's own cap on public events: 300, in pages of 100. */
+export const EVENT_PAGES = 3
 export const MAX_RECENT_REPOS = 4
 export const MAX_FEATURED_REPOS = 4
 /** Below this, a package is only counted, under the packages table. */
@@ -26,6 +31,12 @@ export const MAX_FIXED_ISSUES = 5
 export const MIN_STACK_TOOLS = 6
 /** Fetched before the private ones are filtered out. */
 export const STARRED_PAGE_SIZE = 100
+export const MAX_RELEASES = 5
+/** A release's tag is a push, so recent releases sit on recently pushed projects. */
+export const RELEASE_SCAN_REPOS = 20
+export const RELEASE_WINDOW_DAYS = 365
+/** How far back "currently building" looks for pushes. */
+export const CURRENT_WORK_DAYS = 14
 export const PROFILE_TIME_ZONE = 'Asia/Taipei'
 
 const PROJECT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..')

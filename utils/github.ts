@@ -1,4 +1,5 @@
 import {
+  EVENT_PAGES,
   EXCLUDED_OWNERS,
   MAINTAINED_REPO,
   GITHUB_API_URL,
@@ -7,6 +8,8 @@ import {
   STARRED_PAGE_SIZE,
 } from './config.ts'
 import type {
+  GithubEvent,
+  GithubRelease,
   GithubRepo,
   GithubUser,
   Issue,
@@ -17,6 +20,16 @@ import type {
   SocialAccount,
   StarredRepo,
 } from './types.ts'
+
+/** A non-2xx GitHub response, carrying its status so a caller can allow a 404. */
+class GithubRequestError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+  ) {
+    super(message)
+  }
+}
 
 async function githubJson<T>(path: string): Promise<T> {
   const token = process.env.GITHUB_TOKEN
@@ -32,8 +45,9 @@ async function githubJson<T>(path: string): Promise<T> {
   const payload = await response.text()
 
   if (!response.ok) {
-    throw new Error(
+    throw new GithubRequestError(
       `GitHub request failed: ${path} → ${response.status} ${response.statusText}\n${payload}`,
+      response.status,
     )
   }
 
@@ -194,6 +208,60 @@ export async function getMaintainedProject(): Promise<MaintainedProject> {
       0,
     ),
   }
+}
+
+/**
+ * The latest published release of each repository that has one — one per
+ * project, so a project that tags often cannot crowd out the rest. Only a 404
+ * means "no release"; any other failure is thrown, so a rate limit cannot
+ * publish an empty section.
+ */
+export async function getLatestReleases(
+  repos: GithubRepo[],
+): Promise<GithubRelease[]> {
+  const releases = await Promise.all(
+    repos.map(async (repo) => {
+      try {
+        const release = await githubJson<GithubRelease>(
+          `/repos/${GITHUB_USERNAME}/${repo.name}/releases/latest`,
+        )
+
+        return { ...release, repo: repo.name }
+      } catch (error) {
+        if (error instanceof GithubRequestError && error.status === 404) {
+          return null
+        }
+
+        throw error
+      }
+    }),
+  )
+
+  return releases.filter((release) => release !== null)
+}
+
+/**
+ * My public events back to `since`, newest first. GitHub serves at most
+ * `EVENT_PAGES` pages, and paging stops once a page reaches past `since`.
+ */
+export async function getPublicEvents(since: Date): Promise<GithubEvent[]> {
+  const events: GithubEvent[] = []
+
+  for (let page = 1; page <= EVENT_PAGES; page += 1) {
+    const batch = await githubJson<GithubEvent[]>(
+      `/users/${GITHUB_USERNAME}/events/public?per_page=100&page=${page}`,
+    )
+
+    events.push(...batch)
+
+    const oldest = batch.at(-1)?.created_at
+
+    if (batch.length < 100 || !oldest || new Date(oldest) < since) {
+      break
+    }
+  }
+
+  return events
 }
 
 /** The accounts I list on my GitHub profile, whatever they happen to be. */

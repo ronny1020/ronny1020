@@ -1,25 +1,13 @@
 import { formatClock } from '../format.ts'
+import { findSky } from '../sky.ts'
 import type { Forecast } from '../types.ts'
-
-/** WMO weather codes, grouped into what a visitor would say about the sky. */
-const SKIES: { codes: number[]; icon: string; phrase: string }[] = [
-  { codes: [0], icon: '☀️', phrase: 'a lovely clear day' },
-  { codes: [1], icon: '🌤️', phrase: 'mostly sunny' },
-  { codes: [2], icon: '⛅', phrase: 'partly cloudy' },
-  { codes: [3], icon: '☁️', phrase: 'grey and overcast' },
-  { codes: [45, 48], icon: '🌫️', phrase: 'foggy' },
-  { codes: [51, 53, 55, 56, 57], icon: '🌦️', phrase: 'drizzly' },
-  { codes: [61, 63, 65, 66, 67, 80, 81, 82], icon: '🌧️', phrase: 'rainy' },
-  { codes: [71, 73, 75, 77, 85, 86], icon: '🌨️', phrase: 'snowing, somehow' },
-  { codes: [95, 96, 97, 99], icon: '⛈️', phrase: 'stormy' },
-]
 
 /** Below this, mentioning rain is noise. */
 const RAIN_WORTH_MENTIONING = 30
 
 /** A daily greeting whose icon changes with the Taipei sky. */
 export function renderWeather(forecast: Forecast | null): string {
-  const sky = SKIES.find(({ codes }) => codes.includes(forecast?.code ?? -1))
+  const sky = findSky(forecast?.code)
 
   if (!forecast || !sky) {
     return '👋 Hello from Taipei!'

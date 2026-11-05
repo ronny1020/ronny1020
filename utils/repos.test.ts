@@ -1,11 +1,13 @@
 import { afterEach, describe, expect, it, jest } from 'bun:test'
 
-import { buildRepo } from './fixtures.ts'
+import { buildPushEvent, buildRelease, buildRepo } from './fixtures.ts'
 import {
   byStars,
   isOwnRepo,
   pickFeaturedCandidates,
   pickFeaturedRepos,
+  pickCurrentWork,
+  pickLatestReleases,
   pickRecentRepos,
   repoDescription,
   sumBy,
@@ -81,6 +83,17 @@ describe('pickFeaturedRepos', () => {
       candidates: [buildRepo({ name: 'listed' }), buildRepo({ name: 'other' })],
       listedPackages: new Set(['listed-pkg']),
       npmPackages: new Map([['listed', npmPackage]]),
+    })
+
+    expect(featured.map((repo) => repo.name)).toEqual(['other'])
+  })
+
+  it('skips projects another section already shows', () => {
+    const featured = pickFeaturedRepos({
+      candidates: [buildRepo({ name: 'muster' }), buildRepo({ name: 'other' })],
+      listedPackages: new Set(),
+      npmPackages: new Map(),
+      shownElsewhere: new Set(['muster']),
     })
 
     expect(featured.map((repo) => repo.name)).toEqual(['other'])
@@ -175,5 +188,91 @@ describe('repoDescription', () => {
       }),
     ).toBe('From npm')
     expect(repoDescription(repo)).toBe('—')
+  })
+})
+
+describe('pickRecentRepos with sections that already show a project', () => {
+  it('skips repositories shown elsewhere and fills from the rest', () => {
+    const repos = pickRecentRepos(
+      ['a', 'b', 'c', 'd', 'e', 'f'].map((name) => buildRepo({ name })),
+      new Set(['a', 'c']),
+    )
+
+    expect(repos.map((repo) => repo.name)).toEqual(['b', 'd', 'e', 'f'])
+  })
+})
+
+describe('pickLatestReleases', () => {
+  const now = new Date('2026-11-05T00:00:00Z')
+
+  it('orders newest first and drops releases older than the window', () => {
+    const releases = pickLatestReleases({
+      now,
+      releases: [
+        buildRelease({ published_at: '2026-06-28T00:00:00Z', repo: 'older' }),
+        buildRelease({ published_at: '2023-07-04T00:00:00Z', repo: 'stale' }),
+        buildRelease({ published_at: '2026-11-04T00:00:00Z', repo: 'newest' }),
+      ],
+    })
+
+    expect(releases.map((release) => release.repo)).toEqual(['newest', 'older'])
+  })
+
+  it('caps the list at five', () => {
+    const releases = Array.from({ length: 8 }, (_, index) =>
+      buildRelease({ repo: `repo${index}` }),
+    )
+
+    expect(pickLatestReleases({ now, releases })).toHaveLength(5)
+  })
+})
+
+describe('pickCurrentWork', () => {
+  const now = new Date('2026-11-05T00:00:00Z')
+  const muster = buildRepo({ name: 'muster' })
+  const pushTo = (name: string, createdAt = '2026-11-03T00:00:00Z') =>
+    buildPushEvent({
+      created_at: createdAt,
+      repo: { id: 1, name: `ronny1020/${name}`, url: '' },
+    })
+
+  it('picks the repository with the most pushes in the window', () => {
+    expect(
+      pickCurrentWork({
+        events: [pushTo('example'), pushTo('muster'), pushTo('muster')],
+        now,
+        repos: [buildRepo(), muster],
+      }),
+    ).toEqual({ pushes: 2, repo: muster })
+  })
+
+  it('breaks a tie in favour of the latest push', () => {
+    expect(
+      pickCurrentWork({
+        events: [pushTo('muster'), pushTo('example')],
+        now,
+        repos: [buildRepo(), muster],
+      })?.repo.name,
+    ).toBe('muster')
+  })
+
+  it('ignores the profile repo, release manifests, old pushes and other events', () => {
+    expect(
+      pickCurrentWork({
+        events: [
+          pushTo('ronny1020'),
+          pushTo('homebrew-tap'),
+          pushTo('muster', '2026-10-01T00:00:00Z'),
+          buildPushEvent({ type: 'WatchEvent' }),
+        ],
+        now,
+        repos: [
+          buildRepo({ name: 'ronny1020' }),
+          buildRepo({ name: 'homebrew-tap' }),
+          buildRepo(),
+          muster,
+        ],
+      }),
+    ).toBeNull()
   })
 })

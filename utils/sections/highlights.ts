@@ -1,6 +1,11 @@
 import { centered, formatNumber } from '../format.ts'
 import { isOwnRepo, sumBy } from '../repos.ts'
-import type { GithubRepo, GithubUser, MaintainedProject } from '../types.ts'
+import type {
+  GithubRepo,
+  GithubUser,
+  MaintainedProject,
+  StackOverflowStats,
+} from '../types.ts'
 
 /**
  * A sentence rather than badges: six shields pills need 926px in an 846px
@@ -11,6 +16,7 @@ import type { GithubRepo, GithubUser, MaintainedProject } from '../types.ts'
 export function renderHighlights({
   maintained,
   repos,
+  stackOverflow,
   upstreamCount,
   upstreamStars,
   user,
@@ -18,6 +24,7 @@ export function renderHighlights({
 }: {
   maintained: MaintainedProject
   repos: GithubRepo[]
+  stackOverflow: StackOverflowStats | null
   upstreamCount: number
   upstreamStars: number
   user: GithubUser
@@ -27,6 +34,11 @@ export function renderHighlights({
   const facts = [
     `<b>${formatNumber(yearlyDownloads)}</b> npm installs in the last year`,
     `<b>${formatNumber(upstreamCount)}</b> pull requests merged into projects with <b>${formatNumber(upstreamStars)}</b> stars between them`,
+    ...(stackOverflow?.answers
+      ? [
+          `<b>${formatNumber(stackOverflow.answers)}</b> Stack Overflow ${stackOverflow.answers === 1 ? 'answer' : 'answers'}, <b>${formatNumber(stackOverflow.accepted)}</b> accepted, <b>${formatNumber(stackOverflow.reputation)}</b> reputation`,
+        ]
+      : []),
     `<b>${formatNumber(maintained.commits)}</b> commits maintaining a community docs site`,
     `<b>${formatNumber(sumBy(ownRepos, (repo) => repo.stargazers_count))}</b> stars on my own repositories`,
     `on GitHub since <b>${user.created_at.slice(0, 4)}</b>`,

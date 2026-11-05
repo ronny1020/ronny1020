@@ -2,7 +2,7 @@
 
 ## What this repo is
 
-The source for the GitHub profile shown at <https://github.com/ronny1020>. `README.md` is **generated** — a GitHub Action rebuilds it daily from the GitHub, npm, and Open-Meteo APIs.
+The source for the GitHub profile shown at <https://github.com/ronny1020>. `README.md` is **generated** — a GitHub Action rebuilds it daily from the GitHub, npm, Stack Exchange, and Open-Meteo APIs.
 
 ## Commands
 
@@ -32,20 +32,23 @@ utils/types.ts          response types derived from @octokit/types
 utils/github.ts         GitHub REST client and fetchers
 utils/npm.ts            npm registry lookups
 utils/npmDownloads.ts   install counts (bulk endpoint rejects scoped names) and the packages-table floor
-utils/repos.ts          repo filtering, selection, descriptions
+utils/repos.ts          repo filtering and selection (featured, recent, releases, current work), descriptions
 utils/siteLinks.ts      reachable-homepage checks for demo links
+utils/stackOverflow.ts  answer and accepted counts from the keyless Stack Exchange API
+utils/sky.ts            WMO weather codes grouped into sky kinds, shared by the greeting and the sky card
 utils/weather.ts        today's Taipei forecast, sun times and peak US AQI via the `openmeteo` client (no key)
 utils/liveBadge.ts      animated "live" status pill (SVG)
+utils/skyCard.ts        today's Taipei sky drawn as an animated card (SVG)
 utils/format.ts         numbers, dates, shields URLs, markdown table helpers
 utils/template.ts       marker replacement
 utils/sections/*.ts     one module per generated section (except plain formatter calls)
 utils/sections/index.ts renderSections(): marker name → rendered markdown
 utils/fixtures.ts       test payload builders
 README.md               generated output — never edit by hand
-live-badge/             generated {light,dark}.svg — never edit by hand
+live-badge/             generated {light,dark}.svg and sky-{light,dark}.svg — never edit by hand
 ```
 
-Every static heading, badge, and prose line lives in `mainProfile.md`; everything data-driven is a marker filled by a section renderer, including a sentence whose wording changes with the data (the weather greeting). The live badge's label is the exception: it is drawn inside the SVG, so its wording lives in `utils/liveBadge.ts`.
+Every static heading, badge, and prose line lives in `mainProfile.md`; everything data-driven is a marker filled by a section renderer, including a sentence whose wording changes with the data (the weather greeting). The live badge and the sky card are the exception: they are drawn inside SVGs, so their wording lives in `utils/liveBadge.ts` and `utils/skyCard.ts` (whose sky phrases come from `utils/sky.ts`, shared with the greeting).
 
 ## Adding a generated section
 
@@ -65,16 +68,18 @@ An unmapped marker is left verbatim in `README.md`, which is the signal that ste
 - **Evidence floors.** A tool or theme needs `MIN_EVIDENCE_COUNT` repositories behind it, and the generated stack stays silent below `MIN_STACK_TOOLS` rather than publishing an almost-empty row.
 - **Escape API text in tables** with `escapeTableCell`; a `|` or `[` in a description or PR title otherwise breaks the row.
 - **Types come from `@octokit/types`**, narrowed with `Required<Pick<…>>`. Do not hand-write GitHub response shapes.
-- **Packages and Featured don't overlap.** A package needs `MIN_MONTHLY_INSTALLS` for a packages-table row; the rest are counted on one line under the table. A project whose package family has a row is left out of Featured projects, which then takes the next most starred project. That check looks up npm metadata for every candidate repository, one registry request each.
+- **Packages and Featured don't overlap.** A package needs `MIN_MONTHLY_INSTALLS` for a packages-table row; the rest are counted on one line under the table. A project whose package family has a row is left out of Featured projects, which then takes the next most starred project. That check looks up npm metadata for every showcase repository, one registry request each.
 - **Credit Open-Meteo and CAMS.** Their terms require a visible reference wherever their data appears — Open-Meteo for the forecast, CAMS for air quality; both links sit at the foot of `mainProfile.md`.
-- **Renderers are pure** — they take data and return markdown or SVG. All fetching lives in `github.ts`, `npm.ts`, `npmDownloads.ts`, `siteLinks.ts`, and `weather.ts`; all file writes in `updateREADME.ts`.
+- **Renderers are pure** — they take data and return markdown or SVG. All fetching lives in `github.ts`, `npm.ts`, `npmDownloads.ts`, `siteLinks.ts`, `stackOverflow.ts`, and `weather.ts`; all file writes in `updateREADME.ts`.
+- **Shipping is a release, working is a push.** Latest releases lists one GitHub release per project, newest first, none older than `RELEASE_WINDOW_DAYS`; it scans only the `RELEASE_SCAN_REPOS` most recently pushed projects, since creating a release's tag is a push — a release for an old tag is missed. The "currently building" line counts pushes, not commits — GitHub's public events no longer list commits — and drops itself after a quiet `CURRENT_WORK_DAYS`. Featured skips every project those two already show and takes the next most starred instead; Recently pushed then skips all three, so a project appears in only one of those three lists.
+- **Optional sources fail quietly.** Stack Overflow's keyless quota is shared by every job on a CI runner's IP, so a refused request drops that highlight rather than failing the build; Open-Meteo works the same way. GitHub is the primary source and fails the build instead, so a rate limit never publishes an empty section — only a 404 from `/releases/latest` means "no release".
 - **Tests never hit the network.** Mock `globalThis.fetch` with the `mockFetch` helper (the `openmeteo` client, which parses FlatBuffers, is mocked whole with `mock.module`) and build payloads with `utils/fixtures.ts`.
 - **Own-organisation work is not an upstream contribution.** `EXCLUDED_OWNERS` in `utils/config.ts` drops those accounts from the contributions search; add private organisations through the `EXCLUDED_OWNERS` environment variable (comma separated) so their names stay out of this public repo.
 - **Dates and counts use `&nbsp;`** so a narrow table column cannot wrap `Aug 17, 2026` after the comma.
-- **Release manifests stay out of the showcase.** Homebrew taps (`homebrew-*`) and Scoop buckets (`*scoop-bucket`) are skipped from Featured and Recently pushed, but still count in totals.
+- **Release manifests stay out of the showcase.** Homebrew taps (`homebrew-*`) and Scoop buckets (`*scoop-bucket`) are skipped from Featured, Recently pushed, Latest releases and the "currently building" line, but still count in totals.
 - **Hide a repository** by adding its name to `EXCLUDED_REPOS` in `utils/config.ts`; that filter also removes it from star, fork, and language totals.
 - **Never publish private data.** Both PR searches pin `is:public` and `getStarredRepos` filters `private` stars — a local run uses a `repo`-scoped token that can see work repositories.
-- **Motion lives in SVG.** GitHub strips CSS and scripts from a README, so the live badge animates inside its own SVG, which the workflow commits with the README. It honours `prefers-reduced-motion`.
+- **Motion lives in SVG.** GitHub strips CSS and scripts from a README, so the live badge and the sky card animate inside their own SVGs, which the workflow commits with the README. Both honour `prefers-reduced-motion`.
 - **Summary cards are self-hosted.** The workflow runs `vn7n24fzkq/github-profile-summary-cards` with `AUTO_PUSH: false` and commits `profile-summary-card-output/{default,github_dark}` alongside the README; the shared card service rate limits and rendered "Cards are temporarily rate limited" in place of four of the five cards. The action writes all 65 themes — only those two folders are added to git.
 - **Card hosts must answer fast.** GitHub proxies every image through camo, which gives up after a few seconds and serves a 504 — a card host that needs 6s renders as broken on the profile even though `curl` says 200. Time a new host before adding it (`streak-stats.demolab.com` was dropped for this).
 - **Only publish links that resolve.** `siteLinks.ts` drops homepages that 404, time out, or fail to connect, and card hosts are checked before being introduced — the profile previously broke when `github-readme-stats.vercel.app` was paused, and when `github-readme-activity-graph.vercel.app` began returning 402.
@@ -90,4 +95,4 @@ README-bot pushes a regenerated `README.md` and `live-badge/` after every run, s
 
 ## CI
 
-`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + lint + format check + test → generate summary cards → regenerate → commit `README.md` and `live-badge/` as `README-bot` if they changed. The generator step receives `GITHUB_TOKEN`; Open-Meteo needs no key.
+`.github/workflows/build_profile.yml` runs on push to `master`, daily at 16:00 UTC, and on demand: install → typecheck + lint + format check + test → generate summary cards → regenerate → commit `README.md` and `live-badge/` as `README-bot` if they changed. The generator step receives `GITHUB_TOKEN`; Open-Meteo and Stack Exchange need no key.

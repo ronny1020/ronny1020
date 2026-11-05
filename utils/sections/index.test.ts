@@ -5,6 +5,7 @@ import { describe, expect, it } from 'bun:test'
 import { MAIN_PROFILE_PATH } from '../config.ts'
 import {
   buildMaintainedProject,
+  buildRelease,
   buildRepo,
   buildStarredRepo,
   buildUser,
@@ -13,6 +14,7 @@ import { renderTemplate } from '../template.ts'
 import { renderSections } from './index.ts'
 
 const sections = renderSections({
+  currentWork: { pushes: 3, repo: buildRepo() },
   dependencyCounts: new Map([
     ['typescript', 9],
     ['vite', 7],
@@ -30,9 +32,11 @@ const sections = renderSections({
   packageNames: ['example'],
   publishedPackages: new Map(),
   recent: [buildRepo()],
+  releases: [buildRelease()],
   repos: [buildRepo()],
   siteLinks: new Map(),
   socialAccounts: [{ provider: 'twitter', url: 'https://twitter.com/someone' }],
+  stackOverflow: { accepted: 17, answers: 58, reputation: 881 },
   starred: [buildStarredRepo()],
   upstream: { items: [], total_count: 0 },
   repoStars: new Map(),

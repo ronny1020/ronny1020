@@ -6,12 +6,19 @@
 
 <h3 align="center">🌫️ Hello from Taipei — foggy today, 20–30&nbsp;°C.</h3>
 
-<p align="center">🌅 6:03 AM · 🌇 5:11 PM · 🟠 peak US AQI 115, unhealthy for sensitive groups</p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-dark.svg">
+    <img alt="Today's sky over Taipei, drawn from the forecast" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/sky-light.svg" width="340">
+  </picture>
+</p>
+
+<p align="center">🌅 6:03 AM · 🌇 5:11 PM · 🟠 peak US AQI 121, unhealthy for sensitive groups</p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm and Open-Meteo APIs, last updated Nov 5, 2026, 5:43 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 5, 2026 at 5:02 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -22,7 +29,7 @@
 </p>
 
 <p align="center">
-  <sub><b>400,756</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,148</b> stars between them · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>400,756</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,155</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -31,6 +38,8 @@
 - 🛰️ Day to day I build web apps for a computer-vision / digital-twin platform — React, Next.js, Vue, Vite, and a fair amount of 3D rendering in the browser.
 - 📦 I publish small, focused npm packages and use them in my own work.
 - 💬 Issues and pull requests on any of my repositories are always welcome.
+
+🔨 Lately I'm mostly pushing to [**muster**](https://github.com/ronny1020/muster) — Run AI agent CLIs in tabs, each a real terminal with its own directory and git… <sub>6&nbsp;pushes in 14&nbsp;days</sub>
 
 ## 📥 Packages people install
 
@@ -43,22 +52,27 @@
 
 ## 📦 Featured projects
 
-| Project                                                                                                                                                               | What it does                                                                           | Installs |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------- |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>⭐&nbsp;14 · TypeScript · [v0.1.0](https://www.npmjs.com/package/@channel-state/core)</sub>   | A state-management provides robust, seamless state synchronization across all browser… | 38/mo    |
-| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts                                                   | 62/mo    |
-| [**muster**](https://github.com/ronny1020/muster)<br><sub>⭐&nbsp;2 · TypeScript</sub>                                                                                | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state   | —        |
-| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object                                          | 56/mo    |
+| Project                                                                                                                                                               | What it does                                  | Installs |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------- |
+| [**condition-switch**](https://github.com/ronny1020/condition-switch)<br><sub>⭐&nbsp;5 · TypeScript · [v0.1.2](https://www.npmjs.com/package/condition-switch)</sub> | A condition switch library for js/ts          | 62/mo    |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object | 56/mo    |
+| [**nekoChannelLineBot**](https://github.com/ronny1020/nekoChannelLineBot)<br><sub>⭐&nbsp;1 · TypeScript</sub>                                                        | —                                             | —        |
+| [**podcast-player-demo**](https://github.com/ronny1020/podcast-player-demo)<br><sub>⭐&nbsp;1 · Vue</sub>                                                             | —                                             | —        |
+
+## 🏷️ Latest releases
+
+- [**muster** v0.8.0](https://github.com/ronny1020/muster/releases/tag/v0.8.0) <sub>Nov&nbsp;5,&nbsp;2026</sub>
+- [**channel-state** v0.1.0](https://github.com/ronny1020/channel-state/releases/tag/v0.1.0) <sub>Jun&nbsp;28,&nbsp;2026</sub>
 
 ## 🤝 Upstream contributions
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,525<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,528<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,622<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,901<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,625<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,902<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;855<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
@@ -78,12 +92,12 @@ I have written 484 of the 535 human commits in it, across 124 merged pull reques
 
 ## 🚀 Recently pushed
 
-| Repository                                                                                                                | What it does                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [**muster**](https://github.com/ronny1020/muster)<br><sub>TypeScript · pushed Nov&nbsp;4,&nbsp;2026</sub>                 | Run AI agent CLIs in tabs, each a real terminal with its own directory and git state       |
-| [**channel-state**](https://github.com/ronny1020/channel-state)<br><sub>TypeScript · pushed Sep&nbsp;10,&nbsp;2026</sub>  | A state-management provides robust, seamless state synchronization across all browser…     |
-| [**ai-agent-press**](https://github.com/ronny1020/ai-agent-press)<br><sub>TypeScript · pushed Sep&nbsp;5,&nbsp;2026</sub> | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and… |
-| [**twinlink**](https://github.com/ronny1020/twinlink)<br><sub>TypeScript · pushed Jul&nbsp;11,&nbsp;2026</sub>            | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     |
+| Repository                                                                                                                                               | What it does                                                                               |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [**ai-agent-press**](https://github.com/ronny1020/ai-agent-press)<br><sub>TypeScript · pushed Sep&nbsp;5,&nbsp;2026</sub>                                | Beautiful, automated AI Agent documentation portal generator. Organize rules, skills, and… |
+| [**twinlink**](https://github.com/ronny1020/twinlink)<br><sub>TypeScript · pushed Jul&nbsp;11,&nbsp;2026</sub>                                           | A lightweight toolkit for creating direct 1-on-1 browser-to-browser connections using…     |
+| [**react-json-formatter**](https://github.com/ronny1020/react-json-formatter)<br><sub>TypeScript · pushed Feb&nbsp;27,&nbsp;2026</sub>                   | Formatting json data to JSX of React                                                       |
+| [**pexels-wallpaper-auto-changer**](https://github.com/ronny1020/pexels-wallpaper-auto-changer)<br><sub>TypeScript · pushed Feb&nbsp;14,&nbsp;2026</sub> | —                                                                                          |
 
 ## 🔭 Themes I keep starring
 
