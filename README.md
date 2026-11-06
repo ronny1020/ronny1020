@@ -4,10 +4,6 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/assets/typing.svg" alt="A gentle Asian man in a khaki shirt, typing late at night while code fills the editor beside him" width="320">
-</p>
-
 <h3 align="center">☁️ Hello from Taipei — grey and overcast today, 22–26&nbsp;°C.</h3>
 
 <p align="center">🌅 6:04 AM · 🌇 5:10 PM · ☀️ 11&nbsp;h 6&nbsp;m of daylight, 1 minute shorter than yesterday<br>
@@ -17,7 +13,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 6, 2026, 11:59 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 6, 2026, 2:48 PM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -28,10 +24,14 @@
 </p>
 
 <p align="center">
-  <sub><b>402,701</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,167</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>402,701</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,168</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/assets/typing.svg" alt="A black cat lying curled up on a laptop, typing with its front paws late at night while code types itself out on the screen" width="320">
+</p>
 
 - 🎨 Front-end developer who cares about design systems, accessibility, and code that reads well.
 - 🛰️ Day to day I build web apps for a computer-vision / digital-twin platform — React, Next.js, Vue, Vite, and a fair amount of 3D rendering in the browser.
@@ -70,7 +70,7 @@
 - **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,528<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,632<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,633<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
 - **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,907<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;855<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
