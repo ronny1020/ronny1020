@@ -4,6 +4,10 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/assets/typing.svg" alt="A gentle Asian man in a khaki shirt, typing late at night while code fills the editor beside him" width="320">
+</p>
+
 <h3 align="center"><!-- generated:weather --></h3>
 
 <p align="center"><!-- generated:weatherFacts --></p>

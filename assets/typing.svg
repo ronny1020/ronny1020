@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="190" viewBox="0 0 320 190" role="img" aria-labelledby="t">
+  <title id="t">A gentle Asian man in a khaki shirt, typing late at night while code fills the editor beside him</title>
+  <style>
+    .pivot { transform-box: fill-box; transform-origin: center; }
+    .blink { animation: blink 4s infinite; }
+    .nod { animation: nod 1.2s ease-in-out infinite alternate; }
+    .left-hand { animation: tap 0.36s ease-in-out infinite alternate; }
+    .right-hand { animation: tap 0.36s ease-in-out -0.18s infinite alternate; }
+    .float { animation: float 3s ease-in-out infinite alternate; }
+    .twinkle { animation: twinkle 2.4s ease-in-out infinite alternate; }
+    .twinkle.late { animation-delay: -1.2s; }
+    .steam { animation: steam 2.8s ease-out infinite; opacity: 0; }
+    .steam.late { animation-delay: -1.4s; }
+    .glyph { animation: rise 3.6s ease-out infinite; opacity: 0; }
+    .glyph.g2 { animation-delay: -1.2s; }
+    .glyph.g3 { animation-delay: -2.4s; }
+    .line { transform-box: fill-box; transform-origin: left; transform: scaleX(0); }
+    .l1 { animation: l1 7s steps(8) infinite; }
+    .l2 { animation: l2 7s steps(6) infinite; }
+    .l3 { animation: l3 7s steps(9) infinite; }
+    .l4 { animation: l4 7s steps(5) infinite; }
+    .l5 { animation: l5 7s steps(7) infinite; }
+    .cursor { animation: cursor 0.8s steps(1) infinite; }
+
+    @keyframes blink { 0%, 92%, 98%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+    @keyframes nod { to { transform: translateY(1.5px); } }
+    @keyframes tap { to { transform: translateY(-2.5px); } }
+    @keyframes float { to { transform: translateY(-3px); } }
+    @keyframes twinkle { from { opacity: 0.25; } to { opacity: 1; } }
+    @keyframes steam { 0% { opacity: 0; transform: translateY(4px); } 30% { opacity: 0.7; } 100% { opacity: 0; transform: translateY(-14px); } }
+    @keyframes rise { 0% { opacity: 0; transform: translate(0, 0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(10px, -46px); } }
+    @keyframes l1 { 0% { transform: scaleX(0); } 12%, 92% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes l2 { 0%, 14% { transform: scaleX(0); } 26%, 92% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes l3 { 0%, 28% { transform: scaleX(0); } 44%, 92% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes l4 { 0%, 46% { transform: scaleX(0); } 56%, 92% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes l5 { 0%, 58% { transform: scaleX(0); } 72%, 92% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes cursor { 50% { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .line { transform: scaleX(1); }
+      .steam, .glyph { opacity: 0; }
+    }
+  </style>
+
+  <!-- room -->
+  <rect width="320" height="190" rx="16" fill="#232a3d"/>
+  <rect x="22" y="20" width="62" height="52" rx="6" fill="#2f3a57"/>
+  <circle cx="66" cy="38" r="9" fill="#f4e7b5"/>
+  <circle cx="70" cy="35" r="8" fill="#2f3a57"/>
+  <circle class="twinkle" cx="34" cy="32" r="1.4" fill="#f4e7b5"/>
+  <circle class="twinkle late" cx="46" cy="56" r="1.2" fill="#f4e7b5"/>
+  <circle class="twinkle" cx="74" cy="60" r="1" fill="#f4e7b5"/>
+  <path d="M53 20v52M22 46h62" stroke="#232a3d" stroke-width="3"/>
+  <rect y="158" width="320" height="32" fill="#3a3352"/>
+  <rect y="158" width="320" height="3" fill="#4a4266"/>
+
+  <!-- mug -->
+  <path class="steam" d="M36 132c-3-4 3-6 0-10" stroke="#c7cde0" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path class="steam late" d="M44 132c-3-4 3-6 0-10" stroke="#c7cde0" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="30" y="137" width="20" height="21" rx="3" fill="#e07a8f"/>
+  <path d="M50 142a5 5 0 0 1 0 10" stroke="#e07a8f" stroke-width="3" fill="none"/>
+
+  <!-- editor -->
+  <g class="float">
+    <rect x="200" y="36" width="104" height="92" rx="8" fill="#161b2b"/>
+    <circle cx="211" cy="46" r="2.5" fill="#f7768e"/>
+    <circle cx="219" cy="46" r="2.5" fill="#e0af68"/>
+    <circle cx="227" cy="46" r="2.5" fill="#9ece6a"/>
+    <rect class="line l1" x="210" y="60" width="58" height="4" rx="2" fill="#bb9af7"/>
+    <rect class="line l2" x="218" y="72" width="42" height="4" rx="2" fill="#7aa2f7"/>
+    <rect class="line l3" x="218" y="84" width="72" height="4" rx="2" fill="#9ece6a"/>
+    <rect class="line l4" x="226" y="96" width="34" height="4" rx="2" fill="#7dcfff"/>
+    <rect class="line l5" x="210" y="108" width="52" height="4" rx="2" fill="#f7768e"/>
+    <rect class="cursor" x="210" y="116" width="6" height="6" fill="#c0caf5"/>
+  </g>
+
+  <!-- code glyphs rising toward the editor -->
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" font-weight="700">
+    <text class="glyph" x="160" y="128" fill="#7dcfff">&lt;/&gt;</text>
+    <text class="glyph g2" x="172" y="134" fill="#bb9af7">{ }</text>
+    <text class="glyph g3" x="166" y="122" fill="#9ece6a">;</text>
+  </g>
+
+  <!-- coder -->
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#7a8cc4" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#7a8cc4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="120" cy="90" r="62" fill="url(#glow)"/>
+  <g class="nod">
+    <path d="M91 88c-2-27 11-40 29-40s31 13 29 40z" fill="#2a221f"/>
+    <path d="M80 160c0-27 16-39 40-39s40 12 40 39z" fill="#a08f52"/>
+    <path d="M108 122c3 6 21 6 24 0l3 38h-30z" fill="#6b2a2c"/>
+    <path d="M108 121l-8 14 10-3zM132 121l8 14-10-3z" fill="#857540"/>
+    <rect x="112" y="106" width="16" height="17" fill="#d6a884"/>
+    <ellipse cx="93" cy="92" rx="4" ry="6" fill="#ecc3a0"/>
+    <ellipse cx="147" cy="92" rx="4" ry="6" fill="#ecc3a0"/>
+    <path d="M93 82c0-18 11-27 27-27s27 9 27 27c0 14-6 25-14 31-4 3-8 5-13 5s-9-2-13-5c-8-6-14-17-14-31z" fill="#ecc3a0"/>
+    <path d="M92 84c-2-22 10-36 28-36s30 12 28 36c-2-5-6-8-12-9-10-1-22-5-30-11-4 6-9 12-14 20z" fill="#2a221f"/>
+    <path d="M134 74l7 9-1-9zM124 71l5 8 .5-8zM114 67l3 7 1-6z" fill="#2a221f"/>
+    <path d="M104 56c10 4 24 8 36 13M112 52c8 2 18 5 28 10" stroke="#4a3a33" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path d="M101.5 87.5q5.5-3 11.5-1.5M127 86q6-1.5 11.5 1.5" stroke="#2a221f" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <g class="pivot blink">
+      <circle cx="108" cy="97.6" r="2.8" fill="#3a2a22"/>
+      <circle cx="132" cy="97.6" r="2.8" fill="#3a2a22"/>
+      <circle cx="109" cy="96.7" r="0.9" fill="#fff"/>
+      <circle cx="133" cy="96.7" r="0.9" fill="#fff"/>
+    </g>
+    <path d="M101 97.5q6-5 14-1.5M125 96q8-3.5 14 1.5" stroke="#2a221f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M103.5 101q4.5 1.5 9 0M127.5 101q4.5 1.5 9 0" stroke="#c9926f" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+    <ellipse cx="101" cy="105" rx="4" ry="2" fill="#ff9aa2" opacity="0.2"/>
+    <ellipse cx="139" cy="105" rx="4" ry="2" fill="#ff9aa2" opacity="0.2"/>
+    <path d="M120 100l-1.5 4.5 2 .5" stroke="#c9926f" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M114.5 110q5.5 3 11 0" stroke="#a5574d" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  </g>
+  <g class="left-hand">
+    <path d="M97 134l-5 17" stroke="#a08f52" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="91" cy="155" r="5" fill="#ecc3a0"/>
+  </g>
+  <g class="right-hand">
+    <path d="M143 134l5 17" stroke="#a08f52" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="149" cy="155" r="5" fill="#ecc3a0"/>
+  </g>
+
+  <!-- laptop, lid facing the viewer -->
+  <rect x="94" y="122" width="52" height="36" rx="4" fill="#cfd6e3"/>
+  <circle cx="120" cy="140" r="4.5" fill="#eef1f7"/>
+  <rect x="88" y="157" width="64" height="4" rx="2" fill="#9aa3b8"/>
+</svg>
