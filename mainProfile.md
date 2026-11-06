@@ -4,10 +4,6 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/assets/typing.svg" alt="A gentle Asian man in a khaki shirt, typing late at night while code fills the editor beside him" width="320">
-</p>
-
 <h3 align="center"><!-- generated:weather --></h3>
 
 <p align="center"><!-- generated:weatherFacts --></p>
@@ -24,6 +20,10 @@
 <!-- generated:highlights -->
 
 ## 🧑‍💻 About me
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/assets/typing.svg" alt="A black cat lying curled up on a laptop, typing with its front paws late at night while code types itself out on the screen" width="320">
+</p>
 
 - 🎨 Front-end developer who cares about design systems, accessibility, and code that reads well.
 - 🛰️ Day to day I build web apps for a computer-vision / digital-twin platform — React, Next.js, Vue, Vite, and a fair amount of 3D rendering in the browser.
