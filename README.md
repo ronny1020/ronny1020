@@ -4,16 +4,20 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/assets/typing.svg" alt="A gentle Asian man in a khaki shirt, typing late at night while code fills the editor beside him" width="320">
+</p>
+
 <h3 align="center">☁️ Hello from Taipei — grey and overcast today, 22–26&nbsp;°C.</h3>
 
 <p align="center">🌅 6:04 AM · 🌇 5:10 PM · ☀️ 11&nbsp;h 6&nbsp;m of daylight, 1 minute shorter than yesterday<br>
-🌘 waning crescent tonight · 🌊 the sea off Keelung is 25&nbsp;°C, waves up to 1.8&nbsp;m<br>
-🟡 peak US AQI 95, moderate</p>
+🌘 waning crescent tonight · 🌊 the sea off Keelung is 25&nbsp;°C, waves up to 1.9&nbsp;m<br>
+🟡 peak US AQI 94, moderate</p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 6, 2026, 5:46 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 6, 2026, 11:59 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -24,7 +28,7 @@
 </p>
 
 <p align="center">
-  <sub><b>402,701</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,162</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>402,701</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,167</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -56,18 +60,18 @@
 
 ## 🏷️ Latest releases
 
-- [**muster** v0.8.0](https://github.com/ronny1020/muster/releases/tag/v0.8.0) <sub>Nov&nbsp;5,&nbsp;2026</sub>
+- [**muster** v0.8.1](https://github.com/ronny1020/muster/releases/tag/v0.8.1) <sub>Nov&nbsp;6,&nbsp;2026</sub>
 - [**channel-state** v0.1.0](https://github.com/ronny1020/channel-state/releases/tag/v0.1.0) <sub>Jun&nbsp;28,&nbsp;2026</sub>
 
 ## 🤝 Upstream contributions
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,526<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,528<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;196<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,631<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,905<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,632<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,907<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;855<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
@@ -75,9 +79,9 @@
 Issues I opened in other people's projects that the maintainers labelled a bug and then fixed.
 
 - **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** ⭐&nbsp;2,072<br> [The `font-mono` is considered not a tailwind class with the `fontFamily` setting without mono setting in tailwind.config.js.](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/249) <sub>fixed Jun&nbsp;19,&nbsp;2023</sub>
-- **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** ⭐&nbsp;2,538<br> [`vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899) <sub>fixed Mar&nbsp;15,&nbsp;2023</sub>
+- **[vuepress-theme-hope/vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)** ⭐&nbsp;2,537<br> [`vuepress-plugin-comment2` get '@internal/pagesData' imported error during build](https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues/2899) <sub>fixed Mar&nbsp;15,&nbsp;2023</sub>
 - **[francoismassart/eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)** ⭐&nbsp;2,072<br> [It takes a lot of time to execute, especially `tailwindcss/classnames-order `](https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/136) <sub>fixed Jun&nbsp;9,&nbsp;2022</sub>
-- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** ⭐&nbsp;4,587<br> [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643) <sub>fixed Oct&nbsp;5,&nbsp;2021</sub>
+- **[vuejs/eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue)** ⭐&nbsp;4,588<br> [rule "vue/no-unused-properties" on <script setup> api component use prop from api defineProps in api computed ](https://github.com/vuejs/eslint-plugin-vue/issues/1643) <sub>fixed Oct&nbsp;5,&nbsp;2021</sub>
 
 ## 🗺️ The project I maintain
 
