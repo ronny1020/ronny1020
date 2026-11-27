@@ -4,16 +4,16 @@
   Front-end developer in Taipei 🇹🇼 — TypeScript, Vue &amp; React, and 3D in the browser.
 </p>
 
-<h3 align="center">🌫️ Hello from Taipei — foggy today, 16–26&nbsp;°C.</h3>
+<h3 align="center">🌫️ Hello from Taipei — foggy today, 14–23&nbsp;°C.</h3>
 
-<p align="center">🌅 6:18 AM · 🌇 5:03 PM · ☀️ 10&nbsp;h 45&nbsp;m of daylight, 1 minute shorter than yesterday<br>
-🌖 waning gibbous tonight · 🌊 the sea off Keelung is 24&nbsp;°C, waves up to 1.0&nbsp;m<br>
-🟡 peak US AQI 78, moderate</p>
+<p align="center">🌅 6:19 AM · 🌇 5:03 PM · ☀️ 10&nbsp;h 44&nbsp;m of daylight, 1 minute shorter than yesterday<br>
+🌖 waning gibbous tonight · 🌊 the sea off Keelung is 23&nbsp;°C, waves up to 1.3&nbsp;m<br>
+🟡 peak US AQI 79, moderate</p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/dark.svg">
-    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 27, 2026, 8:18 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
+    <img alt="Live: this profile rebuilds itself every day from the GitHub, npm, Stack Exchange and Open-Meteo APIs, last updated Nov 28, 2026, 7:55 AM GMT+8" src="https://raw.githubusercontent.com/ronny1020/ronny1020/master/live-badge/light.svg" height="24">
   </picture>
 </p>
 
@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <sub><b>427,436</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,610</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
+  <sub><b>427,945</b> npm installs in the last year · <b>7</b> pull requests merged into projects with <b>146,652</b> stars between them · <b>58</b> Stack Overflow answers, <b>17</b> accepted, <b>881</b> reputation · <b>484</b> commits maintaining a community docs site · <b>48</b> stars on my own repositories · on GitHub since <b>2019</b></sub>
 </p>
 
 ## 🧑‍💻 About me
@@ -38,15 +38,15 @@
 - 📦 I publish small, focused npm packages and use them in my own work.
 - 💬 Issues and pull requests on any of my repositories are always welcome.
 
-🔨 Lately I'm mostly pushing to [**muster**](https://github.com/ronny1020/muster) — Run AI agent CLIs in tabs, each a real terminal with its own directory and git… <sub>12&nbsp;pushes in 14&nbsp;days</sub>
+🔨 Lately I'm mostly pushing to [**muster**](https://github.com/ronny1020/muster) — Run AI agent CLIs in tabs, each a real terminal with its own directory and git… <sub>8&nbsp;pushes in 14&nbsp;days</sub>
 
 ## 📥 Packages people install
 
 | Package                                                                      | What it is                                                                                 | Installs / month |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------- |
-| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React                                                       | 50,776           |
-| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum                                          | 186              |
-| [`condition-switch`](https://www.npmjs.com/package/condition-switch)         | A powerful and flexible TypeScript utility for writing clean, declarative, and expressive… | 107              |
+| [`react-json-formatter`](https://www.npmjs.com/package/react-json-formatter) | Formatting json data to JSX of React                                                       | 50,606           |
+| [`lorem-ipsum-tc`](https://www.npmjs.com/package/lorem-ipsum-tc)             | Tool for creating Traditional Chinese lorem ipsum                                          | 180              |
+| [`condition-switch`](https://www.npmjs.com/package/condition-switch)         | A powerful and flexible TypeScript utility for writing clean, declarative, and expressive… | 108              |
 
 <sub>…and 7 smaller packages</sub>
 
@@ -54,7 +54,7 @@
 
 | Project                                                                                                                                                               | What it does                                  | Installs |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | -------- |
-| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object | 76/mo    |
+| [**react-form-maker**](https://github.com/ronny1020/react-form-maker)<br><sub>⭐&nbsp;2 · JavaScript · [v0.4.0](https://www.npmjs.com/package/react-form-maker)</sub> | NPM React tool to make a React form by object | 71/mo    |
 | [**nekoChannelLineBot**](https://github.com/ronny1020/nekoChannelLineBot)<br><sub>⭐&nbsp;1 · TypeScript</sub>                                                        | —                                             | —        |
 | [**podcast-player-demo**](https://github.com/ronny1020/podcast-player-demo)<br><sub>⭐&nbsp;1 · Vue</sub>                                                             | —                                             | —        |
 | [**receipt-management-demo**](https://github.com/ronny1020/receipt-management-demo)<br><sub>⭐&nbsp;1 · Vue</sub>                                                     | —                                             | —        |
@@ -68,11 +68,11 @@
 
 7 pull requests merged into repositories I do not own:
 
-- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,659<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
+- **[TanStack/query](https://github.com/TanStack/query)** ⭐&nbsp;50,682<br> [docs(query-react): Update links in useQuery documentation](https://github.com/TanStack/query/pull/11006) <sub>merged Aug&nbsp;17,&nbsp;2026</sub>
 - **[logicspark/awesome-vitepress-v1](https://github.com/logicspark/awesome-vitepress-v1)** ⭐&nbsp;198<br> [feat(docs): add `travel-guide-tw.github.io/` blog](https://github.com/logicspark/awesome-vitepress-v1/pull/15) <sub>merged Apr&nbsp;6,&nbsp;2025</sub>
 - **[cypress-io/cypress-documentation](https://github.com/cypress-io/cypress-documentation)** ⭐&nbsp;1,049<br> [docs(selectFile): readFile & fixture should use `null` instead of `{ encoding: null }`](https://github.com/cypress-io/cypress-documentation/pull/5563) <sub>merged Nov&nbsp;17,&nbsp;2023</sub>
-- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,914<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
-- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,928<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
+- **[pixijs/pixijs](https://github.com/pixijs/pixijs)** ⭐&nbsp;48,931<br> [fix(application): prevent reading property of null if the application is destroyed](https://github.com/pixijs/pixijs/pull/9514) <sub>merged Jul&nbsp;6,&nbsp;2023</sub>
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)** ⭐&nbsp;44,930<br> [fix(path): keys of `Date | FileList | File` shouldn't be add to the `PathImpl`](https://github.com/react-hook-form/react-hook-form/pull/8804) <sub>merged Aug&nbsp;8,&nbsp;2022</sub>
 - **[visgl/loaders.gl](https://github.com/visgl/loaders.gl)** ⭐&nbsp;862<br> [docs(pcd): fix pcd-loader example `PCDloader` spell](https://github.com/visgl/loaders.gl/pull/2226) <sub>merged Aug&nbsp;1,&nbsp;2022</sub>
 
 ## 🐛 Bugs I reported that got fixed
